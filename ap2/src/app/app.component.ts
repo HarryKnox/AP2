@@ -7,4 +7,15 @@ import { Component } from '@angular/core';
 })
 export class AppComponent {
   constructor() {}
-}
+
+  authenticated = false;
+
+
+  login(){
+    this.authenticated = true;
+  }
+
+
+
+}// app component closed
+
