@@ -1,17 +1,38 @@
-<ion-header [translucent]="true">
-  <ion-toolbar>
-    <ion-title>
-      Home
-    </ion-title>
-  </ion-toolbar>
+<ion-header>
+  <div class="topPurple"></div>
+
+  <div class="greyBit">
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1440 500">
+      <path fill="#992FED" fill-opacity="1" d="M -4 500 C 627 378 817 86 1242 102 C 1336 107 1399 140 1438 180 L 1440 0 L 1360 0 C 1280 0 1120 0 960 0 C 800 0 640 0 480 0 C 320 0 160 0 80 0 L 0 0 Z"></path>
+    </svg>
+  </div>
+  
+  <div id="brand">Home</div>
+
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1440 419">
+    <path fill="#BBC4D0" fill-opacity="1" d="M 0 2 C 495 295 1252 63 1442 156 L 1440 0 L 1360 0 C 1280 0 1120 0 960 0 C 800 0 640 0 480 0 C 320 0 160 0 80 0 L 0 0 Z"></path>
+  </svg>
+  
 </ion-header>
 
 <ion-content [fullscreen]="true">
-  <ion-header collapse="condense">
-    <ion-toolbar>
-      <ion-title size="large">Home</ion-title>
-    </ion-toolbar>
-  </ion-header>
 
-  <app-explore-container name="Home page"></app-explore-container>
+  <!-- container to hold all exercise posts -->
+  <div class="card-group" id="cardContainer">
+    <!-- loop through each exercise post and create a bootstrap card -->
+    <div class="col-4" *ngFor = "let post of post_list | async;">
+        <div class="card text-white bg-info mb-3" style = "width: 20rem; margin: auto">
+            <div class="card-header" style="color: black;">
+            <p>Name : {{ post.userName }}</p>
+            <p>Post Text : {{post.text}}</p>
+            <p>Exercise Type : {{ post.type }}</p>
+            <p>Distance : {{ post.dist }}</p>
+            <p>Time : {{ minutes2Time(post.time) }}</p>
+            <p>Posted {{setDate(post.date)}}</p>
+            </div> <!-- header closed -->
+        
+      </div> <!-- card closed -->
+    </div> <!-- ng for closed -->
+</div> <!-- posts container closed -->
+
 </ion-content>
