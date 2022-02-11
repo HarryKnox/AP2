@@ -10,16 +10,15 @@ import { AppComponent } from './app.component';
 import { HttpClientModule } from '@angular/common/http';
 import { WebService } from './web.service';
 import { DatePipe } from '@angular/common';
-import { AuthModule } from '@auth0/auth0-angular';
+
+import { IonicStorageModule } from '@ionic/storage-angular';
 
 @NgModule({
   declarations: [AppComponent],
   entryComponents: [],
-  imports: [BrowserModule, IonicModule.forRoot(), AppRoutingModule,HttpClientModule,
-    AuthModule.forRoot({
-      domain : "dev-7r2t6u-n.us.auth0.com",
-      clientId : "9WhxIcb6LeMfyI4Ig7IprYXbbo7urZPV"
-    })],
+  imports: [BrowserModule, IonicModule.forRoot(), AppRoutingModule,
+    HttpClientModule, IonicStorageModule.forRoot()
+    ],
   providers: [{ provide: RouteReuseStrategy, useClass: IonicRouteStrategy },WebService,DatePipe],
   bootstrap: [AppComponent],
 })

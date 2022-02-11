@@ -30,6 +30,15 @@ export class WebService {
         return this.http.post("http://localhost:5000/api/v1.0/posts",postData);
     }
 
+    postLogin(username : any, password: any){
+
+        let loginData = new FormData();
+        loginData.append("username", username);
+        loginData.append("password", password);
+
+        return this.http.post('http://localhost:5000/api/v1/login', loginData);
+    }
+
     // deletes an exercise post
     deletePost(id:any){
         // http delete call made
