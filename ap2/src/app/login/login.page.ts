@@ -23,6 +23,8 @@ export class LoginPage implements OnInit {
   }
 
 
+  // function call auth service's login function
+  // subcribes to result, which return true or null
   login() {
     
     this.auth.login(this.credentials).subscribe(async res => {
@@ -38,6 +40,6 @@ export class LoginPage implements OnInit {
         await (await alert).present();
       }
     });
-  }
+  } // login function closed
 
-}
+} // loginPage class closed

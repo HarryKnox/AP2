@@ -23,7 +23,6 @@ export class homePage {
 
     // fetches all exercise posts
     this.post_list = this.webService.getPosts();
-    console.log(this.post_list);
 
 
   }// ngOnInit closed

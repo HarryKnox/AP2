@@ -48,12 +48,12 @@ export class AuthService {
           return from(this.storage.get(TOKEN_KEY))
         }),
         map(token =>{
-          console.log('Token from storage: ', token);
+          //console.log('Token from storage: ', token);
 
           // if token found, decode and....
           if(token){
             let decoded = helper.decodeToken(token);
-            console.log('decoded:',decoded);
+            //console.log('decoded:',decoded);
             this.userData.next(decoded); 
             return true;
           }
@@ -69,36 +69,39 @@ export class AuthService {
     // function to make login API call and retrieve JWT
     login(credentials: {email : string, pw : string}) : Observable<any>{
 
-
       // ignore if credentials wrong
       if(credentials.email != 'Jim' || credentials.pw != '123'){
         return of(null);
       }
 
-      // variable to hold API token
-      var api_token : any;
+      // call API endpoint, through webservice
+      // take & map remove access token, as a string, from Object
+      return this.webService.postLogin(credentials.email, credentials.pw).pipe(
+        take(1),
+        map(res => {
+          return(res["access_token"]);
+        }),
 
-      this.webService.postLogin(credentials.email, credentials.pw)
-      .subscribe((res : any) => {
-        console.log(res)
-        return res;
-      }),
-
-      switchMap(token =>{
-        let decoded = helper.decodeToken(api_token);
-          console.log('decoded:',decoded);
-          this.userData.next(decoded);
-          
-          let storageObs = from(this.storage.set(TOKEN_KEY,token));
-          return storageObs;
-      })
+        // decodes token and sets value to userData var
+        switchMap(token =>{
+          let decoded = helper.decodeToken(token);
+            //console.log('decoded:',decoded);
+            this.userData.next(decoded);
+            
+            // token set in storage and returned
+            let storageObs = from(this.storage.set(TOKEN_KEY,token));
+            return storageObs;
+        })
+      )
     }
 
+    // function get the user's login data
     getUser() {
       return this.userData.getValue();
     }
 
-
+    // function log a user out
+    // remove token from storage, redirect to login and resets userData
     logout() {
       this.storage.remove(TOKEN_KEY).then(() => {
         this.router.navigateByUrl('/');
@@ -107,6 +110,4 @@ export class AuthService {
     }
 
     
-
-
-}
+} // authService class closed
