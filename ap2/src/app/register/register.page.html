@@ -1,5 +1,5 @@
 <ion-header>
-  <ion-toolbar color="secondary">
+  <ion-toolbar color="#992FED">
     <ion-buttons slot="start">
       <ion-back-button defaultHref="/"></ion-back-button>
     </ion-buttons>
@@ -8,5 +8,23 @@
 </ion-header>
  
 <ion-content padding>
+
+  <ion-item lines="none">
+    <ion-label position="stacked">UserName</ion-label>
+    <ion-input type="UserName" placeholder="username" name="UserName" [(ngModel)]="credentials.username"></ion-input>
+  </ion-item>
  
+  <ion-item lines="none">
+    <ion-label position="stacked">Email</ion-label>
+    <ion-input type="email" placeholder="email" name="email" [(ngModel)]="credentials.email"></ion-input>
+  </ion-item>
+
+  <ion-item lines="none">
+    <ion-label position="stacked">Password</ion-label>
+    <ion-input type="password" placeholder="password" name="password" [(ngModel)]="credentials.password">
+    </ion-input>
+  </ion-item>
+
+  <ion-button (click)="register()" expand="block">Register</ion-button>
+
 </ion-content>

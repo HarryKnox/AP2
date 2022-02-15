@@ -11,8 +11,8 @@ import { AuthService } from '../services/auth.service';
 export class LoginPage implements OnInit {
 
   credentials = {
-    email: 'test@email.com',
-    pw: '123'
+    email: '',
+    pw: ''
   }
 
 

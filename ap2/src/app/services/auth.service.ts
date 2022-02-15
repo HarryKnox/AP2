@@ -70,9 +70,9 @@ export class AuthService {
     login(credentials: {email : string, pw : string}) : Observable<any>{
 
       // ignore if credentials wrong
-      if(credentials.email != 'Jim' || credentials.pw != '123'){
-        return of(null);
-      }
+      // if(credentials.email != 'Jim' || credentials.pw != '123'){
+      //   return of(null);
+      // }
 
       // call API endpoint, through webservice
       // take & map remove access token, as a string, from Object
