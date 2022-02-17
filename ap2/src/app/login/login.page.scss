@@ -1,14 +1,10 @@
-ion-header{
-    background-color: white;
-}
-
 ion-header svg{
     z-index: -1;
 }
 
 ion-footer{
-    --ion-item-background: white;
     z-index: -1;
+    background-color: #992FED;
 }
 
 .topPurple{
@@ -35,7 +31,6 @@ ion-content{
 
 ion-content h3{
     color: #992FED;
-    background-color: white;
     font-size: 1.5em;
     font-weight: bolder;
     margin: 0;
@@ -52,10 +47,4 @@ ion-content ion-button{
     width: 6em;
     font-size: 0.96em;
     --background : #BBC4D0;
-}
-
-
-
-ion-footer{
-    border: none;
 }

@@ -1,17 +1,12 @@
-ion-content{
-    --ion-background-color: white;
-}
-
 .topPurple{
     background: #992FED;
     height: 5px;
 }
 
-
 ion-header svg{
     z-index: -1;
+    display: inline-block;
 }
-
 
 .greyBit{
     background-color: #BBC4D0;
@@ -25,3 +20,13 @@ ion-header svg{
     font-size: 2em;
     font-weight: bolder;
 }
+
+#goalTracker{
+    color: black;
+    background-color: #BBC4D0;
+    height: 5em;
+    text-align: center;
+    border-radius: 3em;
+    margin: 0.5em ;
+}
+
