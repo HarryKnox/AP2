@@ -2,7 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { AuthService } from '../services/auth.service';
 import { Router } from '@angular/router';
 import { AlertController } from '@ionic/angular';
-import { WebService } from './../web.service';
+import { WebService } from '../services/web.service';
 
 @Component({
   selector: 'app-register',

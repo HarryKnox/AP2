@@ -8,7 +8,7 @@ import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 
 import { HttpClientModule } from '@angular/common/http';
-import { WebService } from './web.service';
+import { WebService } from './services/web.service';
 import { DatePipe } from '@angular/common';
 
 import { IonicStorageModule } from '@ionic/storage-angular';
@@ -19,7 +19,8 @@ import { IonicStorageModule } from '@ionic/storage-angular';
   imports: [BrowserModule, IonicModule.forRoot(), AppRoutingModule,
     HttpClientModule, IonicStorageModule.forRoot()
     ],
-  providers: [{ provide: RouteReuseStrategy, useClass: IonicRouteStrategy },WebService,DatePipe],
+  providers: [{ provide: RouteReuseStrategy, useClass: IonicRouteStrategy },
+    WebService,DatePipe],
   bootstrap: [AppComponent],
 })
 export class AppModule {}

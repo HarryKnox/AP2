@@ -1,10 +1,15 @@
-import { HttpClient, HttpParams } from '@angular/common/http';
+import { HttpClient, HttpHeaders, HttpParams } from '@angular/common/http';
 import { Injectable } from '@angular/core';
-
+import { AuthService } from './auth.service';
+import { Storage } from '@ionic/storage';
+import { Observable } from 'rxjs';
+import { switchMap } from 'rxjs/operators';
 
 @Injectable()
 export class WebService {
-    constructor(private http: HttpClient) {}
+    constructor(private http: HttpClient,
+        private auth : AuthService,
+        private storage : Storage) {}
 
 
     // gets all posts
@@ -119,6 +124,22 @@ export class WebService {
 
         return this.http.post('http://localhost:5000/api/v1/users', regData);
     }
-  
+
+
+    // get logged in user's profile info
+    getUser(){
+
+
+
+        
+
+        var jwt1 = "";
+
+        let headers =  new HttpHeaders();
+        headers.append('Authorization: Bearer ',jwt1);
+        headers.append('Content-Type', 'application/json');
+
+        return this.http.get('http://localhost:5000/api/v1/users',{headers:headers});
+    }
 
 } // webService class closed

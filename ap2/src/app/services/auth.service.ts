@@ -6,11 +6,9 @@ import { Platform } from '@ionic/angular';
 import { Storage } from '@ionic/storage';
 import { BehaviorSubject, from, Observable, of } from 'rxjs';
 import { take, map, switchMap } from 'rxjs/operators';
-import { WebService } from './../web.service';
 
 const helper = new JwtHelperService();
-const TOKEN_KEY = 'jwt-token'
-
+const TOKEN_KEY = 'jwt-token';
 
 @Injectable({
   providedIn: 'root'
@@ -21,7 +19,6 @@ export class AuthService {
   private userData = new BehaviorSubject(null);
 
   constructor(
-    private webService: WebService,
     private storage: Storage,
     private router: Router,
     private http: HttpClient,
@@ -69,14 +66,14 @@ export class AuthService {
     // function to make login API call and retrieve JWT
     login(credentials: {email : string, pw : string}) : Observable<any>{
 
-      // ignore if credentials wrong
-      // if(credentials.email != 'Jim' || credentials.pw != '123'){
-      //   return of(null);
-      // }
+      // create form data object for making API call
+      let loginData = new FormData();
+      loginData.append("email", credentials.email);
+      loginData.append("password", credentials.pw);
 
       // call API endpoint, through webservice
       // take & map remove access token, as a string, from Object
-      return this.webService.postLogin(credentials.email, credentials.pw).pipe(
+      return this.http.post('http://localhost:5000/api/v1/login', loginData).pipe(
         take(1),
         map(res => {
           return(res["access_token"]);

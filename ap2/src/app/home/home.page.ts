@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { WebService } from '../web.service';
+import { WebService } from '../services/web.service';
 import * as moment from 'moment';
 import { DatePipe } from '@angular/common';
 

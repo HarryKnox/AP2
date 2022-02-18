@@ -1,0 +1,30 @@
+.topPurple{
+    background: #992FED;
+    height: 5px;
+}
+
+ion-header svg{
+    z-index: -1;
+    display: inline-block;
+}
+
+.greyBit{
+    background-color: #BBC4D0;
+    height: 30%;
+}
+
+#brand{
+    background-color: #BBC4D0;
+    color: #992FED;
+    text-align: center;
+    font-size: 2em;
+    font-weight: bolder;
+}
+
+#profileBox{  
+    border: 0.1em solid black;
+    border-radius: 1em;
+    margin-left: 0.25em;
+    margin-right: 0.25em;
+    color: black;
+}
