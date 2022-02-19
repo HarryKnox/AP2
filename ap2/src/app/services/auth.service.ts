@@ -18,6 +18,8 @@ export class AuthService {
   public user: Observable<any>;
   private userData = new BehaviorSubject(null);
 
+
+
   constructor(
     private storage: Storage,
     private router: Router,
@@ -31,37 +33,47 @@ export class AuthService {
       this.loadStoredToken();
      }
 
-     // function to check if token already stored in platform
-     loadStoredToken(){
+    // function to get token
+    async getToken() {
 
-      // subscribe to platform when ready
-      // + converts platform promise to observable
-      let platformObs = from(this.plt.ready());
+      //return this.storage.get('jwt-token');
 
-      // switchMap subcribes to the token observable
-      // + gets token from storage
-      this.user = platformObs.pipe(
-        switchMap(() => {
-          return from(this.storage.get(TOKEN_KEY))
-        }),
-        map(token =>{
-          //console.log('Token from storage: ', token);
-
-          // if token found, decode and....
-          if(token){
-            let decoded = helper.decodeToken(token);
-            //console.log('decoded:',decoded);
-            this.userData.next(decoded); 
-            return true;
-          }
-
-          // if not found, set to null
-          else{
-            return null;
-          }
-        })
+      this.storage.get('jwt-token').then(
+        res => {console.log("test",res)}
       );
-     }
+    } // getToken closed
+
+    // function to check if token already stored in platform
+    loadStoredToken(){
+
+    // subscribe to platform when ready
+    // + converts platform promise to observable
+    let platformObs = from(this.plt.ready());
+
+    // switchMap subcribes to the token observable
+    // + gets token from storage
+    this.user = platformObs.pipe(
+      switchMap(() => {
+        return from(this.storage.get(TOKEN_KEY))
+      }),
+      map(token =>{
+        //console.log('Token from storage: ', token);
+
+        // if token found, decode and....
+        if(token){
+          let decoded = helper.decodeToken(token);
+          //console.log('decoded:',decoded);
+          this.userData.next(decoded); 
+          return true;
+        }
+
+        // if not found, set to null
+        else{
+          return null;
+        }
+      })
+    );
+    }
 
     // function to make login API call and retrieve JWT
     login(credentials: {email : string, pw : string}) : Observable<any>{
@@ -105,6 +117,7 @@ export class AuthService {
         this.userData.next(null);
       })
     }
+
 
     
 } // authService class closed
