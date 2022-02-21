@@ -3,7 +3,7 @@
 
   <div class="greyBit">
     <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1440 500">
-      <path fill="#992FED" fill-opacity="1" d="M -4 500 C 627 378 817 86 1242 102 C 1336 107 1399 140 1438 180 L 1440 0 L 1360 0 C 1280 0 1120 0 960 0 C 800 0 640 0 480 0 C 320 0 160 0 80 0 L 0 0 Z"></path>
+      <path fill="#992FED" fill-opacity="1" d="M 0 332 C 627 378 817 86 1242 102 C 1336 107 1399 140 1438 180 L 1440 0 L 1360 0 C 1280 0 1120 0 960 0 C 800 0 640 0 480 0 C 320 0 160 0 80 0 L 0 0 Z"></path>
     </svg>
     <ion-back-button defaultHref="/"></ion-back-button>
   </div>
@@ -14,7 +14,7 @@
 
 <ion-content>
 
-  <h3>Register</h3>
+  <h4>Register</h4>
 
   <ion-item lines="none">
     <ion-label position="stacked">User Name</ion-label>
@@ -29,6 +29,12 @@
   <ion-item lines="none">
     <ion-label position="stacked">Password</ion-label>
     <ion-input type="password" placeholder="••••••••" name="password" [(ngModel)]="credentials.password">
+    </ion-input>
+  </ion-item>
+
+  <ion-item lines="none">
+    <ion-label position="stacked">Confirm Password</ion-label>
+    <ion-input type="password" placeholder="••••••••" name="cPassword" [(ngModel)]="credentials.cPassword">
     </ion-input>
   </ion-item>
 

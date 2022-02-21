@@ -21,7 +21,7 @@ export class ProfilePage implements OnInit {
     
     this.webService.getUser().subscribe(
       (profile) => {
-        console.log(profile)
+        //console.log(profile)
         this.profileData = (profile)
       }
     );

@@ -6,15 +6,14 @@ ion-header svg{
 
 ion-back-button{
     float: left;
-    position: relative;
+    position: absolute;
     margin-left: 0.25em;
     color: white;
 }
 
-
 ion-content{
     position: relative;
-    top: 7.5em;
+    top: 6em;
     --ion-item-background : white;
     --ion-item-color : black;
 }
@@ -24,13 +23,12 @@ ion-content{
     height: 4em;
 }
 
-ion-content h3{
+ion-content h4{
     color: #992FED;
     font-size: 1.5em;
     font-weight: bolder;
     margin: 0;
     padding-left: 0.75em;
-    padding-bottom: 0.5em;
 }
 
 ion-footer{
@@ -40,4 +38,7 @@ ion-footer{
 ion-content ion-button{
     font-size: 0.96em;
     --background : #BBC4D0;
+    --background-hover : #992FED;
+    margin: auto;
+    width: 75%;
 }

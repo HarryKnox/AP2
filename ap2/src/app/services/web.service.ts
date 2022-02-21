@@ -119,6 +119,7 @@ export class WebService {
     postRegister(info:any){
 
         let regData = new FormData();
+        regData.append("username", info.username)
         regData.append("email", info.email);
         regData.append("password", info.password);
 

@@ -22,6 +22,10 @@ const routes: Routes = [
   {
     path: 'settings',
     loadChildren: () => import('./settings/settings.module').then( m => m.SettingsPageModule)
+  },
+  {
+    path: 'edit-profile-modal',
+    loadChildren: () => import('./edit-profile-modal/edit-profile-modal.module').then( m => m.EditProfileModalPageModule)
   }
 
 

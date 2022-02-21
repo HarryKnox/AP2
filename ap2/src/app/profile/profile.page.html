@@ -16,21 +16,21 @@
   <div id="profileBox" class="row">
 
     <div class="column">
-      <h5>{{profileData.email}}</h5>
-      <img src="assets/profile_pic.png">
+      <h5>{{ profileData.username }}</h5>
+      <img src="{{ profileData.picture }}">
 
-      <ion-button id="theBtn">Edit</ion-button>
+      <ion-button id="theBtn" onclick="">Edit</ion-button>
     </div>
 
     <div class="column" style="margin-top : 1.5em">
       <h6>Points</h6>
-      <p>25</p>
+      <p>{{ profileData.points }}</p>
 
       <h6>Date of Birth</h6>
-      <p>13/08/1999</p>
+      <p>{{ profileData.dob }}</p>
 
       <h6>Gender</h6>
-      <p>Male</p>
+      <p>{{ profileData.gender }}</p>
     </div>
 
   </div>
