@@ -128,18 +128,7 @@ export class WebService {
 
     // get logged in user's profile info
     getUser(){
-
-
-
-        
-
-        var jwt1 = "";
-
-        let headers =  new HttpHeaders();
-        headers.append('Authorization: Bearer ',jwt1);
-        headers.append('Content-Type', 'application/json');
-
-        return this.http.get('http://localhost:5000/api/v1/users',{headers:headers});
+        return this.http.get('http://localhost:5000/api/v1/users');
     }
 
 } // webService class closed

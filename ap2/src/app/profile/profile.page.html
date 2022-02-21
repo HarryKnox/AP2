@@ -7,19 +7,32 @@
     </svg>
   </div>
   
-  <div id="brand">Profile</div>
+  <div id="brand">My Profile</div>
 
-  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1440 420">
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1440 200">
     <path fill="#BBC4D0" fill-opacity="1" d="M 0 2 C 495 295 1252 63 1442 156 L 1440 0 L 1360 0 C 1280 0 1120 0 960 0 C 800 0 640 0 480 0 C 320 0 160 0 80 0 L 0 0 Z"></path>
   </svg>
 
-  <div id="profileBox">
-    <h4>Joe Smith</h4>
+  <div id="profileBox" class="row">
 
+    <div class="column">
+      <h5>{{profileData.email}}</h5>
+      <img src="assets/profile_pic.png">
+
+      <ion-button id="theBtn">Edit</ion-button>
+    </div>
+
+    <div class="column" style="margin-top : 1.5em">
+      <h6>Points</h6>
+      <p>25</p>
+
+      <h6>Date of Birth</h6>
+      <p>13/08/1999</p>
+
+      <h6>Gender</h6>
+      <p>Male</p>
+    </div>
 
   </div>
 
 </ion-header>
-<ion-content>
-
-</ion-content>

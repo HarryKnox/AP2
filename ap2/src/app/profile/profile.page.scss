@@ -22,9 +22,53 @@ ion-header svg{
 }
 
 #profileBox{  
-    border: 0.1em solid black;
+    border: 0.1em solid #992FED;
     border-radius: 1em;
     margin-left: 0.25em;
     margin-right: 0.25em;
     color: black;
+    text-align: center;
 }
+
+#profileBox p{
+    border: 0.1em solid #BBC4D0;
+    width: 8em;
+    border-radius: 1em;
+    text-align: center;
+}
+
+#profileBox h6{
+    width: 8em;
+    line-height: 0;
+    color: #992FED;
+    text-align: center;
+}
+
+#profileBox ion-button{
+    height: 1.75em;
+    width: 5em;
+    --background : #992FED;
+    --background-hover : #92949c;
+}
+
+
+img{
+    height: 5.5em;
+    width: 5.5em;
+    border-radius: 5em;
+    border: 0.01em solid #92949c;
+    margin: 0.5em;
+}
+
+.column {
+    float: left;
+    width: 50%;
+}
+  
+/* Clear floats after the columns */
+.row:after {
+    content: "";
+    display: table;
+    clear: both;
+}
+

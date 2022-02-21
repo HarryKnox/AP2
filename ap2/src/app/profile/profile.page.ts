@@ -1,5 +1,4 @@
 import { Component, OnInit } from '@angular/core';
-import { AuthService } from '../services/auth.service';
 import { WebService } from '../services/web.service';
 
 @Component({
@@ -9,18 +8,28 @@ import { WebService } from '../services/web.service';
 })
 export class ProfilePage implements OnInit {
 
-  constructor(private auth : AuthService,
-    private webService : WebService) { }
+  constructor(
+    private webService : WebService
+  ) {}
 
 
+  // var to hold logged-in User's data
+  profileData : any = [];
 
+  // life cycle hook called when component created
   ngOnInit() {
     
     this.webService.getUser().subscribe(
-      res => (
-        console.log(res)
-      )
-    )
-  }
+      (profile) => {
+        console.log(profile)
+        this.profileData = (profile)
+      }
+    );
+   
+  } // ngOnInit closed
 
-}
+
+
+
+
+} // class closed

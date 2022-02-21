@@ -4,8 +4,9 @@ import { Router } from '@angular/router';
 import { JwtHelperService } from '@auth0/angular-jwt';
 import { Platform } from '@ionic/angular';
 import { Storage } from '@ionic/storage';
-import { BehaviorSubject, from, Observable, of } from 'rxjs';
+import { BehaviorSubject, from, Observable} from 'rxjs';
 import { take, map, switchMap } from 'rxjs/operators';
+
 
 const helper = new JwtHelperService();
 const TOKEN_KEY = 'jwt-token';
@@ -24,8 +25,8 @@ export class AuthService {
     private storage: Storage,
     private router: Router,
     private http: HttpClient,
-    private plt: Platform){
-
+    private plt: Platform)
+    {
       // ionic storage created
       this.storage.create();
 
@@ -33,15 +34,12 @@ export class AuthService {
       this.loadStoredToken();
      }
 
+
     // function to get token
     async getToken() {
+      return this.storage.get('jwt-token');
+    }
 
-      //return this.storage.get('jwt-token');
-
-      this.storage.get('jwt-token').then(
-        res => {console.log("test",res)}
-      );
-    } // getToken closed
 
     // function to check if token already stored in platform
     loadStoredToken(){
@@ -57,12 +55,10 @@ export class AuthService {
         return from(this.storage.get(TOKEN_KEY))
       }),
       map(token =>{
-        //console.log('Token from storage: ', token);
 
-        // if token found, decode and....
+        // if token found, decode and assign to userData
         if(token){
           let decoded = helper.decodeToken(token);
-          //console.log('decoded:',decoded);
           this.userData.next(decoded); 
           return true;
         }

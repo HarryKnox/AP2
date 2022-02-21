@@ -2,16 +2,11 @@ import { Injectable } from '@angular/core';
 import {
   HttpRequest,
   HttpHandler,
-  HttpEvent,
   HttpInterceptor,
-  HttpResponse,
-  HttpErrorResponse
 } from '@angular/common/http'
-import { Observable } from 'rxjs';
+import { from} from 'rxjs';
 import { AuthService } from './auth.service';
-import { catchError, map } from 'rxjs/operators';
-import { throwError } from 'rxjs';
-import { Storage } from '@ionic/storage';
+
 
 @Injectable({
   providedIn: 'root'
@@ -19,79 +14,30 @@ import { Storage } from '@ionic/storage';
 export class InterceptorService implements HttpInterceptor {
 
   constructor(
-    private auth : AuthService, private storage: Storage
-  ) { }
+    private auth : AuthService) { }
 
+  // func that intercepts each request, calls handle func
+  intercept(req: HttpRequest<any>, next: HttpHandler) {
+    // convert promise to observable using 'from' operator
+    return from(this.handle(req, next))
+  }
 
-  intercept(
-    request: HttpRequest<any>,
-    next: HttpHandler):Observable<HttpEvent<any>>{
+  // func to handle the HTTP requests
+  async handle(req: HttpRequest<any>, next: HttpHandler) {
 
-      if(request.url.includes('/api/v1/login')){
-        return next.handle(request);
+    // gets the token
+    let authToken = await this.auth.getToken()
+
+    // sets token in Auth. Header
+    const authReq = req.clone({
+      setHeaders: {
+        Authorization: "Bearer "+authToken
       }
-
-    this.storage.get('jwt-token').then(
-      res => {
-        console.log(res);
-        request = request.clone({
-          setHeaders: {
-            'Authorization':"Bearer",res
-          }
-        })
-      }
-
-    )
-
-    // set header w/ token value
-    // if (token) {
-    //   request = request.clone({
-    //     setHeaders: {
-    //       'Authorization': token
-    //     }
-    //   });
-    // }
-
-    // if no content-type, set as app/json
-    if(!request.headers.has('Content-Type')) {
-      request = request.clone({
-        setHeaders : {
-          'content-type' : 'application/json'
-        }
-      });
-    }
-
-    request = request.clone({
-      headers: request.headers.set('Accept', 'application/json')
     })
 
-    return next.handle(request).pipe(
-      map((event: HttpEvent<any>) => {
-        if(event instanceof HttpResponse) {
-          console.log('event ---->>>',event);
-        }
-        return event;
-      }),
-
-      catchError((error:HttpErrorResponse) => {
-        console.log(error);
-        return throwError(error);
-      })
-    );
-
- 
-
-    //   if(request.url.includes('/api/v1/login')){
-    //     return next.handle(request);
-    //   }
-
-    //   let jwt = this.auth.getToken()
-    //     // request = request.clone({
-    //     //   headers : request.headers.set('authorization' ,jwt)
-
-    //   console.log(jwt);
-    
-    // return next.handle(request);
+    // returns token, as a promise
+    return next.handle(authReq).toPromise()
   }
+
 }
 
