@@ -15,18 +15,19 @@ const routes: Routes = [
   {
     path: '',
     loadChildren: () => import('./login/login.module').then( m => m.LoginPageModule)
-  },  {
+  },
+  {
     path: 'profile',
     loadChildren: () => import('./profile/profile.module').then( m => m.ProfilePageModule)
   },
   {
     path: 'settings',
     loadChildren: () => import('./settings/settings.module').then( m => m.SettingsPageModule)
-  },
-  {
+  },  {
     path: 'edit-profile-modal',
     loadChildren: () => import('./edit-profile-modal/edit-profile-modal.module').then( m => m.EditProfileModalPageModule)
   }
+
 
 
 ];
