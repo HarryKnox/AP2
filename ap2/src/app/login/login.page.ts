@@ -31,15 +31,20 @@ export class LoginPage implements OnInit {
       if(res) {
         this.router.navigateByUrl('/members');
       }
-      else{
-        const alert = this.alertCtrl.create({
+    },
+    // error catch
+    async error => {
+
+      // if email already taken, display error popup
+      if((error.error["msg"]).includes("incorrect")){
+        const alert = await this.alertCtrl.create({
           header: 'Login Failed',
-          message: 'Invalid Credentials.',
+          message: 'You have entered an invalid username or password, please try again.',
           buttons: ['OK']
-        });
-        await (await alert).present();
-      }
-    });
+        }).then(res => res.present());
+      }// if closed
+    }// error catch closed
+    );
   } // login function closed
 
 } // loginPage class closed
