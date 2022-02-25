@@ -14,14 +14,17 @@ import { DatePipe } from '@angular/common';
 import { IonicStorageModule } from '@ionic/storage-angular';
 
 import { InterceptorService } from './services/interceptor.service';
+import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
+import { library } from '@fortawesome/fontawesome-svg-core';
+import { fas } from '@fortawesome/free-solid-svg-icons';
 
-
+library.add(fas);
 
 @NgModule({
   declarations: [AppComponent],
   entryComponents: [],
   imports: [BrowserModule, IonicModule.forRoot(), AppRoutingModule,
-    HttpClientModule, IonicStorageModule.forRoot()
+    HttpClientModule, IonicStorageModule.forRoot(), FontAwesomeModule
     ],
   providers: [{ provide: RouteReuseStrategy, useClass: IonicRouteStrategy },
     WebService,DatePipe,

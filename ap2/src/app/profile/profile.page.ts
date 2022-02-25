@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ɵgetSanitizationBypassType } from '@angular/core';
 import { WebService } from '../services/web.service';
 import { ModalController } from '@ionic/angular';
 import { EditProfileModalPage } from '../edit-profile-modal/edit-profile-modal.page';
@@ -21,15 +21,25 @@ export class ProfilePage implements OnInit {
 
   // life cycle hook called when component created
   ngOnInit() {
-    
+    //this.webService.getUserPic("hello");
     // call get user and set info. to profileData var
     this.webService.getUser().subscribe(
       (profile) => {
-        //console.log(profile)
-        this.profileData = (profile)
+        this.profileData = (profile);
       }
     );
+
+
+    
   } // ngOnInit closed
+
+  // getProfilePic(file:any){
+  //   this.webService.getUserPic("email1.jpg").subscribe(
+  //     (res) => {
+      
+  //     }
+  //   )
+  // }
 
 
   // display modal
@@ -37,15 +47,14 @@ export class ProfilePage implements OnInit {
 
     const modal = await this.modalController.create({
       component: EditProfileModalPage,
-      cssClass: 'my-custom-class',
 
       // passing data to modal
       componentProps: {
-        'username' : this.profileData.username,
-        'email' : this.profileData.email,
-        'gender' : this.profileData.gender,
-        'dob' : this.profileData.dob,
-        'picture' : this.profileData.picture
+        username : this.profileData.username,
+        email : this.profileData.email,
+        gender : this.profileData.gender,
+        dob : this.profileData.dob
+        //picture : this.profileData.picture
       }
     });
     return await modal.present();

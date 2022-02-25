@@ -18,7 +18,8 @@
 
   <ion-item lines="none">
     <ion-label position="stacked">User Name</ion-label>
-    <ion-input type="UserName" placeholder="JimSmith" name="UserName" [(ngModel)]="credentials.username"></ion-input>
+    <ion-input type="text" placeholder="JimSmith" name="UserName" 
+    [(ngModel)]="credentials.username" ng-value="username"></ion-input>
   </ion-item>
  
   <ion-item lines="none">

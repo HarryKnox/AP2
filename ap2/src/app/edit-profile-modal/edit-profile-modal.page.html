@@ -1,9 +1,42 @@
 <ion-header>
-  <ion-toolbar>
+  <ion-toolbar style="margin-top: 0.25em;">
     <ion-title>Edit Profile</ion-title>
   </ion-toolbar>
 </ion-header>
 
 <ion-content>
- inputs go here
+ 
+  <ion-item lines="full">
+    <ion-label position="stacked">User Name</ion-label>
+    <ion-input type="text" name="UserName"
+    [(ngModel)]="edit_info.username"></ion-input>
+  </ion-item>
+
+  <ion-item lines="full">
+    <ion-label position="stacked">Gender</ion-label>
+    <ion-select interface="popover" placeholder="Select One" [(ngModel)]="edit_info.gender"> 
+      <ion-select-option value="Female">Female</ion-select-option>
+      <ion-select-option value="Male">Male</ion-select-option>
+    </ion-select>
+  </ion-item>
+
+  <ion-item lines="full">
+    <ion-label position="stacked">Date of Birth</ion-label>
+    <ion-input type="date" value="{{dob}}" name="dob"
+    [(ngModel)]="edit_info.dob"></ion-input>
+  </ion-item>
+
+  <ion-item lines="full">
+    <ion-label position="stacked">Profile Picture</ion-label>
+    <img src="{{picture}}">
+    <input type="file" name="file" (change)="onFileChange($event)">
+    <input type="hidden" name="fileHidden" [(ngModel)]="edit_info.picture"/>
+  </ion-item>
+
+  <div id="btns">
+    <ion-button (click)=dismissModal()>Cancel</ion-button>
+    <ion-button (click)=editProfile()>Save</ion-button>
+  </div>
+
 </ion-content>
+
