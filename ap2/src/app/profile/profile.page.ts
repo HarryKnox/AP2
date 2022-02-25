@@ -29,17 +29,7 @@ export class ProfilePage implements OnInit {
       }
     );
 
-
-    
   } // ngOnInit closed
-
-  // getProfilePic(file:any){
-  //   this.webService.getUserPic("email1.jpg").subscribe(
-  //     (res) => {
-      
-  //     }
-  //   )
-  // }
 
 
   // display modal
@@ -53,8 +43,8 @@ export class ProfilePage implements OnInit {
         username : this.profileData.username,
         email : this.profileData.email,
         gender : this.profileData.gender,
-        dob : this.profileData.dob
-        //picture : this.profileData.picture
+        dob : this.profileData.dob,
+        picture : this.profileData.picture
       }
     });
     return await modal.present();

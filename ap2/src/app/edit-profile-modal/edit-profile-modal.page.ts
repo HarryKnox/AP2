@@ -61,7 +61,9 @@ export class EditProfileModalPage implements OnInit {
   editProfile() {
 
     // check if a new profile picture
-    console.log(this.edit_info["picture"]);
+    console.log("test",this.edit_info["picture"]);
+
+    
 
     // calls register webservice API call
     this.webService.putUser(this.edit_info).subscribe(res => {
@@ -80,10 +82,6 @@ export class EditProfileModalPage implements OnInit {
     // get file object from visible file input
     let file = $event.target.files[0];
     this.edit_info.picture = file;
-
-    // set value to invisible input
-
-
   }
 
 

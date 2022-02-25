@@ -28,7 +28,7 @@
 
   <ion-item lines="full">
     <ion-label position="stacked">Profile Picture</ion-label>
-    <img src="{{picture}}">
+    <img src="http://localhost:5000/api/v1/users/{{picture}}">
     <input type="file" name="file" (change)="onFileChange($event)">
     <input type="hidden" name="fileHidden" [(ngModel)]="edit_info.picture"/>
   </ion-item>

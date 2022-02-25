@@ -133,8 +133,6 @@ export class WebService {
     // edit a user's profile
     putUser(edit_info : any){
 
-        console.log(edit_info.picture);
-
         // set all edit data into a FormData obj
         let userData = new FormData();
         userData.append("username", edit_info.username);
