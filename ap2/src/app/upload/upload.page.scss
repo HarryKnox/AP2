@@ -54,6 +54,8 @@ ion-icon{
     border-radius: 5em;
     padding: 0.1em;
     background-color: #BB96CD;
+    height: 1em;
+    width: 6em;
 }
 
 fa-icon{
@@ -66,10 +68,11 @@ fa-icon{
     align-content: center;
     flex-direction: column;
     text-align: center;
-    height: 3.1em;
-    width: 3.1em;
+    height: 3em;
+    width: 6em;
     border-radius: 5em;
     background-color: #BB96CD;
+    
 }
 
 p{
@@ -114,4 +117,8 @@ ion-content ion-button{
     --border-radius: 4em;
     --background : #992FED;
     --background-hover : #BBC4D0;
+}
+
+ion-item ion-radio{
+    opacity: 0;
 }
