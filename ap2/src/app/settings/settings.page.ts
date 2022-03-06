@@ -8,9 +8,13 @@ import { AuthService } from '../services/auth.service';
 })
 export class SettingsPage implements OnInit {
 
+
+
+
   constructor(private auth : AuthService) { }
 
   ngOnInit() {
+
   }
 
   logout(){

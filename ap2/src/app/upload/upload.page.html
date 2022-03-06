@@ -22,46 +22,52 @@
     <ion-radio-group class="row">
 
       <ion-item lines="none" class="column">
-        <ion-icon name="walk" class="icons" [style.border]="iconBorderColour"></ion-icon>
-        <ion-radio value="walk" (click)="changeIconColour()"></ion-radio>
+        <ion-icon name="walk" class="icons" [style.border]="iconBorderColour1"></ion-icon>
+        <ion-radio value="walk" (click)="changeIconColour(1)"></ion-radio>
       </ion-item>
 
       <ion-item lines="none" class="column">
-        <ion-icon name="bicycle" class="icons" [style.border]="iconBorderColour"></ion-icon>
-        <ion-radio value="cycle" (click)="changeIconColour()"></ion-radio>
+        <ion-icon name="bicycle" class="icons" [style.border]="iconBorderColour2"></ion-icon>
+        <ion-radio value="cycle" (click)="changeIconColour(2)"></ion-radio>
       </ion-item>
 
       <ion-item lines="none" class="column">
-        <div id="fIcon" class="icons" [style.border]="iconBorderColour">
+        <div id="fIcon" class="icons" [style.border]="iconBorderColour3">
           <fa-icon [icon]="runIcon"></fa-icon>
         </div>
-        <ion-radio value="run" (click)="changeIconColour()"></ion-radio>
+        <ion-radio value="run" (click)="changeIconColour(3)"></ion-radio>
       </ion-item>
     </ion-radio-group>
 
     <br>
 
     <p>How did it go?</p>
-    <ion-textarea placeholder="Enter a description of your workout..."></ion-textarea>
+    <ion-textarea placeholder="Enter a description of your workout..."
+    autocorrect="on" [(ngModel)]="post_data.text"></ion-textarea>
 
     <div class="row">
       <div class="column2">
         <p>Distance</p>
-        <ion-input value="0"></ion-input>
+        <ion-input type="number" placeholder="0"
+        [(ngModel)]="post_data.dist"></ion-input>
       </div>
 
       <div class="column2">
         <p>Unit</p>
-        <ion-input value="Kilometres"></ion-input>
+        <ion-select interface="popover" placeholder="Select One"
+        [(ngModel)]="post_data.unit">
+          <ion-select-option value="km">Kilometres</ion-select-option>
+          <ion-select-option value="miles">Miles</ion-select-option>
+        </ion-select>
       </div>
     </div>
 
-    <p style="margin-top:1.5em;">Time</p>
-    <ion-input></ion-input>
+    <p style="margin-top:1.5em;">Time (H:M:S)</p>
+    <ion-input type="time" step="1" [(ngModel)]="post_data.time"></ion-input>
 
     <br>
     
-    <ion-button>Submit</ion-button>
+    <ion-button (click)="submitUpload()">Submit</ion-button>
 
   </ion-list>
 

@@ -95,15 +95,15 @@ ion-textarea{
     color: black;
 }
 
-ion-input{
+ion-input, ion-select{
     color: black;
     border: solid 0.1em #992FED;
-    width: 75%;
+    width: 85%;
     left: 1;
     right: 1;
     margin: auto;
     border-radius: 0.65em;
-    text-align: center;
+    // text-align: center;
 }
 
 ion-content ion-button{
@@ -122,3 +122,4 @@ ion-content ion-button{
 ion-item ion-radio{
     opacity: 0;
 }
+

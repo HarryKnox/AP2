@@ -19,6 +19,7 @@ export class InterceptorService implements HttpInterceptor {
   // func that intercepts each request, calls handle func
   intercept(req: HttpRequest<any>, next: HttpHandler) {
     // convert promise to observable using 'from' operator
+    console.log("test123")
     return from(this.handle(req, next))
   }
 

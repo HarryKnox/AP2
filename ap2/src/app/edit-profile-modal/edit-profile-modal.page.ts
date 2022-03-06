@@ -2,6 +2,7 @@ import { Component, Input, OnInit } from '@angular/core';
 import { ModalController} from '@ionic/angular';
 import { WebService } from '../services/web.service';
 import { Router } from '@angular/router';
+import { AlertController } from '@ionic/angular';
 
 @Component({
   selector: 'app-edit-profile-modal',
@@ -34,11 +35,10 @@ export class EditProfileModalPage implements OnInit {
   constructor(
     private modalController : ModalController,
     private webService : WebService,
-    private router : Router)
+    private router : Router,
+    private alertCtrl : AlertController)
     { 
 
-
-    this.today = new Date().toISOString;
   }
 
   ngOnInit() {
@@ -60,11 +60,6 @@ export class EditProfileModalPage implements OnInit {
   // func to post edit profile API call
   editProfile() {
 
-    // check if a new profile picture
-    console.log("test",this.edit_info["picture"]);
-
-    
-
     // calls register webservice API call
     this.webService.putUser(this.edit_info).subscribe(res => {
   
@@ -72,14 +67,28 @@ export class EditProfileModalPage implements OnInit {
         this.dismissModal();
         this.router.navigateByUrl('members')
       }
-    }
+    },
+
+    // catch error
+    async error => {
+
+      // if new username already taken, display error popup
+      if((error.error["msg"]).includes("username")){
+        const alert = await this.alertCtrl.create({
+          header: 'Registration Failed',
+          message: 'An account already exists with this username.',
+          buttons: ['OK']
+        }).then(res => res.present());
+      }// if closed
+
+    } // error catch closed
     );
   }// edit profile closed
 
 
+  // called when file input changed by user
   onFileChange($event) {
-
-    // get file object from visible file input
+    // get file object from visible file input and set to var
     let file = $event.target.files[0];
     this.edit_info.picture = file;
   }

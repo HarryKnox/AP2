@@ -19,15 +19,17 @@ export class WebService {
     // add an exercise posts to db
     postExercise(post : any){
 
+        console.log(post.userName);
+
         let postData = new FormData();
         postData.append("text", post.text);
         postData.append("type", post.type);
         postData.append("dist", post.dist);
-        postData.append("dType", post.dType);
+        postData.append("dType", post.unit);
         postData.append("time", post.time);
         postData.append("userName", post.userName);
         postData.append("date", post.date);
-        postData.append("userID", post.userID);
+        //postData.append("userID", post.userID);
 
         // http post call made, with form data
         return this.http.post("http://localhost:5000/api/v1.0/posts",postData);

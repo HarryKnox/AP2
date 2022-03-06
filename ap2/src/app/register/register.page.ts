@@ -3,7 +3,6 @@ import { AuthService } from '../services/auth.service';
 import { Router } from '@angular/router';
 import { AlertController } from '@ionic/angular';
 import { WebService } from '../services/web.service';
-import { HttpClientModule } from '@angular/common/http';
 
 @Component({
   selector: 'app-register',
@@ -80,7 +79,7 @@ export class RegisterPage implements OnInit {
             message: 'This username has already been taken, please try again.',
             buttons: ['OK']
           }).then(res => res.present());
-        }// if closed
+        }// else if closed
 
       } // catch closed
       
