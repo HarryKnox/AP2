@@ -82,7 +82,7 @@ export class UploadPage implements OnInit {
     // exercise post, post call made
     this.webService.postExercise(this.post_data).subscribe(
       (res) => {
-        console.log(res);
+        this.ngOnInit();
       }
     )
 

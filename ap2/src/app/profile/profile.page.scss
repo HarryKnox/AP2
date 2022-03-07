@@ -10,7 +10,7 @@ ion-header svg{
 
 .greyBit{
     background-color: #BBC4D0;
-    height: 30%;
+    height: 20%;
 }
 
 #brand{
@@ -72,3 +72,25 @@ img{
     clear: both;
 }
 
+#cardBtns ion-button{
+    height: 1.5em;
+    width: 5em;
+    --background : #992FED;
+    --background-hover : #92949c;
+}
+
+
+#postsTxt{
+    margin-top: 5em;
+    height: 3em;
+    text-align: center;
+    margin: 0.5em ;
+}
+
+#postsTxt h3{
+    border: 0.01em solid #992FED;
+    color: #992FED;
+    text-align: center;
+    font-weight: bold;
+    border-radius: 3em;
+}

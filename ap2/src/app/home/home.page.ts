@@ -12,7 +12,7 @@ export class homePage {
 
   constructor(
     public webService : WebService,
-    public datepipe : DatePipe,
+    public datepipe : DatePipe
   ) {}
 
   // array defined to hold all exercise posts
