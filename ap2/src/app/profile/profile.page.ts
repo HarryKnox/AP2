@@ -1,6 +1,6 @@
-import { Component, OnInit, ɵgetSanitizationBypassType } from '@angular/core';
+import { Component, OnInit} from '@angular/core';
 import { WebService } from '../services/web.service';
-import { ModalController } from '@ionic/angular';
+import { AlertController, ModalController } from '@ionic/angular';
 import { EditProfileModalPage } from '../edit-profile-modal/edit-profile-modal.page';
 import * as moment from 'moment';
 import { DatePipe } from '@angular/common';
@@ -15,7 +15,8 @@ export class ProfilePage implements OnInit {
   constructor(
     private webService : WebService,
     private modalController : ModalController,
-    public datepipe : DatePipe
+    public datepipe : DatePipe,
+    private alertCtrl : AlertController
   ) {}
 
 
@@ -106,6 +107,27 @@ export class ProfilePage implements OnInit {
       var fixed_date = this.datepipe.transform(postDate, 'yyyy-MM-ddTHH:mm:ss.SSS');
       fixed_date = moment(fixed_date).fromNow();
       return(fixed_date);
+    }
+
+    // confirm delete post pop up
+    async presentDelete() {
+      const alert = await this.alertCtrl.create({
+        header : 'Confirm Delete',
+        message : 'Are you sure you want to delete this post?',
+        buttons : [
+          {
+            text : 'Cancel',
+            role : 'cancel'
+          },
+          {
+            text : 'Yes',
+            handler: () => {
+              console.log("delete the post");
+            }
+          }
+        ]
+      });
+      alert.present();
     }
 
 

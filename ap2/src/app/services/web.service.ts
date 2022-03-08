@@ -156,6 +156,12 @@ export class WebService {
         return this.http.put("http://localhost:5000/api/v1/users",userData);
     }
 
+    // deletes a user account
+    deleteUser(){
+        // http delete call made
+        return this.http.delete("http://localhost:5000/api/v1.0/users");
+    }
+
 
     // get user's profile picture from backend directory
     getUserPic(pic_name : any) {
