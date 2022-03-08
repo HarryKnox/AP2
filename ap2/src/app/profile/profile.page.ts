@@ -110,7 +110,7 @@ export class ProfilePage implements OnInit {
     }
 
     // confirm delete post pop up
-    async presentDelete() {
+    async presentDelete(postID) {
       const alert = await this.alertCtrl.create({
         header : 'Confirm Delete',
         message : 'Are you sure you want to delete this post?',
@@ -122,7 +122,7 @@ export class ProfilePage implements OnInit {
           {
             text : 'Yes',
             handler: () => {
-              console.log("delete the post");
+              this.webService.deletePost(postID).subscribe();
             }
           }
         ]
