@@ -17,9 +17,9 @@
 
 <ion-content>
 
-  <ion-select placeholder="Select One" style="color: black;">
-    <ion-select-option value="km">Kilometres</ion-select-option>
-    <ion-select-option value="m">Miles</ion-select-option>
+  <ion-select interface="popover" [(ngModel)]="distance_unit" (ionChange)="changeDefaultMetric()">
+    <ion-select-option value="Kilometres">Kilometres</ion-select-option>
+    <ion-select-option value="Miles">Miles</ion-select-option>
   </ion-select>
 
   <ion-button (click)="logout()">Logout</ion-button>

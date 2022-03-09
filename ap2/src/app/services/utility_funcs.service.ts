@@ -61,4 +61,20 @@ export class UtilityService {
         return(fixed_date);
     }
 
+    // function to re-calculate each posts distance, according to the set metric
+    recalcDist(dist:any){
+
+        // if metric is kilometres, return distance as normal
+        if(this.distance_unit == "Kilometres" ){
+        return(Math.round((dist)*100)/100);
+        }
+
+        // if metric changed to miles, convert and return
+        else{
+        return(Math.round((dist*0.621371)*100)/100)
+        }
+    }
+
+
+
 } // UtilityService class closed

@@ -26,5 +26,12 @@ export class homePage {
 
   }// ngOnInit closed
 
+  // ionViewWillEnter(){
+  //   // fetches all exercise posts
+  //   console.log("Test")
+  //   this.post_list = this.webService.getPosts();
+    
+  // }
+
 
 } // home page closed
