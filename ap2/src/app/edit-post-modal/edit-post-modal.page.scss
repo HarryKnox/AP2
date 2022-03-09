@@ -1,0 +1,47 @@
+ion-label{
+    text-align: center;
+    margin-top: 2.5em;
+}
+
+#btns{
+    margin-top: 2em;
+    margin-bottom: 2em;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+ion-content{
+    --background: black;
+}
+
+ion-button{
+    padding: 0.25em;
+    color: black;
+    font-size: 0.95em;
+    --background : #BBC4D0;
+    --background-hover : #992FED;
+    margin: auto;
+    width: 50%;
+    height: 3em;
+}
+
+.column {
+    margin-top: 1em;
+    float: left;
+    width: 33.3%;
+  }
+  
+  /* Clear floats after the columns */
+  .row:after {
+    content: "";
+    display: table;
+    clear: both;
+}
+
+
+.column2 {
+    margin-top: 1em;
+    float: left;
+    width: 50%;
+  }

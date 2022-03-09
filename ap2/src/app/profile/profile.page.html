@@ -19,7 +19,7 @@
       <h5>{{ profileData.username }}</h5>
       <img src="http://localhost:5000/api/v1/users/{{profileData.picture}}">
 
-      <ion-button id="theBtn" (click)="presentModal()">Edit</ion-button>
+      <ion-button id="theBtn" (click)="editProfileModal()">Edit</ion-button>
     </div>
 
     <div class="column" style="margin-top : 1.5em">
@@ -65,7 +65,7 @@
       Posted {{setDate(post.date)}}
 
       <div id="cardBtns">
-        <ion-button>Edit</ion-button>
+        <ion-button (click)="editPostModal(post)">Edit</ion-button>
         <ion-button (click)="presentDelete(post._id)">Delete</ion-button>
       </div>
     </ion-card-content>

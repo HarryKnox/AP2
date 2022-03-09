@@ -1,0 +1,58 @@
+<ion-header>
+  <ion-toolbar style="margin-top: 0.25em;">
+    <ion-title>Edit User Post</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+ 
+  <ion-list>
+    <p>Exercise Type</p>
+    <ion-select interface="popover" placeholder="Select One"
+    [(ngModel)]="edit_info.type" value="{{type}}">
+      <ion-select-option value="walk">Walk</ion-select-option>
+      <ion-select-option value="cycle">Cycle</ion-select-option>
+      <ion-select-option value="run">Run</ion-select-option>
+    </ion-select>
+
+    <br>
+
+    <p>Post Text</p>
+    <ion-textarea placeholder="Enter a description of your workout..."
+    autocorrect="on" [(ngModel)]="edit_info.text" value="{{text}}"></ion-textarea>
+
+    <div class="row">
+      <div class="column2">
+        <p>Distance</p>
+        <ion-input type="number" placeholder="0" value="{{dist}}"
+        [(ngModel)]="edit_info.dist"></ion-input>
+      </div>
+
+      <div class="column2">
+        <p>Unit</p>
+        <ion-select interface="popover" placeholder="Select One"
+        [(ngModel)]="edit_info.unit" value="km">
+          <ion-select-option value="km">Kilometres</ion-select-option>
+          <ion-select-option value="miles">Miles</ion-select-option>
+        </ion-select>
+      </div>
+    </div>
+
+    <p style="margin-top:1.5em;">Time (H:M:S)</p>
+    <ion-input type="time" step="1" [(ngModel)]="edit_info.time"
+    value="{{time}}"></ion-input>
+
+    <br>
+
+
+    <div id="btns">
+      <ion-button (click)=dismissModal()>Cancel</ion-button>
+      <ion-button (click)=editPost()>Save</ion-button>
+    </div>
+
+  </ion-list>
+
+
+
+</ion-content>
+
