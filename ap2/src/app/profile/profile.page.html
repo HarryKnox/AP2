@@ -55,14 +55,14 @@
   <ion-card *ngFor = "let post of userPosts">
     <ion-card-header>
       <ion-card-title>Your {{ post.type }}</ion-card-title>
-      <ion-card-subtitle>{{ post.dist }} km</ion-card-subtitle>
-      <ion-card-subtitle>{{ minutes2Time(post.time) }}</ion-card-subtitle>
+      <ion-card-subtitle>{{ post.dist +" "+utils.distance_unit_short}}</ion-card-subtitle>
+      <ion-card-subtitle>{{ utils.minutes2Time(post.time) }}</ion-card-subtitle>
     </ion-card-header>
   
     <ion-card-content>
       {{post.text}}
       <br>
-      Posted {{setDate(post.date)}}
+      Posted {{utils.setDate(post.date)}}
 
       <div id="cardBtns">
         <ion-button (click)="editPostModal(post)">Edit</ion-button>
