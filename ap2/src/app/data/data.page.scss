@@ -17,8 +17,6 @@
 }
 
 
-
-
 ion-toolbar{
     --background: white;
     border: 0.125em solid #992FED;
@@ -39,4 +37,38 @@ ion-segment-button{
     --background-checked : var(--ion-color-fav);
     --color-checked: var(--ion-color-dark);
     --indicator-color : transparent;
+}
+
+ion-select{
+    color: black;
+}
+
+.column {
+    margin-top: 0.5em;
+    float: left;
+    width: 50%;
+    text-align: center;
+}
+  
+/* Clear floats after the columns */
+.row:after {
+    content: "";
+    display: table;
+    clear: both;
+}
+
+ion-label{
+    color: black;
+}
+
+.filter{
+    background-color: #BBC4D0;
+    width: 95%;
+    left: 0;
+    right: 0;
+    margin: auto;
+    border-radius: 2em;
+    font-size: small;
+    height: 3.5em;
+    opacity: 85%;
 }

@@ -16,14 +16,52 @@
 </ion-header>
 
 <ion-toolbar>
-  <ion-segment value="all" role="tablist" class="ios in-toolbar hydrated">
-    <ion-segment-button value="all" role="tab" aria-selected="true" tabindex="0">Leaderboards</ion-segment-button>
-    <ion-segment-button value="favorites" role="tab" aria-selected="false" tabindex="-1">My Stats</ion-segment-button>
+  <ion-segment value="all" role="tablist" class="ios in-toolbar hydrated"
+  (ionChange)="toolbar_update($event)" value="leaderboards">
+    
+    <ion-segment-button value="leaderboards" role="tab" aria-selected="true" 
+    tabindex="0">Leaderboards</ion-segment-button>
+
+    <ion-segment-button value="stats" role="tab" aria-selected="false" 
+    tabindex="-1">My Stats</ion-segment-button>
   </ion-segment>
 </ion-toolbar>
 
 
 <ion-content>
+
+  <ng-container *ngIf="toolbar_selection=='stats'">
+    <div class="row">
+      <div class="column">
+        <div class="filter">
+          <ion-label>Exercise</ion-label>
+          <ion-select interface="popover" value="all">
+            <ion-select-option value="all">All</ion-select-option>
+            <ion-select-option value="walk">Walking</ion-select-option>
+            <ion-select-option value="cycle">Cycling</ion-select-option>
+            <ion-select-option value="run">Running</ion-select-option>
+          </ion-select>
+        </div>
+      </div>
+
+      <div class="column">
+        <div class="filter">
+          <ion-label>Time Period</ion-label>
+          <ion-select interface="popover" value="weekly">
+            <ion-select-option value="allTime">All Time</ion-select-option>
+            <ion-select-option value="monthly">Monthly</ion-select-option>
+            <ion-select-option value="weekly">Weekly</ion-select-option>
+          </ion-select>
+        </div>
+      </div>
+    </div>
+  </ng-container>
+
+  <ng-container *ngIf="toolbar_selection=='leaderboards'">
+
+    <h1 style="color: black;">leaderboards</h1>
+
+  </ng-container>
 
 
 </ion-content>

@@ -21,6 +21,7 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { EditProfileModalPage } from './edit-profile-modal/edit-profile-modal.page';
 library.add(fas);
 
+
 @NgModule({
   declarations: [AppComponent, EditProfileModalPage],
   entryComponents: [],

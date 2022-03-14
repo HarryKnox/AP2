@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { DatePipe } from '@angular/common';
 
 @Component({
   selector: 'app-data',
@@ -7,9 +8,22 @@ import { Component, OnInit } from '@angular/core';
 })
 export class DataPage implements OnInit {
 
-  constructor() { }
+  
+  // top toolbar tab selector
+  toolbar_selection = "leaderboards";
+
+
+  constructor(
+    public datepipe : DatePipe
+  ) { }
 
   ngOnInit() {
   }
+
+
+  toolbar_update(event:any){
+    this.toolbar_selection = event.target.value;
+  }
+
 
 }
