@@ -30,6 +30,10 @@ const routes: Routes = [
   },  {
     path: 'upload',
     loadChildren: () => import('./upload/upload.module').then( m => m.UploadPageModule)
+  },
+  {
+    path: 'data',
+    loadChildren: () => import('./data/data.module').then( m => m.DataPageModule)
   }
 
 

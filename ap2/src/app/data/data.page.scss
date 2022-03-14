@@ -1,0 +1,42 @@
+.topPurple{
+    background: #992FED;
+    height: 5px;
+}
+
+.greyBit{
+    background-color: #BBC4D0;
+    height: 40%;
+}
+
+#brand{
+    background-color: #BBC4D0;
+    color: #992FED;
+    text-align: center;
+    font-size: 2em;
+    font-weight: bolder;
+}
+
+
+
+
+ion-toolbar{
+    --background: white;
+    border: 0.125em solid #992FED;
+    border-radius: 4em;
+    width: 90%;
+    margin: auto;
+    height: 3em;
+}
+
+ion-segment {
+    color: #992FED;
+}
+
+ion-segment-button{
+    font-size: 1.1em;
+    font-weight: bolder;
+    height: 2em;
+    --background-checked : var(--ion-color-fav);
+    --color-checked: var(--ion-color-dark);
+    --indicator-color : transparent;
+}

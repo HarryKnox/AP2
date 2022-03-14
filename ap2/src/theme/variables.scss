@@ -1,8 +1,19 @@
 // Ionic Variables and Theming. For more info, please see:
 // http://ionicframework.com/docs/theming/
 
+
+
 /** Ionic CSS Variables **/
 :root {
+
+  //** Custom ADDED purple colour **//
+  --ion-color-fav: #992FED;
+	--ion-color-fav-rgb: 153,47,237;
+	--ion-color-fav-contrast: #ffffff;
+	--ion-color-fav-contrast-rgb: 255,255,255;
+	--ion-color-fav-shade: #8729d1;
+	--ion-color-fav-tint: #a344ef;
+
   /** primary **/
   --ion-color-primary: #3880ff;
   --ion-color-primary-rgb: 56, 128, 255;

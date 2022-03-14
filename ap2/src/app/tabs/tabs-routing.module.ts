@@ -28,6 +28,10 @@ const routes: Routes = [
         path: 'settings',
         loadChildren: () => import('../settings/settings.module').then(m => m.SettingsPageModule)
       },
+      {
+        path: 'data',
+        loadChildren: () => import('../data/data.module').then(m => m.DataPageModule)
+      }
     ]
   }
 ];

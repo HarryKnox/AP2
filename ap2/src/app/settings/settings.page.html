@@ -16,13 +16,28 @@
 </ion-header>
 
 <ion-content>
-
+  <p>Distance Metric Unit</p>
   <ion-select interface="popover" [(ngModel)]="distance_unit" (ionChange)="changeDefaultMetric()">
     <ion-select-option value="Kilometres">Kilometres</ion-select-option>
     <ion-select-option value="Miles">Miles</ion-select-option>
   </ion-select>
 
-  <ion-button (click)="logout()">Logout</ion-button>
-  <ion-button (click)="presentDelete()">Delete Account</ion-button>
+
+  <p>Post Privacy <ion-icon name="information-circle-outline"></ion-icon></p>
+  <ion-select interface="popover">
+    <ion-select-option value="public">Public</ion-select-option>
+    <ion-select-option value="private">Private</ion-select-option>
+  </ion-select>
+
+  <p>Something else <ion-icon name="information-circle-outline"></ion-icon></p>
+  <ion-select interface="popover">
+    <ion-select-option value="public">Option 1</ion-select-option>
+    <ion-select-option value="private">Option 2</ion-select-option>
+  </ion-select>
+
+  <div id="btns">
+    <ion-button (click)="logout()">Logout</ion-button>
+    <ion-button (click)="presentDelete()">Delete Account</ion-button>
+  </div>
 
 </ion-content>
