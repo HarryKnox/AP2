@@ -3,6 +3,7 @@ import { ModalController} from '@ionic/angular';
 import { WebService } from '../services/web.service';
 import { Router } from '@angular/router';
 import { AlertController } from '@ionic/angular';
+import { UtilityService } from '../services/utility_funcs.service';
 
 @Component({
   selector: 'app-edit-post-modal',
@@ -12,43 +13,49 @@ import { AlertController } from '@ionic/angular';
 export class EditPostModalPage implements OnInit {
 
   // component props passed from profile.page.ts
-  @Input() id;
-  @Input() username;
   @Input() text;
   @Input() type;
   @Input() dist;
   @Input() time;
+  @Input() unit;
+  @Input() id;
 
-
-  // object to hold post data
+  // object to hold edit profile form credentials
   edit_info = {
-    username : null,
     text : null,
     type : null,
     dist : null,
-    time : null
+    time : null,
+    unit : null,
+    date : null,
+    id : null
   }
+
 
 
   constructor(
     private modalController : ModalController,
     private webService : WebService,
     private router : Router,
-    private alertCtrl : AlertController)
-    { 
+    private alertCtrl : AlertController,
+    private utils : UtilityService){}
 
-  }
+
 
   ngOnInit() {
 
     this.edit_info = {
-      username : this.username,
       text : this.text,
       type : this.type,
       dist : this.dist,
-      time : this.time
+      time : this.time,
+      unit : this.unit,
+      date : new Date(),
+      id : this.id
     }
+
   } // ngOnInit closed
+
 
   // func to dismiss the edit profile modal
   dismissModal() {
@@ -57,8 +64,27 @@ export class EditPostModalPage implements OnInit {
 
   // func to post edit profile API call
   editPost() {
-    console.log(this.edit_info);
-  }
+
+    // calls register webservice API call
+    this.webService.putPost(this.edit_info.id,this.edit_info).subscribe(res => {
+      this.dismissModal();
+      this.router.navigateByUrl('members')
+    });
+
+
+
+  }// edit profile closed
+
+
+  // func to update <ion-select> value fields
+  getSelectInput($event,field){
+    if (field == "type"){
+      this.edit_info.type = $event.target.value;
+    }
+    else{
+      this.edit_info.unit = $event.target.value;
+    }
+  } // getSelectInput closed
 
 
 

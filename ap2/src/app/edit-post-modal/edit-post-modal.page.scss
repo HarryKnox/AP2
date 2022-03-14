@@ -26,22 +26,20 @@ ion-button{
     height: 3em;
 }
 
-.column {
-    margin-top: 1em;
-    float: left;
-    width: 33.3%;
-  }
-  
-  /* Clear floats after the columns */
-  .row:after {
+
+/* Clear floats after the columns */
+.row:after {
     content: "";
     display: table;
     clear: both;
 }
 
 
-.column2 {
-    margin-top: 1em;
+.column{
     float: left;
     width: 50%;
-  }
+}
+
+ion-select{
+    max-width: 100%;
+}

@@ -59,7 +59,7 @@ export class SettingsPage implements OnInit {
         this.utils.distance_unit_short = "km";
     }
     else{
-        this.utils.distance_unit_short = "Miles";
+        this.utils.distance_unit_short = "miles";
     }
     // RESTART ALL PAGES
 }

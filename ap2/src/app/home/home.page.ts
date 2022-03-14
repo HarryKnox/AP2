@@ -1,6 +1,8 @@
 import { Component } from '@angular/core';
 import { WebService } from '../services/web.service';
 import { UtilityService } from '../services/utility_funcs.service';
+import { AlertController, ModalController } from '@ionic/angular';
+import { EditPostModalPage } from '../edit-post-modal/edit-post-modal.page';
 
 @Component({
   selector: 'app-home',
@@ -11,7 +13,8 @@ export class homePage {
 
   constructor(
     public webService : WebService,
-    private utils : UtilityService
+    private utils : UtilityService,
+    private modalController : ModalController
   ) {}
 
   // array defined to hold all exercise posts
@@ -25,13 +28,6 @@ export class homePage {
 
 
   }// ngOnInit closed
-
-  // ionViewWillEnter(){
-  //   // fetches all exercise posts
-  //   console.log("Test")
-  //   this.post_list = this.webService.getPosts();
-    
-  // }
 
 
 } // home page closed

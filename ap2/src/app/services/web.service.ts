@@ -40,6 +40,8 @@ export class WebService {
         postData.append("date", post.date);
         //postData.append("userID", post.userID);
 
+        console.log(post.date);
+
         // http post call made, with form data
         return this.http.post("http://localhost:5000/api/v1.0/posts",postData);
     }
@@ -57,11 +59,9 @@ export class WebService {
         postData.append("text", post.text);
         postData.append("type", post.type);
         postData.append("dist", post.dist);
-        postData.append("dType", post.dType);
+        postData.append("dType", post.type);
         postData.append("time", post.time);
-        postData.append("userName", post.userName);
         postData.append("date", post.date);
-        postData.append("userID", post.userID);
 
         // http get call made and returned, with form
         return this.http.put("http://localhost:5000/api/v1.0/posts/"+id,postData);

@@ -65,19 +65,19 @@ export class ProfilePage implements OnInit {
   
   // display edit post modal
   async editPostModal(post:any) {
-
     const modal = await this.modalController.create({
       component: EditPostModalPage,
 
       // passing data to modal
       componentProps: {
-        id : post._id,
-        username : post.username,
         text : post.text,
         type : post.type,
-        dist : post.dist,
-        time : post.time
+        dist : this.utils.recalcDist(post.dist),
+        time : this.utils.minutes2Time(post.time),
+        unit : this.utils.distance_unit,
+        id : post._id
       }
+
     });
     return await modal.present();
   } // present modal closed

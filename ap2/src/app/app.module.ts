@@ -17,14 +17,16 @@ import { InterceptorService } from './services/interceptor.service';
 import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
 import { library } from '@fortawesome/fontawesome-svg-core';
 import { fas } from '@fortawesome/free-solid-svg-icons';
-
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { EditProfileModalPage } from './edit-profile-modal/edit-profile-modal.page';
 library.add(fas);
 
 @NgModule({
-  declarations: [AppComponent],
+  declarations: [AppComponent, EditProfileModalPage],
   entryComponents: [],
   imports: [BrowserModule, IonicModule.forRoot(), AppRoutingModule,
-    HttpClientModule, IonicStorageModule.forRoot(), FontAwesomeModule
+    HttpClientModule, IonicStorageModule.forRoot(), FontAwesomeModule,
+    FormsModule, ReactiveFormsModule
     ],
   providers: [{ provide: RouteReuseStrategy, useClass: IonicRouteStrategy },
     WebService,DatePipe,

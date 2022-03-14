@@ -18,10 +18,6 @@ export class EditProfileModalPage implements OnInit {
   @Input() dob;
   @Input() picture;
 
-  // var t hold todays date
-  today : any;
-
-
   // object to hold edit profile form credentials
   edit_info = {
     username : null,
