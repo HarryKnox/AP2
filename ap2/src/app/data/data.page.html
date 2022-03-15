@@ -30,16 +30,19 @@
 
 <ion-content>
 
+  <!-- Container for the my stats html -->
   <ng-container *ngIf="toolbar_selection=='stats'">
+
     <div class="row">
       <div class="column">
         <div class="filter">
           <ion-label>Exercise</ion-label>
-          <ion-select interface="popover" value="all">
-            <ion-select-option value="all">All</ion-select-option>
-            <ion-select-option value="walk">Walking</ion-select-option>
-            <ion-select-option value="cycle">Cycling</ion-select-option>
-            <ion-select-option value="run">Running</ion-select-option>
+          <ion-select interface="popover" value="all" [(ngModel)]="filters.type"
+          (ionChange)="updateStats()">
+            <ion-select-option value="All Types">All Types</ion-select-option>
+            <ion-select-option value="Walking">Walking</ion-select-option>
+            <ion-select-option value="Cycling">Cycling</ion-select-option>
+            <ion-select-option value="Running">Running</ion-select-option>
           </ion-select>
         </div>
       </div>
@@ -47,16 +50,70 @@
       <div class="column">
         <div class="filter">
           <ion-label>Time Period</ion-label>
-          <ion-select interface="popover" value="weekly">
-            <ion-select-option value="allTime">All Time</ion-select-option>
-            <ion-select-option value="monthly">Monthly</ion-select-option>
-            <ion-select-option value="weekly">Weekly</ion-select-option>
+          <ion-select interface="popover" value="weekly" [(ngModel)]="filters.period"
+          (ionChange)="updateStats()">
+            <ion-select-option value="All Time">All Time</ion-select-option>
+            <ion-select-option value="Monthly">Monthly</ion-select-option>
+            <ion-select-option value="Weekly">Weekly</ion-select-option>
           </ion-select>
         </div>
       </div>
     </div>
+
+
+    <h4>{{filters.type}} {{filters.period}} Graph</h4>
+
+    <div id="graphBox">
+      <canvas #chart id="canvas" width="400" height="265">{{chart}}</canvas>
+    </div>
+
+
+    
+    <div id="statBox">
+      <div class="row">
+        <div class="column">
+          <p>Favourite Exercise</p>
+          <p class="stat">{{user_stats.favourite_exercise}}</p>
+        </div>
+  
+        <div class="column">
+          <p>Total Exercises</p>
+          <p class="stat">{{user_stats.total_exercises}}</p>
+        </div>
+      </div>
+
+      <div class="row">
+        <div class="column">
+          <p>Total Distance</p>
+          <p class="stat">{{utils.recalcDist(user_stats.total_distance)+" "+
+            utils.distance_unit_short}}
+            
+          </p>
+        </div>
+  
+        <div class="column">
+          <p>Average Pace</p>
+          <p class="stat">{{utils.recalcSpeed(user_stats.average_speed)+" "+
+            utils.pace_unit}}</p>
+        </div>
+      </div>
+
+
+
+    </div>
+
+
+
+
+
   </ng-container>
 
+
+
+
+
+
+  <!-- Container for the leaderboard html -->
   <ng-container *ngIf="toolbar_selection=='leaderboards'">
 
     <h1 style="color: black;">leaderboards</h1>

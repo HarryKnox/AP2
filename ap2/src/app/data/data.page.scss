@@ -5,7 +5,7 @@
 
 .greyBit{
     background-color: #BBC4D0;
-    height: 40%;
+    height: 36%;
 }
 
 #brand{
@@ -16,27 +16,28 @@
     font-weight: bolder;
 }
 
-
 ion-toolbar{
     --background: white;
     border: 0.125em solid #992FED;
     border-radius: 4em;
     width: 90%;
     margin: auto;
-    height: 3em;
+    height: 3.25em;
 }
 
 ion-segment {
     color: #992FED;
+    border-radius: 1.5em;
 }
 
 ion-segment-button{
     font-size: 1.1em;
     font-weight: bolder;
-    height: 2em;
+    height: 2.25em;
     --background-checked : var(--ion-color-fav);
     --color-checked: var(--ion-color-dark);
     --indicator-color : transparent;
+    border-radius: 1.5em;
 }
 
 ion-select{
@@ -63,6 +64,7 @@ ion-label{
 
 .filter{
     background-color: #BBC4D0;
+    border: 0.01em solid black;
     width: 95%;
     left: 0;
     right: 0;
@@ -71,4 +73,29 @@ ion-label{
     font-size: small;
     height: 3.5em;
     opacity: 85%;
+}
+
+h4{
+    color: #BBC4D0;
+    text-align: center;
+    margin: 0;
+    margin-top: 0.25em;
+}
+
+#graphBox{
+    width: 90%;
+    height: 12.5em;
+    left: 0;
+    right: 0;
+    margin: auto;
+}
+
+p{
+    color: #BBC4D0;
+    margin: 0;
+}
+
+.stat{
+    color: #992FED;
+    font-weight: 500;
 }

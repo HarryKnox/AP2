@@ -15,6 +15,9 @@ export class UtilityService {
     distance_unit = "Kilometres";
     distance_unit_short = "km";
 
+    // var to hold default pace unit
+    pace_unit = "minutes/km";
+
 
     // function to convert minutes into HH:MM:SS
     minutes2Time(minutes : any){
@@ -72,6 +75,20 @@ export class UtilityService {
         // if metric changed to miles, convert and return
         else{
         return(Math.round((dist*0.621371)*100)/100)
+        }
+    }
+
+    // function to convert speed from km/m to miles/m
+    recalcSpeed(speed : any){
+
+        // if metric is km/minute, return distance as normal
+        if(this.pace_unit == "minutes/km" ){
+        return(speed);
+        }
+
+        // if metric changed to miles, convert and return
+        else{
+        return(Math.round((speed*1.60934)*100)/100)
         }
     }
 

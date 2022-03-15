@@ -57,9 +57,11 @@ export class SettingsPage implements OnInit {
 
     if(this.distance_unit == "Kilometres"){
         this.utils.distance_unit_short = "km";
+        this.utils.pace_unit = "minutes/km";
     }
     else{
         this.utils.distance_unit_short = "miles";
+        this.utils.pace_unit = "minutes/mile";
     }
     // RESTART ALL PAGES
 }

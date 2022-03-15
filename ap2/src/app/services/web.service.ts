@@ -68,7 +68,7 @@ export class WebService {
     }
 
     // gets individual stats for a logged in user
-    getUserStats(user_id:any, period:any){
+    getUserStats(period:any){
 
         // time period is passed as a parameter
         const httpParams = new HttpParams({
@@ -78,12 +78,12 @@ export class WebService {
         });
 
         // http get call made and returned, with parameters
-        return this.http.get("http://localhost:5000/api/v1.0/stats/"+user_id, {params:httpParams});
+        return this.http.get("http://localhost:5000/api/v1.0/stats", {params:httpParams});
     }
 
 
     // gets an activity graph for a logged in user
-    getActivityGraph(user_id:any, period:any){
+    getActivityGraph(period:any){
 
         // time period is passed as a parameter
         const httpParams = new HttpParams({
@@ -93,7 +93,7 @@ export class WebService {
         });
 
         // http get call made and returned, with parameters
-        return this.http.get("http://localhost:5000/api/v1.0/graphs/"+user_id, {params:httpParams});
+        return this.http.get("http://localhost:5000/api/v1.0/graphs", {params:httpParams});
     }
 
 
