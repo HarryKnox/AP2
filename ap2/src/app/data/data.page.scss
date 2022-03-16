@@ -1,103 +1,136 @@
-.topPurple{
-    background: #992FED;
-    height: 5px;
+.topPurple {
+  background: #992fed;
+  height: 5px;
 }
 
-.greyBit{
-    background-color: #BBC4D0;
-    height: 36%;
+.greyBit {
+  background-color: #bbc4d0;
+  height: 36%;
 }
 
-#brand{
-    background-color: #BBC4D0;
-    color: #992FED;
-    text-align: center;
-    font-size: 2em;
-    font-weight: bolder;
+#brand {
+  background-color: #bbc4d0;
+  color: #992fed;
+  text-align: center;
+  font-size: 2em;
+  font-weight: bolder;
 }
 
-ion-toolbar{
-    --background: white;
-    border: 0.125em solid #992FED;
-    border-radius: 4em;
-    width: 90%;
-    margin: auto;
-    height: 3.25em;
-    margin-bottom: 0.5em;
+#topToolbar {
+  --background: white;
+  border-radius: 4em;
+  left: 0;
+  right: 0;
+  margin: auto;
+  width: 90%;
 }
 
-ion-segment {
-    color: #992FED;
-    border-radius: 1.5em;
+#topToolbar ion-segment {
+  border: 0.125em solid #992fed;
+  color: #992fed;
+  border-radius: 1.5em;
+  height: 3em;
 }
 
-ion-segment-button{
-    font-size: 1.1em;
-    font-weight: bolder;
-    height: 2.25em;
-    --background-checked : var(--ion-color-fav);
-    --color-checked: var(--ion-color-dark);
-    --indicator-color : transparent;
-    border-radius: 1.5em;
+#topToolbar ion-segment-button {
+  font-size: 1.1em;
+  font-weight: bolder;
+  --background-checked: var(--ion-color-fav);
+  --color-checked: var(--ion-color-dark);
+  --indicator-color: transparent;
+  border-radius: 1.5em;
 }
 
-ion-select{
-    color: black;
+#filtersToolbar {
+  --background: white;
+}
+
+#leaderboardBox {
+  height: 15em;
+  width: 90%;
+  left: 0;
+  right: 0;
+  margin: auto;
+  border-radius: 0.5em;
+  box-shadow: 0 4px 2px -2px gray;
+}
+
+#leaderboardBox ion-segment {
+  border-radius: 0.5em;
+  padding: 0.1em;
+  background-color: #992fed;
+  color: white;
+  width: 90%;
+}
+
+#leaderboardBox ion-segment-button {
+  --background-checked: var(--ion-color-dark);
+  --color-checked: var(--ion-color-light);
+  --indicator-color: transparent;
+}
+
+ion-select {
+  color: black;
 }
 
 .column {
-    margin-top: 0.5em;
-    float: left;
-    width: 50%;
-    text-align: center;
+  margin-top: 0.5em;
+  float: left;
+  width: 50%;
+  text-align: center;
 }
-  
+
 /* Clear floats after the columns */
 .row:after {
-    content: "";
-    display: table;
-    clear: both;
+  content: "";
+  display: table;
+  clear: both;
 }
 
-ion-label{
-    color: black;
+ion-label {
+  color: black;
 }
 
-.filter{
-    background-color: #BBC4D0;
-    border: 0.01em solid black;
-    left: 0;
-    right: 0;
-    margin: auto;
-    border-radius: 2em;
-    font-size: small;
-    width: 12em;
-    height: 2.5em;
-    opacity: 85%;
-    text-align: center;
+.filter {
+  background-color: #bbc4d0;
+  border: 0.01em solid black;
+  left: 0;
+  right: 0;
+  margin: auto;
+  border-radius: 2em;
+  font-size: small;
+  width: 12em;
+  height: 2.5em;
+  opacity: 85%;
+  text-align: center;
 }
 
-h4{
-    color: #BBC4D0;
-    text-align: center;
-    margin: 0;
-    margin-top: 0.25em;
+h4 {
+  color: #bbc4d0;
+  text-align: center;
+  margin: 0;
+  margin-top: 0.25em;
 }
 
-#graphBox{
-    width: 90%;
-    height: 12.5em;
-    left: 0;
-    right: 0;
-    margin: auto;
+#graphBox {
+  width: 90%;
+  height: 12.5em;
+  left: 0;
+  right: 0;
+  margin: auto;
 }
 
-p{
-    color: #BBC4D0;
-    margin: 0;
+p {
+  color: #bbc4d0;
+  margin: 0;
 }
 
-.stat{
-    color: #992FED;
-    font-weight: 500;
+.stat {
+  color: #992fed;
+  font-weight: 500;
+}
+
+#filtersToolbar {
+  all: revert;
+  color: black;
 }
