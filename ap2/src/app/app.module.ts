@@ -22,6 +22,7 @@ import { EditProfileModalPage } from './edit-profile-modal/edit-profile-modal.pa
 library.add(fas);
 
 
+
 @NgModule({
   declarations: [AppComponent, EditProfileModalPage],
   entryComponents: [],

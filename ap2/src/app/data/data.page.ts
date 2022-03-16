@@ -41,15 +41,17 @@ export class DataPage implements OnInit {
         this.user_stats=stats;
       }
     );
-
-    // activity graph function called
-    this.getActivityGraph();
-
   }
+  
 
   // func to update value of leaderboard or stats tab
   toolbar_update(event:any){
     this.toolbar_selection = event.target.value;
+
+    if (this.toolbar_selection=='stats'){
+      // activity graph function called
+      this.getActivityGraph();
+    }
   }
 
 
@@ -62,6 +64,12 @@ export class DataPage implements OnInit {
         this.user_stats=stats;
       }
     );
+
+    // old graph destroyed
+    this.chart.destroy();
+
+    // new graph created
+    this.getActivityGraph();
   }
 
 
@@ -70,6 +78,8 @@ export class DataPage implements OnInit {
     // gets user's activity graph from backenbd
     this.webService.getActivityGraph(this.filters.period).subscribe(
       (graph:any) =>{
+
+        console.log(graph);
 
         // keys and values seperated, to be x and y axises
         var graph_dates = Object.keys(graph);

@@ -33,42 +33,22 @@
   <!-- Container for the my stats html -->
   <ng-container *ngIf="toolbar_selection=='stats'">
 
-    <div class="row">
-      <div class="column">
-        <div class="filter">
-          <ion-label>Exercise</ion-label>
-          <ion-select interface="popover" value="all" [(ngModel)]="filters.type"
-          (ionChange)="updateStats()">
-            <ion-select-option value="All Types">All Types</ion-select-option>
-            <ion-select-option value="Walking">Walking</ion-select-option>
-            <ion-select-option value="Cycling">Cycling</ion-select-option>
-            <ion-select-option value="Running">Running</ion-select-option>
-          </ion-select>
-        </div>
-      </div>
-
-      <div class="column">
-        <div class="filter">
-          <ion-label>Time Period</ion-label>
-          <ion-select interface="popover" value="weekly" [(ngModel)]="filters.period"
-          (ionChange)="updateStats()">
-            <ion-select-option value="All Time">All Time</ion-select-option>
-            <ion-select-option value="Monthly">Monthly</ion-select-option>
-            <ion-select-option value="Weekly">Weekly</ion-select-option>
-          </ion-select>
-        </div>
-      </div>
+    <div class="filter">
+      <ion-select interface="popover" value="weekly" [(ngModel)]="filters.period"
+      (ionChange)="updateStats()">
+        <ion-select-option value="All Time">All Time</ion-select-option>
+        <ion-select-option value="Monthly">Monthly</ion-select-option>
+        <ion-select-option value="Weekly">Weekly</ion-select-option>
+      </ion-select>
     </div>
 
 
-    <h4>{{filters.type}} {{filters.period}} Graph</h4>
+    <h4>{{filters.period}} Activity Graph</h4>
 
     <div id="graphBox">
       <canvas #chart id="canvas" width="400" height="265">{{chart}}</canvas>
     </div>
 
-
-    
     <div id="statBox">
       <div class="row">
         <div class="column">

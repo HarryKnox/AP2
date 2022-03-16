@@ -23,6 +23,7 @@ ion-toolbar{
     width: 90%;
     margin: auto;
     height: 3.25em;
+    margin-bottom: 0.5em;
 }
 
 ion-segment {
@@ -65,14 +66,15 @@ ion-label{
 .filter{
     background-color: #BBC4D0;
     border: 0.01em solid black;
-    width: 95%;
     left: 0;
     right: 0;
     margin: auto;
     border-radius: 2em;
     font-size: small;
-    height: 3.5em;
+    width: 12em;
+    height: 2.5em;
     opacity: 85%;
+    text-align: center;
 }
 
 h4{

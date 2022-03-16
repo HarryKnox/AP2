@@ -1,4 +1,4 @@
-import { Component, OnInit} from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { WebService } from '../services/web.service';
 import { AlertController, ModalController } from '@ionic/angular';
 import { EditProfileModalPage } from '../edit-profile-modal/edit-profile-modal.page';
@@ -11,39 +11,28 @@ import { UtilityService } from '../services/utility_funcs.service';
   styleUrls: ['./profile.page.scss'],
 })
 export class ProfilePage implements OnInit {
-
   constructor(
-    private webService : WebService,
-    private modalController : ModalController,
-    private alertCtrl : AlertController,
-    private utils : UtilityService
+    private webService: WebService,
+    private modalController: ModalController,
+    private alertCtrl: AlertController,
+    private utils: UtilityService
   ) {}
 
-
   // var to hold logged-in user's data
-  profileData : any = [];
+  profileData: any = [];
 
   // array to hold logged- in user's posts
-  userPosts : any = [];
+  userPosts: any = [];
 
   // life cycle hook called when component created
   ngOnInit() {
-    
-    // call get user and set info. to profileData var
-    this.webService.getUser().subscribe(
-      (profile) => {
-        this.profileData = (profile);
-
-        // call get userposts + set to var
-        this.webService.getUserPosts(profile["username"]).subscribe(
-          (res) => {
-            this.userPosts = (res);
-          }
-        ); 
-      }
-    );
+    this.getUserData();
   } // ngOnInit closed
 
+  // gets latest user info
+  // ionViewWillEnter(){
+  //   this.getUserData();
+  // }
 
   // display edit profilemodal
   async editProfileModal() {
@@ -52,62 +41,65 @@ export class ProfilePage implements OnInit {
 
       // passing data to modal
       componentProps: {
-        username : this.profileData.username,
-        email : this.profileData.email,
-        gender : this.profileData.gender,
-        dob : this.profileData.dob,
-        picture : this.profileData.picture
-      }
+        username: this.profileData.username,
+        email: this.profileData.email,
+        gender: this.profileData.gender,
+        dob: this.profileData.dob,
+        picture: this.profileData.picture,
+      },
     });
     return await modal.present();
   } // present modal closed
 
-  
   // display edit post modal
-  async editPostModal(post:any) {
+  async editPostModal(post: any) {
     const modal = await this.modalController.create({
       component: EditPostModalPage,
 
       // passing data to modal
       componentProps: {
-        text : post.text,
-        type : post.type,
-        dist : this.utils.recalcDist(post.dist),
-        time : this.utils.minutes2Time(post.time),
-        unit : this.utils.distance_unit,
-        id : post._id
-      }
-
+        text: post.text,
+        type: post.type,
+        dist: this.utils.recalcDist(post.dist),
+        time: this.utils.minutes2Time(post.time),
+        unit: this.utils.distance_unit,
+        id: post._id,
+      },
     });
     return await modal.present();
   } // present modal closed
 
-  
-
-
   // confirm delete post pop up
   async presentDelete(postID) {
     const alert = await this.alertCtrl.create({
-      header : 'Confirm Delete',
-      message : 'Are you sure you want to delete this post?',
-      buttons : [
+      header: 'Confirm Delete',
+      message: 'Are you sure you want to delete this post?',
+      buttons: [
         {
-          text : 'Cancel',
-          role : 'cancel'
+          text: 'Cancel',
+          role: 'cancel',
         },
         {
-          text : 'Yes',
+          text: 'Yes',
           handler: () => {
             this.webService.deletePost(postID).subscribe();
-          }
-        }
-      ]
+          },
+        },
+      ],
     });
     alert.present();
   }
 
+  // func to get user profile data
+  getUserData() {
+    // call get user and set info. to profileData var
+    this.webService.getUser().subscribe((profile) => {
+      this.profileData = profile;
 
+      // call get userposts + set to var
+      this.webService.getUserPosts(profile['username']).subscribe((res) => {
+        this.userPosts = res;
+      });
+    });
+  } // func closed
 } // class closed
-
-
-
