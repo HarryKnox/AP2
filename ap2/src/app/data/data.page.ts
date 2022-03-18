@@ -48,12 +48,8 @@ export class DataPage implements OnInit {
         this.user_stats = stats;
       });
 
-    // gets a leaderboard, using the var filters
-    this.leaderboardData = this.webService.getLeaderboard(
-      this.filters.lboard,
-      this.filters.type,
-      this.filters.period
-    );
+    // calls get leaderbaord function
+    this.getLeaderboard();
   }
 
   // updates value of leaderboard or stats tab
@@ -118,4 +114,14 @@ export class DataPage implements OnInit {
         });
       }); // subscribe closed
   } // function closed
+
+  // function to retrieve leaderboard data
+  getLeaderboard() {
+    // gets a leaderboard, using the var filters
+    this.leaderboardData = this.webService.getLeaderboard(
+      this.filters.lboard,
+      this.filters.type,
+      this.filters.period
+    );
+  }
 }

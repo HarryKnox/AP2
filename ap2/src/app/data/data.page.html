@@ -115,7 +115,8 @@
           role="tablist"
           class="ios in-toolbar hydrated"
           value="Weekly"
-          (ionChange)="leaderboard_update($event)"
+          [(ngModel)]="filters.period"
+          (ionChange)="getLeaderboard()"
         >
           <ion-segment-button value="Weekly" role="tab" aria-selected="true"
             >Weekly</ion-segment-button
@@ -138,6 +139,57 @@
           >
         </ion-segment>
       </ion-toolbar>
+
+      <!-- leaderboard table div -->
+      <div class="leaderboardTable" id="table-scroll">
+        <table>
+          <!-- header row  -->
+          <tr class="col">
+            <th>#</th>
+            <th>User</th>
+            <th id="boardTh">{{filters.lboard}}</th>
+            <th>Points Prize</th>
+          </tr>
+
+          <!-- each row in leaderboard -->
+          <!-- ng containers used to give correct metric depending on field. RESPONSIVE -->
+          <tr
+            class="pos"
+            *ngFor="let user of leaderboardData | async; let i=index"
+          >
+            <td>{{i+1}}</td>
+            <td>{{user.name}}</td>
+
+            <ng-container *ngIf="filters.lboard=='Time Spent'; else nextCheck">
+              <td>{{utils.minutes2Time(user.value)}}</td>
+            </ng-container>
+
+            <ng-template #nextCheck>
+              <ng-container *ngIf="filters.lboard=='Distance'; else next2Check">
+                <td>
+                  {{utils.recalcDist(user.value)}} {{utils.distance_unit_short}}
+                </td>
+              </ng-container>
+            </ng-template>
+
+            <ng-template #next2Check>
+              <ng-container
+                *ngIf="filters.lboard=='Average Pace'; else next3Check"
+              >
+                <td>{{utils.recalcSpeed(user.value)}} {{utils.pace_unit}}</td>
+              </ng-container>
+            </ng-template>
+
+            <ng-template #next3Check>
+              <td>{{user.value}}</td>
+            </ng-template>
+
+            <!-- POINTS - SHORT TERM SOLUTION -->
+            <td>{{utils.roundNumber(500/(i+1))}}</td>
+          </tr>
+        </table>
+      </div>
+      <!-- league table div closed -->
     </div>
 
     <div class="filter" style="margin-top: 1em">
@@ -145,7 +197,7 @@
         interface="popover"
         value="All Types"
         [(ngModel)]="filters.type"
-        (ionChange)="leaderboard_update('typeChange')"
+        (ionChange)="getLeaderboard()"
       >
         <ion-select-option value="All Types">All Types</ion-select-option>
         <ion-select-option value="Walking">Walking</ion-select-option>
@@ -159,7 +211,7 @@
         interface="popover"
         value="Distance"
         [(ngModel)]="filters.lboard"
-        (ionChange)="leaderboard_update('lboardChange')"
+        (ionChange)="getLeaderboard()"
       >
         <ion-select-option value="Distance">Distance</ion-select-option>
         <ion-select-option value="Time Spent">Time Spent</ion-select-option>

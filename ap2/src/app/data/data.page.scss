@@ -52,7 +52,6 @@
   right: 0;
   margin: auto;
   border-radius: 0.5em;
-  box-shadow: 0 4px 2px -2px gray;
 }
 
 #leaderboardBox ion-segment {
@@ -133,4 +132,23 @@ p {
 #filtersToolbar {
   all: revert;
   color: black;
+}
+
+.leaderboardTable table {
+  margin: auto;
+  border-collapse: collapse;
+  overflow: hidden;
+  box-shadow: 1px 2px 3px 0px rgba(0, 0, 0, 0.1);
+  color: black;
+}
+
+th,
+td {
+  padding: 15px;
+}
+
+th {
+  color: white;
+  background-color: #992fed;
+  text-align: center;
 }
