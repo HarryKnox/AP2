@@ -5,7 +5,6 @@ import { FormsModule } from '@angular/forms';
 import { IonicModule } from '@ionic/angular';
 
 import { EditPostModalPageRoutingModule } from './edit-post-modal-routing.module';
-
 import { EditPostModalPage } from './edit-post-modal.page';
 
 @NgModule({
@@ -13,8 +12,8 @@ import { EditPostModalPage } from './edit-post-modal.page';
     CommonModule,
     FormsModule,
     IonicModule,
-    EditPostModalPageRoutingModule
+    EditPostModalPageRoutingModule,
   ],
-  declarations: [EditPostModalPage]
+  declarations: [EditPostModalPage],
 })
 export class EditPostModalPageModule {}

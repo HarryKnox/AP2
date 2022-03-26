@@ -18,9 +18,9 @@ export class WebService {
   }
 
   // gets all posts
-  getUserPosts(name: any) {
+  getUserPosts(ID: any) {
     // http get call made
-    return this.http.get('http://localhost:5000/api/v1.0/' + name + '/posts');
+    return this.http.get('http://localhost:5000/api/v1.0/' + ID + '/posts');
   }
 
   // add an exercise posts to db
@@ -31,9 +31,7 @@ export class WebService {
     postData.append('dist', post.dist);
     postData.append('dType', post.unit);
     postData.append('time', post.time);
-    postData.append('userName', post.userName);
     postData.append('date', post.date);
-    //postData.append("userID", post.userID);
 
     // http post call made, with form data
     return this.http.post('http://localhost:5000/api/v1.0/posts', postData);
@@ -126,6 +124,11 @@ export class WebService {
     regData.append('password', info.password);
 
     return this.http.post('http://localhost:5000/api/v1/users', regData);
+  }
+
+  // get username from ID
+  get_username(id: any) {
+    return this.http.get('http://localhost:5000/api/v1/users/' + id);
   }
 
   // get logged in user's profile info

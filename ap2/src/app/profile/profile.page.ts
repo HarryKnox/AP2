@@ -83,6 +83,7 @@ export class ProfilePage implements OnInit {
           text: 'Yes',
           handler: () => {
             this.webService.deletePost(postID).subscribe();
+            this.getUserData();
           },
         },
       ],
@@ -97,7 +98,7 @@ export class ProfilePage implements OnInit {
       this.profileData = profile;
 
       // call get userposts + set to var
-      this.webService.getUserPosts(profile['username']).subscribe((res) => {
+      this.webService.getUserPosts(profile['_id']).subscribe((res) => {
         this.userPosts = res;
       });
     });

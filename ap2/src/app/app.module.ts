@@ -19,22 +19,29 @@ import { library } from '@fortawesome/fontawesome-svg-core';
 import { fas } from '@fortawesome/free-solid-svg-icons';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { EditProfileModalPage } from './edit-profile-modal/edit-profile-modal.page';
+import { ProfilePage } from './profile/profile.page';
 library.add(fas);
-
-
 
 @NgModule({
   declarations: [AppComponent, EditProfileModalPage],
   entryComponents: [],
-  imports: [BrowserModule, IonicModule.forRoot(), AppRoutingModule,
-    HttpClientModule, IonicStorageModule.forRoot(), FontAwesomeModule,
-    FormsModule, ReactiveFormsModule
-    ],
-  providers: [{ provide: RouteReuseStrategy, useClass: IonicRouteStrategy },
-    WebService,DatePipe,
-    {provide: HTTP_INTERCEPTORS,
-      useClass:InterceptorService,
-    multi:true}],
+  imports: [
+    BrowserModule,
+    IonicModule.forRoot(),
+    AppRoutingModule,
+    HttpClientModule,
+    IonicStorageModule.forRoot(),
+    FontAwesomeModule,
+    FormsModule,
+    ReactiveFormsModule,
+  ],
+  providers: [
+    { provide: RouteReuseStrategy, useClass: IonicRouteStrategy },
+    WebService,
+    DatePipe,
+    ProfilePage,
+    { provide: HTTP_INTERCEPTORS, useClass: InterceptorService, multi: true },
+  ],
   bootstrap: [AppComponent],
 })
 export class AppModule {}

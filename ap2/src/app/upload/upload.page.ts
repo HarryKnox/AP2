@@ -2,6 +2,8 @@ import { Component, OnInit } from '@angular/core';
 import { faRunning } from '@fortawesome/free-solid-svg-icons';
 import { WebService } from '../services/web.service';
 import { Router } from '@angular/router';
+import { AlertController } from '@ionic/angular';
+import { UtilityService } from '../services/utility_funcs.service';
 
 @Component({
   selector: 'app-upload',
@@ -28,19 +30,18 @@ export class UploadPage implements OnInit {
     unit: null,
     time: null,
     date: null,
-    userName: null,
   };
 
-  constructor(private webService: WebService, private router: Router) {
+  constructor(
+    private webService: WebService,
+    private router: Router,
+    private alertCtrl: AlertController,
+    private utils: UtilityService
+  ) {
     this.post_data.date = new Date();
   }
 
-  ngOnInit() {
-    // user data retrieved + username set
-    this.webService.getUser().subscribe((res) => {
-      this.post_data.userName = res['username'];
-    });
-  }
+  ngOnInit() {}
 
   // func to update border when exercise type is selected
   changeIconColour(num: any) {
@@ -69,16 +70,52 @@ export class UploadPage implements OnInit {
   } // change icon func closed
 
   // func to upload an exercise post to db
-  submitUpload() {
+  async submitUpload() {
     // selected icon set
     this.post_data.type = this.selected_icon;
 
-    // exercise post, post call made
-    this.webService.postExercise(this.post_data).subscribe((res) => {
-      this.ngOnInit();
-      this.resetFormModel();
-      this.router.navigateByUrl('/members');
-    });
+    var overallValidator = true;
+
+    // presence check performed
+    if ((await this.utils.presenceCheck(this.post_data)) == false) {
+      overallValidator = false;
+    }
+
+    // check for zero or less dist
+    else if (this.post_data.dist <= 0) {
+      overallValidator = false;
+
+      const alert = await this.alertCtrl
+        .create({
+          header: 'Upload Failed',
+          message: 'Distance must be greater than zero, please try again.',
+          buttons: ['OK'],
+        })
+        .then((res) => res.present());
+    }
+
+    // check for time being zero
+    else if (this.post_data.time == '00:00:00') {
+      overallValidator = false;
+
+      const alert = await this.alertCtrl
+        .create({
+          header: 'Upload Failed',
+          message: 'Time must be longer than zero seconds, please try again.',
+          buttons: ['OK'],
+        })
+        .then((res) => res.present());
+    }
+
+    // if passes validation checks
+    if (overallValidator == true) {
+      // exercise post, post call made
+      this.webService.postExercise(this.post_data).subscribe((res) => {
+        this.ngOnInit();
+        this.resetFormModel();
+        this.router.navigateByUrl('/members');
+      });
+    }
   }
 
   // reset ngModel
@@ -90,7 +127,6 @@ export class UploadPage implements OnInit {
       unit: null,
       time: null,
       date: null,
-      userName: null,
     };
 
     // exercise types icons border colour
@@ -98,4 +134,4 @@ export class UploadPage implements OnInit {
     this.iconBorderColour2 = '0.01em solid black';
     this.iconBorderColour3 = '0.01em solid black';
   }
-}
+} // class closed

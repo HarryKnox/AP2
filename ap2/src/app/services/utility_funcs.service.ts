@@ -1,12 +1,19 @@
 import { Injectable } from '@angular/core';
 import * as moment from 'moment';
 import { DatePipe } from '@angular/common';
+import { AlertController } from '@ionic/angular';
+import { WebService } from './web.service';
+import { map } from 'rxjs/operators';
 
 @Injectable({
   providedIn: 'root',
 })
 export class UtilityService {
-  constructor(public datepipe: DatePipe) {}
+  constructor(
+    public datepipe: DatePipe,
+    private alertCtrl: AlertController,
+    private webService: WebService
+  ) {}
 
   // var to hold default distance unit
   distance_unit = 'Kilometres';
@@ -86,5 +93,40 @@ export class UtilityService {
   // rounds a number to nearest integer + returns
   roundNumber(num: any) {
     return Math.round(num);
+  }
+
+  // checks input for values
+  async presenceCheck(input_data: any) {
+    var check = true;
+
+    // loop through credentials and check if not null
+    for (var field in input_data) {
+      if (input_data[field] == null) {
+        check = false;
+      }
+    }
+
+    if (check == false) {
+      const alert = await this.alertCtrl
+        .create({
+          header: 'Missing Fields',
+          message:
+            'One or more of the required fields are empty, please try again.',
+          buttons: ['OK'],
+        })
+        .then((res) => res.present());
+    }
+
+    return check;
+  } // presence check func closed
+
+  // returns username when given userID
+  getUsername(id: any) {
+    return this.webService.get_username(id).pipe(
+      map((res) => {
+        console.log(res);
+        return res;
+      })
+    );
   }
 } // UtilityService class closed
