@@ -30,9 +30,9 @@ export class ProfilePage implements OnInit {
   } // ngOnInit closed
 
   // gets latest user info
-  // ionViewWillEnter(){
-  //   this.getUserData();
-  // }
+  ionViewWillEnter() {
+    this.getUserData();
+  }
 
   // display edit profilemodal
   async editProfileModal() {

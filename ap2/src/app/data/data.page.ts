@@ -57,8 +57,8 @@ export class DataPage implements OnInit {
     this.toolbar_selection = event.target.value;
 
     if (this.toolbar_selection == 'stats') {
-      // get activity graph function called
-      this.getActivityGraph();
+      // get stats
+      this.updateStats();
     }
   }
 
@@ -79,8 +79,10 @@ export class DataPage implements OnInit {
         this.user_stats = stats;
       });
 
-    // old graph destroyed
-    this.chart.destroy();
+    if (this.chart) {
+      // old graph destroyed
+      this.chart.destroy();
+    }
 
     // new graph created
     this.getActivityGraph();

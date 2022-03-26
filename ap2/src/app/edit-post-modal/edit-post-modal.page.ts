@@ -64,7 +64,6 @@ export class EditPostModalPage implements OnInit {
       .putPost(this.edit_info.id, this.edit_info)
       .subscribe((res) => {
         this.dismissModal();
-        this.profilePage.ngOnInit();
         this.router.navigateByUrl('members');
       });
   } // edit profile closed

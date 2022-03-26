@@ -24,4 +24,9 @@ export class homePage {
     // fetches all exercise posts
     this.post_list = this.webService.getPosts();
   } // ngOnInit closed
+
+  // gets latest user info
+  ionViewWillEnter() {
+    this.post_list = this.webService.getPosts();
+  }
 } // home page closed
