@@ -140,6 +140,10 @@
         </ion-segment>
       </ion-toolbar>
 
+      <div *ngIf="settingsPage.checkPrivacy()=='private'">
+        <p id="privateMsg">*** You are appearing for your eyes only ***</p>
+      </div>
+
       <!-- leaderboard table div -->
       <div class="leaderboardTable" id="table-scroll">
         <table>

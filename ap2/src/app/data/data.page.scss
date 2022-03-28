@@ -144,11 +144,18 @@ p {
 
 th,
 td {
-  padding: 15px;
+  padding: 7.5px;
 }
 
 th {
   color: white;
   background-color: #992fed;
+  text-align: center;
+  font-size: 0.95em;
+}
+
+#privateMsg {
+  color: #bbc4d0;
+  font-size: smaller;
   text-align: center;
 }

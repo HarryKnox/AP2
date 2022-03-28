@@ -3,7 +3,6 @@ import { AuthService } from '../services/auth.service';
 import { WebService } from '../services/web.service';
 import { AlertController } from '@ionic/angular';
 import { UtilityService } from '../services/utility_funcs.service';
-import { relativeTimeThreshold } from 'moment';
 import { Router } from '@angular/router';
 
 @Component({
@@ -88,5 +87,10 @@ export class SettingsPage implements OnInit {
   saveSettings() {
     this.webService.postUserSettings(this.settings).subscribe();
     this.router.navigateByUrl('members');
+  }
+
+  // checks privacy 4 logged in user and returns
+  checkPrivacy() {
+    return this.settings.privacy;
   }
 } // class closed

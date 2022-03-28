@@ -3,6 +3,7 @@ import { DatePipe } from '@angular/common';
 import { WebService } from '../services/web.service';
 import { UtilityService } from '../services/utility_funcs.service';
 import { Chart, registerables } from 'node_modules/chart.js';
+import { SettingsPage } from '../settings/settings.page';
 
 @Component({
   selector: 'app-data',
@@ -35,12 +36,15 @@ export class DataPage implements OnInit {
   constructor(
     public datepipe: DatePipe,
     private webService: WebService,
-    private utils: UtilityService
+    private utils: UtilityService,
+    private settingsPage: SettingsPage
   ) {
     Chart.register(...registerables);
   }
 
   ngOnInit() {
+    console.log(this.settingsPage.settings.privacy);
+
     // gets all user stats from backend function call
     this.user_stats = this.webService
       .getUserStats(this.filters.period)
