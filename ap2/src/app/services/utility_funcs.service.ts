@@ -129,4 +129,9 @@ export class UtilityService {
       })
     );
   }
+
+  // // returns user settings, given a userID
+  // getUserSettings(id: any) {
+  //   this.webService.get
+  // }
 } // UtilityService class closed

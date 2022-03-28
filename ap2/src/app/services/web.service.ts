@@ -160,4 +160,21 @@ export class WebService {
   getUserPic(pic_name: any) {
     return this.http.get('http://localhost:5000/api/v1/users/' + pic_name);
   }
+
+  // save settings changes
+  postUserSettings(settings: any) {
+    let settingsData = new FormData();
+    settingsData.append('dist_unit', settings.distance_unit);
+    settingsData.append('privacy', settings.privacy);
+    settingsData.append('goal_tracker', settings.goal);
+
+    return this.http.post(
+      'http://localhost:5000/api/v1.0/users/settings',
+      settingsData
+    );
+  }
+
+  getUserSettings(id: any) {
+    return this.http.get('http://localhost:5000/api/v1.0/users/settings/' + id);
+  }
 } // webService class closed

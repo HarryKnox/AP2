@@ -3,41 +3,60 @@
 
   <div class="greyBit">
     <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1440 500">
-      <path fill="#992FED" fill-opacity="1" d="M -4 500 C 627 378 817 86 1242 102 C 1336 107 1399 140 1438 180 L 1440 0 L 1360 0 C 1280 0 1120 0 960 0 C 800 0 640 0 480 0 C 320 0 160 0 80 0 L 0 0 Z"></path>
+      <path
+        fill="#992FED"
+        fill-opacity="1"
+        d="M -4 500 C 627 378 817 86 1242 102 C 1336 107 1399 140 1438 180 L 1440 0 L 1360 0 C 1280 0 1120 0 960 0 C 800 0 640 0 480 0 C 320 0 160 0 80 0 L 0 0 Z"
+      ></path>
     </svg>
   </div>
-  
+
   <div id="brand">Settings</div>
 
   <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1440 200">
-    <path fill="#BBC4D0" fill-opacity="1" d="M 0 2 C 495 295 1252 63 1442 156 L 1440 0 L 1360 0 C 1280 0 1120 0 960 0 C 800 0 640 0 480 0 C 320 0 160 0 80 0 L 0 0 Z"></path>
+    <path
+      fill="#BBC4D0"
+      fill-opacity="1"
+      d="M 0 2 C 495 295 1252 63 1442 156 L 1440 0 L 1360 0 C 1280 0 1120 0 960 0 C 800 0 640 0 480 0 C 320 0 160 0 80 0 L 0 0 Z"
+    ></path>
   </svg>
-
 </ion-header>
 
 <ion-content>
   <p>Distance Metric Unit</p>
-  <ion-select interface="popover" [(ngModel)]="distance_unit" (ionChange)="changeDefaultMetric()">
+  <ion-select
+    interface="popover"
+    [(ngModel)]="settings.distance_unit"
+    (ionChange)="changeDefaultMetric()"
+  >
     <ion-select-option value="Kilometres">Kilometres</ion-select-option>
     <ion-select-option value="Miles">Miles</ion-select-option>
   </ion-select>
 
-
-  <p>Post Privacy <ion-icon name="information-circle-outline"></ion-icon></p>
-  <ion-select interface="popover">
+  <p>
+    Post / Leaderboard Privacy
+    <ion-icon name="information-circle-outline"></ion-icon>
+  </p>
+  <ion-select interface="popover" [(ngModel)]="settings.privacy">
     <ion-select-option value="public">Public</ion-select-option>
     <ion-select-option value="private">Private</ion-select-option>
   </ion-select>
 
-  <p>Something else <ion-icon name="information-circle-outline"></ion-icon></p>
-  <ion-select interface="popover">
-    <ion-select-option value="public">Option 1</ion-select-option>
-    <ion-select-option value="private">Option 2</ion-select-option>
+  <p>
+    Weekly Goal Tracker <ion-icon name="information-circle-outline"></ion-icon>
+  </p>
+  <ion-select interface="popover" [(ngModel)]="settings.goal">
+    <ion-select-option value="low">Low</ion-select-option>
+    <ion-select-option value="medium">Medium</ion-select-option>
+    <ion-select-option value="hard">Hard</ion-select-option>
   </ion-select>
+
+  <ion-button id="saveBtn" (click)="saveSettings()">Save</ion-button>
+
+  <hr />
 
   <div id="btns">
     <ion-button (click)="logout()">Logout</ion-button>
     <ion-button (click)="presentDelete()">Delete Account</ion-button>
   </div>
-
 </ion-content>

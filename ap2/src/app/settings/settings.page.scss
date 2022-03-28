@@ -1,52 +1,67 @@
-.topPurple{
-    background: #992FED;
-    height: 5px;
+.topPurple {
+  background: #992fed;
+  height: 5px;
 }
 
-.greyBit{
-    background-color: #BBC4D0;
-    height: 36%;
+.greyBit {
+  background-color: #bbc4d0;
+  height: 36%;
 }
 
-#brand{
-    background-color: #BBC4D0;
-    color: #992FED;
-    text-align: center;
-    font-size: 2em;
-    font-weight: bolder;
+#brand {
+  background-color: #bbc4d0;
+  color: #992fed;
+  text-align: center;
+  font-size: 2em;
+  font-weight: bolder;
 }
 
-ion-input, ion-select{
-    color: black;
-    border: solid 0.1em #992FED;
-    width: 85%;
-    left: 0;
-    right: 0;
-    margin: auto;
-    border-radius: 0.65em;
-    margin-bottom: 2.5em;
+ion-input,
+ion-select {
+  color: black;
+  border: solid 0.1em #992fed;
+  width: 85%;
+  left: 0;
+  right: 0;
+  margin: auto;
+  border-radius: 0.65em;
+  margin-bottom: 2em;
 }
 
-
-p{
-    color: #992FED;
-    font-weight: 550;
-    text-align: center;
-    margin: 0;
+p {
+  color: #992fed;
+  font-weight: 550;
+  text-align: center;
+  margin: 0;
 }
 
-#btns ion-button{
-    height: 3em;
-    width: 8em;
-    border-radius: 3em;
-    --background : #992FED;
-    --background-hover : #92949c;
+#btns ion-button {
+  height: 3em;
+  width: 8em;
+  border-radius: 3em;
+  --background: #992fed;
+  --background-hover: #92949c;
 }
 
 #btns {
-    text-align: center;
+  text-align: center;
 }
 
-ion-icon{
-    font-size: large;
+ion-icon {
+  font-size: large;
+}
+
+#saveBtn {
+  margin: 0;
+  margin-left: 30%;
+  height: 3em;
+  width: 8em;
+  border-radius: 3em;
+  --background: #992fed;
+  --background-hover: #92949c;
+  margin-bottom: 0.5em;
+}
+
+hr {
+  background: black;
 }
