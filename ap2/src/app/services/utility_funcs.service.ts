@@ -3,7 +3,7 @@ import * as moment from 'moment';
 import { DatePipe } from '@angular/common';
 import { AlertController } from '@ionic/angular';
 import { WebService } from './web.service';
-import { map } from 'rxjs/operators';
+import { map, take } from 'rxjs/operators';
 
 @Injectable({
   providedIn: 'root',
@@ -119,19 +119,4 @@ export class UtilityService {
 
     return check;
   } // presence check func closed
-
-  // returns username when given userID
-  getUsername(id: any) {
-    return this.webService.get_username(id).pipe(
-      map((res) => {
-        console.log(res);
-        return res;
-      })
-    );
-  }
-
-  // // returns user settings, given a userID
-  // getUserSettings(id: any) {
-  //   this.webService.get
-  // }
 } // UtilityService class closed
