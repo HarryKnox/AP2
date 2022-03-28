@@ -20,6 +20,7 @@ import { fas } from '@fortawesome/free-solid-svg-icons';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { EditProfileModalPage } from './edit-profile-modal/edit-profile-modal.page';
 import { ProfilePage } from './profile/profile.page';
+import { SettingsPage } from './settings/settings.page';
 library.add(fas);
 
 @NgModule({
@@ -40,6 +41,7 @@ library.add(fas);
     WebService,
     DatePipe,
     ProfilePage,
+    SettingsPage,
     { provide: HTTP_INTERCEPTORS, useClass: InterceptorService, multi: true },
   ],
   bootstrap: [AppComponent],
