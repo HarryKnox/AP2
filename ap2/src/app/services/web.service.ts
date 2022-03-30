@@ -75,6 +75,11 @@ export class WebService {
     });
   }
 
+  // gets a user's goal tracker % value
+  getTrackerValue() {
+    return this.http.get('http://localhost:5000/api/v1.0/tracker');
+  }
+
   // gets an activity graph for a logged in user
   getActivityGraph(period: any) {
     // time period is passed as a parameter

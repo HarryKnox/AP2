@@ -3,7 +3,10 @@ import { WebService } from '../services/web.service';
 import { UtilityService } from '../services/utility_funcs.service';
 import { ModalController } from '@ionic/angular';
 import { SettingsPage } from '../settings/settings.page';
-import { NgCircleProgressModule } from 'ng-circle-progress';
+import {
+  CircleProgressComponent,
+  CircleProgressOptions,
+} from 'ng-circle-progress';
 
 @Component({
   selector: 'app-home',
@@ -21,6 +24,9 @@ export class homePage {
   // array defined to hold all exercise posts
   post_list: any = [];
 
+  // goal tracker value
+  goal_tracker_value = 0;
+
   // life cycle hook called when component created
   ngOnInit() {
     // fetches all exercise posts
@@ -36,6 +42,9 @@ export class homePage {
         this.settingsPage.changeDefaultMetric();
       });
     });
+
+    // fetches goal tracker value
+    this.getGoalTrackerData();
   } // ngOnInit closed
 
   // gets latest user info
@@ -51,6 +60,16 @@ export class homePage {
 
         this.settingsPage.changeDefaultMetric();
       });
+    });
+
+    // fetches goal tracker value
+    this.getGoalTrackerData();
+  }
+
+  // fetches user's time spent exercising this week
+  getGoalTrackerData() {
+    this.webService.getTrackerValue().subscribe((res) => {
+      this.goal_tracker_value = Number(res);
     });
   }
 } // home page closed

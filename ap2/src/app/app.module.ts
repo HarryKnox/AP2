@@ -32,7 +32,15 @@ library.add(fas);
     FontAwesomeModule,
     FormsModule,
     ReactiveFormsModule,
-    NgCircleProgressModule.forRoot({}),
+    NgCircleProgressModule.forRoot({
+      radius: 65,
+      outerStrokeWidth: 16,
+      innerStrokeWidth: 8,
+      outerStrokeColor: '#992fed',
+      innerStrokeColor: '#B394C6',
+      animation: true,
+      animationDuration: 300,
+    }),
   ],
   providers: [
     { provide: RouteReuseStrategy, useClass: IonicRouteStrategy },
