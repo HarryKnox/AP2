@@ -1,9 +1,9 @@
 import { Component } from '@angular/core';
 import { WebService } from '../services/web.service';
 import { UtilityService } from '../services/utility_funcs.service';
-import { AlertController, ModalController } from '@ionic/angular';
-import { EditPostModalPage } from '../edit-post-modal/edit-post-modal.page';
+import { ModalController } from '@ionic/angular';
 import { SettingsPage } from '../settings/settings.page';
+import { NgCircleProgressModule } from 'ng-circle-progress';
 
 @Component({
   selector: 'app-home',

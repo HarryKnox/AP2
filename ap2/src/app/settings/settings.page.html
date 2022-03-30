@@ -46,9 +46,9 @@
     Weekly Goal Tracker <ion-icon name="information-circle-outline"></ion-icon>
   </p>
   <ion-select interface="popover" [(ngModel)]="settings.goal">
-    <ion-select-option value="low">Low</ion-select-option>
-    <ion-select-option value="medium">Medium</ion-select-option>
-    <ion-select-option value="hard">Hard</ion-select-option>
+    <ion-select-option value="low">Easier (75 minutes)</ion-select-option>
+    <ion-select-option value="medium">Medium (150 minutes)</ion-select-option>
+    <ion-select-option value="hard">Harder (300 minutes)</ion-select-option>
   </ion-select>
 
   <ion-button id="saveBtn" (click)="saveSettings()">Save</ion-button>

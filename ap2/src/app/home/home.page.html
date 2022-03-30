@@ -22,10 +22,29 @@
   </svg>
 
   <div id="goalTracker">
-    <h4>Personalised Goal Tracker</h4>
+    <h5 *ngIf="settingsPage.settings.goal=='low'">
+      Goal : 75 minutes per week
+    </h5>
+    <h5 *ngIf="settingsPage.settings.goal=='medium'">
+      Goal : 150 minutes per week
+    </h5>
+    <h5 *ngIf="settingsPage.settings.goal=='hard'">
+      Goal : 300 minutes per week
+    </h5>
+
+    <circle-progress
+      [percent]="85"
+      [radius]="65"
+      [outerStrokeWidth]="16"
+      [innerStrokeWidth]="8"
+      [outerStrokeColor]="'#992fed'"
+      [innerStrokeColor]="'#B394C6'"
+      [animation]="true"
+      [animationDuration]="300"
+    ></circle-progress>
   </div>
 
-  <ion-content>
+  <ion-content forceOverscroll="true">
     <ion-card *ngFor="let post of post_list | async;">
       <ion-card-header>
         <ion-card-title>{{ post.userName }}'s {{ post.type }}</ion-card-title>

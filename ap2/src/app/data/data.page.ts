@@ -43,8 +43,6 @@ export class DataPage implements OnInit {
   }
 
   ngOnInit() {
-    console.log(this.settingsPage.settings.privacy);
-
     // gets all user stats from backend function call
     this.user_stats = this.webService
       .getUserStats(this.filters.period)

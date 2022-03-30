@@ -5,14 +5,16 @@ import { FormsModule } from '@angular/forms';
 import { homePage } from './home.page';
 
 import { homePageRoutingModule } from './home-routing.module';
+import { NgCircleProgressModule } from 'ng-circle-progress';
 
 @NgModule({
   imports: [
     IonicModule,
     CommonModule,
     FormsModule,
-    homePageRoutingModule
+    homePageRoutingModule,
+    NgCircleProgressModule,
   ],
-  declarations: [homePage]
+  declarations: [homePage],
 })
 export class homePageModule {}
