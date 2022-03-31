@@ -6,6 +6,19 @@
 
 <ion-content>
   <div class="help_section">
+    <button (click)="updateBoolean('about')">
+      About Us <ion-icon name="caret-forward-outline"></ion-icon>
+    </button>
+    <br />
+    <div *ngIf="this.about_boolean==true">
+      <p>
+        Sanus is a fitness application aiming to motivate its users to become
+        healthier and happier.
+      </p>
+    </div>
+  </div>
+
+  <div class="help_section">
     <button (click)="updateBoolean('goal')">
       Weekly Goal Tracker <ion-icon name="caret-forward-outline"></ion-icon>
     </button>
@@ -61,7 +74,7 @@
 
   <div class="help_section">
     <button (click)="updateBoolean('privacy')">
-      Privacy Setting <ion-icon name="caret-forward-outline"></ion-icon>
+      Privacy <ion-icon name="caret-forward-outline"></ion-icon>
     </button>
     <br />
     <div *ngIf="this.privacy_boolean==true">

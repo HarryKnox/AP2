@@ -14,6 +14,7 @@ export class HelpModalPage implements OnInit {
   points_boolean: boolean = false;
   privacy_boolean: boolean = false;
   shop_boolean: boolean = false;
+  about_boolean: boolean = false;
 
   ngOnInit() {}
 
@@ -57,6 +58,15 @@ export class HelpModalPage implements OnInit {
         this.shop_boolean = true;
       } else {
         this.shop_boolean = false;
+      }
+    }
+
+    // boolean var swaps for about us text block
+    if (event == 'about') {
+      if (this.about_boolean == false) {
+        this.about_boolean = true;
+      } else {
+        this.about_boolean = false;
       }
     }
   }

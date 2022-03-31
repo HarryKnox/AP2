@@ -1,0 +1,26 @@
+.topPurple {
+  background: #992fed;
+  height: 5px;
+}
+
+ion-header svg {
+  z-index: -1;
+  display: inline-block;
+}
+
+.greyBit {
+  background-color: #bbc4d0;
+  height: 40%;
+}
+
+#brand {
+  background-color: #bbc4d0;
+  color: #992fed;
+  text-align: center;
+  font-size: 2em;
+  font-weight: bolder;
+}
+
+ion-content {
+  background-color: white;
+}

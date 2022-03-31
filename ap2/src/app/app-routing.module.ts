@@ -52,7 +52,11 @@ const routes: Routes = [
       import('./help-modal/help-modal.module').then(
         (m) => m.HelpModalPageModule
       ),
+  },  {
+    path: 'shop',
+    loadChildren: () => import('./shop/shop.module').then( m => m.ShopPageModule)
   },
+
 ];
 @NgModule({
   imports: [

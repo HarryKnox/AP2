@@ -112,8 +112,22 @@ export class UploadPage implements OnInit {
       // exercise post, post call made
       this.webService.postExercise(this.post_data).subscribe((res) => {
         this.ngOnInit();
-        this.resetFormModel();
         this.router.navigateByUrl('/members');
+
+        // get amount of points earned
+        var points = this.calculatePoints(this.post_data);
+
+        // reset the form
+        this.resetFormModel();
+
+        // motivational pop up
+        this.alertCtrl
+          .create({
+            header: 'Good workout!',
+            message: 'Well done, you have earned ' + points + ' points.',
+            buttons: ['OK'],
+          })
+          .then((alert) => alert.present());
       });
     }
   }
@@ -133,5 +147,32 @@ export class UploadPage implements OnInit {
     this.iconBorderColour1 = '0.01em solid black';
     this.iconBorderColour2 = '0.01em solid black';
     this.iconBorderColour3 = '0.01em solid black';
+  }
+
+  // calculates points earned from a post
+  calculatePoints(post: any) {
+    console.log(post);
+
+    // split time value by colons
+    var timeSplits = post.time.split(':');
+
+    // get minutes from splits
+    var minutes =
+      Number(timeSplits[0] * 60) +
+      Number(timeSplits[1]) +
+      Number(Math.floor(timeSplits[2] / 60));
+
+    // calculate points for time
+    var time_points = (minutes / 10) * 5;
+
+    // check if distance unit and calculate accordingly
+    if (post.unit == 'miles') {
+      var conversion = Math.round(post.dist * 1.60934);
+      var dist_points = conversion * 5;
+    } else {
+      var dist_points = Math.round(post.dist) * 5;
+    }
+
+    return dist_points + time_points;
   }
 } // class closed

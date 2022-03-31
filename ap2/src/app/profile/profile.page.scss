@@ -1,96 +1,91 @@
-.topPurple{
-    background: #992FED;
-    height: 5px;
+.topPurple {
+  background: #992fed;
+  height: 5px;
 }
 
-ion-header svg{
-    z-index: -1;
-    display: inline-block;
+ion-header svg {
+  z-index: -1;
+  display: inline-block;
 }
 
-.greyBit{
-    background-color: #BBC4D0;
-    height: 20%;
+.greyBit {
+  background-color: #bbc4d0;
+  height: 20%;
 }
 
-#brand{
-    background-color: #BBC4D0;
-    color: #992FED;
-    text-align: center;
-    font-size: 2em;
-    font-weight: bolder;
+#brand {
+  background-color: #bbc4d0;
+  color: #992fed;
+  text-align: center;
+  font-size: 2em;
+  font-weight: bolder;
 }
 
-#profileBox{  
-    border: 0.1em solid #992FED;
-    border-radius: 1em;
-    margin-left: 0.25em;
-    margin-right: 0.25em;
-    color: black;
-    text-align: center;
+#profileBox {
+  border: 0.1em solid #992fed;
+  border-radius: 1em;
+  margin-left: 0.25em;
+  margin-right: 0.25em;
+  color: black;
+  text-align: center;
 }
 
-#profileBox p{
-    border: 0.1em solid #BBC4D0;
-    width: 8em;
-    border-radius: 1em;
-    text-align: center;
+#profileBox p {
+  border: 0.1em solid #bbc4d0;
+  width: 8em;
+  border-radius: 1em;
+  text-align: center;
 }
 
-#profileBox h6{
-    width: 8em;
-    line-height: 0;
-    color: #992FED;
-    text-align: center;
+#profileBox h6 {
+  width: 8em;
+  line-height: 0;
+  color: #992fed;
+  text-align: center;
 }
 
-#profileBox ion-button{
-    height: 1.75em;
-    width: 5em;
-    --background : #992FED;
-    --background-hover : #92949c;
+#profileBox ion-button {
+  height: 1.75em;
+  width: 5em;
+  --background: #992fed;
+  --background-hover: #92949c;
 }
 
-
-img{
-    height: 5.5em;
-    width: 5.5em;
-    border-radius: 5em;
-    border: 0.01em solid #92949c;
-    margin: 0.5em;
+img {
+  height: 5.5em;
+  width: 5.5em;
+  border-radius: 5em;
+  border: 0.01em solid #92949c;
+  margin: 0.5em;
 }
 
 .column {
-    float: left;
-    width: 50%;
+  float: left;
+  width: 50%;
 }
-  
+
 /* Clear floats after the columns */
 .row:after {
-    content: "";
-    display: table;
-    clear: both;
+  content: "";
+  display: table;
+  clear: both;
 }
 
-#cardBtns ion-button{
-    height: 1.5em;
-    width: 5em;
-    --background : #992FED;
-    --background-hover : #92949c;
+#cardBtns ion-button {
+  height: 1.5em;
+  width: 5em;
+  --background: #992fed;
+  --background-hover: #92949c;
 }
 
-
-#postsTxt{
-    margin-top: 5em;
-    height: 3em;
-    text-align: center;
-    margin: 0.5em ;
+#shopDiv ion-button {
+  width: 50%;
+  margin: 0;
+  --background-hover: #92949c;
+  --background: #992fed;
 }
 
-#postsTxt h3{
-    border: 0.01em solid #992FED;
-    color: #992FED;
-    text-align: center;
-    font-weight: bold;
-    border-radius: 3em;
+#shopDiv {
+  text-align: center;
+  margin: 0;
 }
