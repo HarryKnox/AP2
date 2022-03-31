@@ -54,6 +54,11 @@ export class DataPage implements OnInit {
     this.getLeaderboard();
   }
 
+  // gets latest leaderboard data
+  ionViewWillEnter() {
+    this.getLeaderboard();
+  }
+
   // updates value of leaderboard or stats tab
   toolbar_update(event: any) {
     this.toolbar_selection = event.target.value;

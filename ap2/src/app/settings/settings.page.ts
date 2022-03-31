@@ -1,9 +1,10 @@
 import { Component, OnInit } from '@angular/core';
 import { AuthService } from '../services/auth.service';
 import { WebService } from '../services/web.service';
-import { AlertController } from '@ionic/angular';
+import { AlertController, ModalController } from '@ionic/angular';
 import { UtilityService } from '../services/utility_funcs.service';
 import { Router } from '@angular/router';
+import { HelpModalPage } from '../help-modal/help-modal.page';
 
 @Component({
   selector: 'app-settings',
@@ -23,7 +24,8 @@ export class SettingsPage implements OnInit {
     private webService: WebService,
     private alertCtrl: AlertController,
     private utils: UtilityService,
-    private router: Router
+    private router: Router,
+    private modalController: ModalController
   ) {}
 
   ngOnInit() {
@@ -93,4 +95,12 @@ export class SettingsPage implements OnInit {
   checkPrivacy() {
     return this.settings.privacy;
   }
+
+  // display help modal
+  async helpModal() {
+    const modal = await this.modalController.create({
+      component: HelpModalPage,
+    });
+    return await modal.present();
+  } // present modal closed
 } // class closed

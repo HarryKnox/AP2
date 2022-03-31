@@ -1,0 +1,84 @@
+<ion-header>
+  <ion-toolbar style="margin-top: 0.25em">
+    <ion-title>Help Page</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <div class="help_section">
+    <button (click)="updateBoolean('goal')">
+      Weekly Goal Tracker <ion-icon name="caret-forward-outline"></ion-icon>
+    </button>
+    <br />
+    <div *ngIf="this.goal_tracker_boolean==true">
+      <p>
+        Upon upload of an exercise the tracker will automatically update.
+        <br /><br />
+        Tracker Settings :
+        <br />• Easier = 75 minutes <br />• Medium = 150 minutes (default
+        setting) <br />• Harder = 300 minutes <br /><br />150 minutes is the NHS
+        recommended weekly amount of exercise for a healthy adult.
+      </p>
+    </div>
+  </div>
+
+  <div class="help_section">
+    <button (click)="updateBoolean('points')">
+      Points <ion-icon name="caret-forward-outline"></ion-icon>
+    </button>
+    <br />
+    <div *ngIf="this.points_boolean==true">
+      <p>
+        Upon upload of an exercise you will earn points.
+        <br /><br />
+        Earning Points :
+        <br />
+        • 10 minutes of exercise earns you 5 points <br />
+        • 1 kilometre of distance earns you 5 points <br /><br />
+        Coming Soon!
+        <br />
+        • Earn points for leaderboard positions <br />
+        • Earn points for completing your goals <br />
+        • Earn points for milestones
+      </p>
+    </div>
+  </div>
+
+  <div class="help_section">
+    <button (click)="updateBoolean('shop')">
+      Shop <ion-icon name="caret-forward-outline"></ion-icon>
+    </button>
+    <br />
+    <div *ngIf="this.shop_boolean==true">
+      <p>
+        Currently the shop is under maintenance and not yet fully functional.
+        <br /><br />
+        In the future, you will be able to spend your points to purchase cool
+        prizes!
+      </p>
+    </div>
+  </div>
+
+  <div class="help_section">
+    <button (click)="updateBoolean('privacy')">
+      Privacy Setting <ion-icon name="caret-forward-outline"></ion-icon>
+    </button>
+    <br />
+    <div *ngIf="this.privacy_boolean==true">
+      <p>
+        The privacy setting allows you to appear for your eyes only.
+        <br /><br />
+        Private :<br />Only you can see your posts, profile page and leaderboard
+        position. <br /><br />
+        Public :<br />All users can see your posts, profile page and leaderboard
+        position.
+      </p>
+    </div>
+  </div>
+</ion-content>
+
+<ion-footer>
+  <hr style="background-color: grey" />
+
+  <ion-button (click)="dismissModal()">Close</ion-button>
+</ion-footer>
