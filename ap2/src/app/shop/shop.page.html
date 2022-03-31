@@ -1,31 +1,77 @@
 <ion-header>
-  <div class="topPurple"></div>
-
-  <div class="greyBit">
-    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1440 500">
-      <path
-        fill="#992FED"
-        fill-opacity="1"
-        d="M -4 500 C 627 378 817 86 1242 102 C 1336 107 1399 140 1438 180 L 1440 0 L 1360 0 C 1280 0 1120 0 960 0 C 800 0 640 0 480 0 C 320 0 160 0 80 0 L 0 0 Z"
-      ></path>
-    </svg>
-  </div>
-
-  <div id="brand">Shop</div>
-
-  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1440 200">
-    <path
-      fill="#BBC4D0"
-      fill-opacity="1"
-      d="M 0 2 C 495 295 1252 63 1442 156 L 1440 0 L 1360 0 C 1280 0 1120 0 960 0 C 800 0 640 0 480 0 C 320 0 160 0 80 0 L 0 0 Z"
-    ></path>
-  </svg>
+  <ion-toolbar style="margin-top: 0.25em">
+    <ion-title>Sanus Shop</ion-title>
+  </ion-toolbar>
 </ion-header>
 
 <ion-content>
-  <ion-item>
-    <p>Shop Item 1</p>
-  </ion-item>
+  <h6>Points Balance</h6>
+  <div id="pointBalance">{{user_points}}</div>
+
+  <div class="row">
+    <div class="column">
+      <img src="../../assets/socks.png" />
+      <p>Pair of Cushioned Running Socks</p>
+      <p>500 Points</p>
+      <ion-select value="0">
+        <ion-select-option>0</ion-select-option>
+        <ion-select-option>1</ion-select-option>
+        <ion-select-option>2</ion-select-option>
+        <ion-select-option>3</ion-select-option>
+        <ion-select-option>4</ion-select-option>
+        <ion-select-option>5</ion-select-option>
+      </ion-select>
+    </div>
+
+    <div class="column">
+      <img src="../../assets/hat.png" />
+      <p>Lightweight Running Cap</p>
+      <p>500 Points</p>
+      <ion-select value="0">
+        <ion-select-option>0</ion-select-option>
+        <ion-select-option>1</ion-select-option>
+        <ion-select-option>2</ion-select-option>
+        <ion-select-option>3</ion-select-option>
+        <ion-select-option>4</ion-select-option>
+        <ion-select-option>5</ion-select-option>
+      </ion-select>
+    </div>
+  </div>
+
+  <div class="row">
+    <div class="column">
+      <img src="../../assets/amazon_voucher.png" />
+      <p>Amazon Gift Card £5</p>
+      <p>1,000 Points</p>
+      <ion-select value="0">
+        <ion-select-option>0</ion-select-option>
+        <ion-select-option>1</ion-select-option>
+        <ion-select-option>2</ion-select-option>
+        <ion-select-option>3</ion-select-option>
+        <ion-select-option>4</ion-select-option>
+        <ion-select-option>5</ion-select-option>
+      </ion-select>
+    </div>
+
+    <div class="column">
+      <img src="../../assets/itunes_voucher.png" />
+      <p>iTunes Gift Card £5</p>
+      <p>1,000 Points</p>
+      <ion-select value="0">
+        <ion-select-option>0</ion-select-option>
+        <ion-select-option>1</ion-select-option>
+        <ion-select-option>2</ion-select-option>
+        <ion-select-option>3</ion-select-option>
+        <ion-select-option>4</ion-select-option>
+        <ion-select-option>5</ion-select-option>
+      </ion-select>
+    </div>
+  </div>
+</ion-content>
+
+<ion-footer>
+  <hr style="background-color: grey" />
 
   <ion-button (click)="dismissModal()">Close</ion-button>
-</ion-content>
+  <ion-button style="margin-left: 1em" disabled="true">Purchase</ion-button>
+</ion-footer>

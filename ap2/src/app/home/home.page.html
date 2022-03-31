@@ -20,7 +20,9 @@
       d="M 0 2 C 495 295 1252 63 1442 156 L 1440 0 L 1360 0 C 1280 0 1120 0 960 0 C 800 0 640 0 480 0 C 320 0 160 0 80 0 L 0 0 Z"
     ></path>
   </svg>
+</ion-header>
 
+<ion-content>
   <div id="goalTracker">
     <h5 *ngIf="settingsPage.settings.goal=='low'">
       Goal : 75 minutes per week
@@ -44,23 +46,23 @@
     ></circle-progress>
   </div>
 
-  <ion-content forceOverscroll="true">
-    <ion-card *ngFor="let post of post_list | async;">
-      <ion-card-header>
-        <ion-card-title>{{ post.userName }}'s {{ post.type }}</ion-card-title>
-        <ion-card-subtitle
-          >{{ utils.recalcDist(post.dist) +" "+ utils.distance_unit_short}}
-        </ion-card-subtitle>
-        <ion-card-subtitle
-          >{{ utils.minutes2Time(post.time) }}</ion-card-subtitle
-        >
-      </ion-card-header>
+  <div id="shopDiv">
+    <ion-button (click)="showShopModal()">Visit the Shop</ion-button>
+  </div>
 
-      <ion-card-content>
-        {{post.text}}
-        <br />
-        Posted {{utils.setDate(post.date)}}
-      </ion-card-content>
-    </ion-card>
-  </ion-content>
-</ion-header>
+  <ion-card *ngFor="let post of post_list | async;">
+    <ion-card-header>
+      <ion-card-title>{{ post.userName }}'s {{ post.type }}</ion-card-title>
+      <ion-card-subtitle
+        >{{ utils.recalcDist(post.dist) +" "+ utils.distance_unit_short}}
+      </ion-card-subtitle>
+      <ion-card-subtitle>{{ utils.minutes2Time(post.time) }}</ion-card-subtitle>
+    </ion-card-header>
+
+    <ion-card-content>
+      {{post.text}}
+      <br />
+      Posted {{utils.setDate(post.date)}}
+    </ion-card-content>
+  </ion-card>
+</ion-content>

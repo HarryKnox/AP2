@@ -1,26 +1,64 @@
-.topPurple {
-  background: #992fed;
-  height: 5px;
+ion-title {
+  font-size: larger;
 }
 
-ion-header svg {
-  z-index: -1;
-  display: inline-block;
-}
-
-.greyBit {
-  background-color: #bbc4d0;
-  height: 40%;
-}
-
-#brand {
-  background-color: #bbc4d0;
-  color: #992fed;
+ion-footer {
   text-align: center;
-  font-size: 2em;
-  font-weight: bolder;
+  margin-bottom: 1em;
+}
+
+ion-footer ion-button {
+  font-size: 1em;
+  height: 3em;
+  width: 6.5em;
+  border-radius: 3em;
+  --background-hover: #992fed;
+  --background: #92949c;
 }
 
 ion-content {
-  background-color: white;
+  text-align: center;
+}
+
+#pointBalance {
+  left: 0;
+  right: 0;
+  margin: auto;
+  border: solid 0.25em #92949c;
+  border-radius: 0.5em;
+  width: 60%;
+  padding: 0.75em;
+  background-color: whitesmoke;
+  color: black;
+  margin-bottom: 1em;
+}
+
+h6 {
+  margin-top: 1.5em;
+  font-weight: 550;
+  margin-bottom: 0.25em;
+}
+
+.column {
+  margin-top: 1em;
+  float: left;
+  width: 40%;
+  margin-left: 5%;
+  margin-right: 5%;
+}
+
+/* Clear floats after the columns */
+.row:after {
+  content: "";
+  display: table;
+  clear: both;
+}
+
+p {
+  margin: 0;
+  font-size: smaller;
+}
+
+img {
+  border-radius: 0.5em;
 }

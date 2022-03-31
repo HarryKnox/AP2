@@ -7,6 +7,7 @@ import {
   CircleProgressComponent,
   CircleProgressOptions,
 } from 'ng-circle-progress';
+import { ShopPage } from '../shop/shop.page';
 
 @Component({
   selector: 'app-home',
@@ -72,4 +73,12 @@ export class homePage {
       this.goal_tracker_value = Number(res);
     });
   }
+
+  // display shop modal
+  async showShopModal() {
+    const modal = await this.modalController.create({
+      component: ShopPage,
+    });
+    return await modal.present();
+  } // present modal closed
 } // home page closed

@@ -151,8 +151,6 @@ export class UploadPage implements OnInit {
 
   // calculates points earned from a post
   calculatePoints(post: any) {
-    console.log(post);
-
     // split time value by colons
     var timeSplits = post.time.split(':');
 

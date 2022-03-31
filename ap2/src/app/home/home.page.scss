@@ -3,14 +3,9 @@
   height: 5px;
 }
 
-ion-header svg {
-  z-index: -1;
-  display: inline-block;
-}
-
 .greyBit {
   background-color: #bbc4d0;
-  height: 20%;
+  height: 40%;
 }
 
 #brand {
@@ -34,4 +29,20 @@ ion-header svg {
 
 #goalTracker circle-progress {
   margin: 0;
+}
+
+#shopDiv ion-button {
+  width: 50%;
+  margin: 0;
+  --background-hover: #92949c;
+  --background: #992fed;
+}
+
+#shopDiv {
+  text-align: center;
+  margin: 0;
+}
+
+ion-content {
+  height: 100%;
 }

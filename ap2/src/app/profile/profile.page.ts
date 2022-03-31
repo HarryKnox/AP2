@@ -4,7 +4,6 @@ import { AlertController, ModalController } from '@ionic/angular';
 import { EditProfileModalPage } from '../edit-profile-modal/edit-profile-modal.page';
 import { EditPostModalPage } from '../edit-post-modal/edit-post-modal.page';
 import { UtilityService } from '../services/utility_funcs.service';
-import { ShopPage } from '../shop/shop.page';
 
 @Component({
   selector: 'app-profile',
@@ -104,12 +103,4 @@ export class ProfilePage implements OnInit {
       });
     });
   } // func closed
-
-  // display shop modal
-  async showShopModal() {
-    const modal = await this.modalController.create({
-      component: ShopPage,
-    });
-    return await modal.present();
-  } // present modal closed
 } // class closed
