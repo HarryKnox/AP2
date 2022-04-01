@@ -3,7 +3,6 @@ import * as moment from 'moment';
 import { DatePipe } from '@angular/common';
 import { AlertController } from '@ionic/angular';
 import { WebService } from './web.service';
-import { map, take } from 'rxjs/operators';
 
 @Injectable({
   providedIn: 'root',
@@ -56,12 +55,15 @@ export class UtilityService {
 
   // function to change date to, "5 seconds ago"
   setDate(postDate: any) {
-    var fixed_date = this.datepipe.transform(
+    var pipe_date = this.datepipe.transform(
       postDate,
       'yyyy-MM-ddTHH:mm:ss.SSS'
     );
-    fixed_date = moment(fixed_date).fromNow();
-    return fixed_date;
+
+    // adding an hour to offset a bug
+    var fixed_date = moment(pipe_date).subtract(1, 'h').toDate();
+
+    return moment(fixed_date).fromNow();
   }
 
   // function to re-calculate each posts distance, according to the set metric
