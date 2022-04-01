@@ -51,18 +51,29 @@
   </div>
 
   <ion-card *ngFor="let post of post_list | async;">
-    <ion-card-header>
-      <ion-card-title>{{ post.userName }}'s {{ post.type }}</ion-card-title>
-      <ion-card-subtitle
-        >{{ utils.recalcDist(post.dist) +" "+ utils.distance_unit_short}}
-      </ion-card-subtitle>
-      <ion-card-subtitle>{{ utils.minutes2Time(post.time) }}</ion-card-subtitle>
-    </ion-card-header>
-
     <ion-card-content>
-      {{post.text}}
-      <br />
-      Posted {{utils.setDate(post.date)}}
+      <div class="row">
+        <div class="column1" (click)="loadProfile(post.userName)">
+          <h5>{{post.userName}}</h5>
+          <img src="{{post.pic}}" />
+        </div>
+
+        <div class="column2">
+          <ion-card-subtitle style="margin-top: 1em"
+            >{{ utils.recalcDist(post.dist) +" "+ utils.distance_unit_short}}
+            {{post.type}}
+          </ion-card-subtitle>
+          <ion-card-subtitle
+            >{{ utils.minutes2Time(post.time) }}</ion-card-subtitle
+          >
+          <ion-card-subtitle
+            >{{utils.recalcSpeed(post.pace)}}
+            {{utils.pace_unit}}</ion-card-subtitle
+          >
+          <ion-card-subtitle>{{post.text}}</ion-card-subtitle>
+        </div>
+      </div>
+      <p>Posted {{utils.setDate(post.date)}}</p>
     </ion-card-content>
   </ion-card>
 </ion-content>

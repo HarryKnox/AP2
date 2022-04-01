@@ -18,7 +18,7 @@ export class ShopPage implements OnInit {
 
   ngOnInit() {
     // retrieve user data and assing to var
-    this.webService.getUser().subscribe((res) => {
+    this.webService.getUser('current').subscribe((res) => {
       this.user_points = res['points'];
     });
   }

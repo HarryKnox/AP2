@@ -8,7 +8,7 @@ import {
   CircleProgressOptions,
 } from 'ng-circle-progress';
 import { ShopPage } from '../shop/shop.page';
-
+import { Router } from '@angular/router';
 @Component({
   selector: 'app-home',
   templateUrl: 'home.page.html',
@@ -19,7 +19,8 @@ export class homePage {
     public webService: WebService,
     private utils: UtilityService,
     private modalController: ModalController,
-    private settingsPage: SettingsPage
+    private settingsPage: SettingsPage,
+    private router: Router
   ) {}
 
   // array defined to hold all exercise posts
@@ -28,13 +29,18 @@ export class homePage {
   // goal tracker value
   goal_tracker_value = 0;
 
+  // current user
+  current_user: any;
+
   // life cycle hook called when component created
   ngOnInit() {
     // fetches all exercise posts
     this.post_list = this.webService.getPosts();
 
     // initial user settings retrieved and set
-    this.webService.getUser().subscribe((profile) => {
+    this.webService.getUser('current').subscribe((profile) => {
+      this.current_user = profile;
+
       this.webService.getUserSettings(profile['_id']).subscribe((res) => {
         this.settingsPage.settings.distance_unit = res['dist_unit'];
         this.settingsPage.settings.goal = res['goal_tracker'];
@@ -53,7 +59,7 @@ export class homePage {
     this.post_list = this.webService.getPosts();
 
     // initial user settings retrieved and set
-    this.webService.getUser().subscribe((profile) => {
+    this.webService.getUser('current').subscribe((profile) => {
       this.webService.getUserSettings(profile['_id']).subscribe((res) => {
         this.settingsPage.settings.distance_unit = res['dist_unit'];
         this.settingsPage.settings.goal = res['goal_tracker'];
@@ -81,4 +87,14 @@ export class homePage {
     });
     return await modal.present();
   } // present modal closed
+
+  // loads a user profile when name/profile pic clicked
+  loadProfile(name: any) {
+    // check if it is current user's profile
+    if (name == this.current_user.username) {
+      this.router.navigateByUrl('members/profile');
+    } else {
+      console.log('Go to', name, 'profile!');
+    }
+  }
 } // home page closed

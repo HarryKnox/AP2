@@ -137,8 +137,8 @@ export class WebService {
   }
 
   // get logged in user's profile info
-  getUser() {
-    return this.http.get('http://localhost:5000/api/v1/users');
+  getUser(username: any) {
+    return this.http.get('http://localhost:5000/api/v1/users/' + username);
   }
 
   // edit a user's profile
@@ -161,11 +161,6 @@ export class WebService {
     return this.http.delete('http://localhost:5000/api/v1.0/users');
   }
 
-  // get user's profile picture from backend directory
-  getUserPic(pic_name: any) {
-    return this.http.get('http://localhost:5000/api/v1/users/' + pic_name);
-  }
-
   // save settings changes
   postUserSettings(settings: any) {
     let settingsData = new FormData();
@@ -179,6 +174,7 @@ export class WebService {
     );
   }
 
+  // gets a user's settings
   getUserSettings(id: any) {
     return this.http.get('http://localhost:5000/api/v1.0/users/settings/' + id);
   }

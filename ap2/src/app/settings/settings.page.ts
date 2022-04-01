@@ -74,7 +74,7 @@ export class SettingsPage implements OnInit {
 
   // sets the user settings, from saved DB settings
   setSettings() {
-    this.webService.getUser().subscribe((profile) => {
+    this.webService.getUser('current').subscribe((profile) => {
       this.webService.getUserSettings(profile['_id']).subscribe((res) => {
         this.settings.distance_unit = res['dist_unit'];
         this.settings.goal = res['goal_tracker'];

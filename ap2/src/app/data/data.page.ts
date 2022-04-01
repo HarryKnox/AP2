@@ -4,6 +4,7 @@ import { WebService } from '../services/web.service';
 import { UtilityService } from '../services/utility_funcs.service';
 import { Chart, registerables } from 'node_modules/chart.js';
 import { SettingsPage } from '../settings/settings.page';
+import { first } from 'rxjs/operators';
 
 @Component({
   selector: 'app-data',
@@ -124,7 +125,7 @@ export class DataPage implements OnInit {
       }); // subscribe closed
   } // function closed
 
-  // function to retrieve leaderboard data
+  // retrieves leaderboard data
   getLeaderboard() {
     // gets a leaderboard, using the var filters
     this.leaderboardData = this.webService.getLeaderboard(

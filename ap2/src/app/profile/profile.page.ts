@@ -94,7 +94,7 @@ export class ProfilePage implements OnInit {
   // func to get user profile data
   getUserData() {
     // call get user and set info. to profileData var
-    this.webService.getUser().subscribe((profile) => {
+    this.webService.getUser('current').subscribe((profile) => {
       this.profileData = profile;
 
       // call get userposts + set to var

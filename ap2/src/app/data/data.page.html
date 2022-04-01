@@ -105,8 +105,8 @@
   <ng-container *ngIf="toolbar_selection=='leaderboards'">
     <!-- (ionChange)="toolbar_update($event)" -->
 
-    <h6 style="color: #bbc4d0; text-align: center">
-      {{leaderboard_time_filter}} {{filters.type}} {{filters.lboard}} Ranking
+    <h6 style="color: #992fed; text-align: center; font-weight: 550">
+      {{filters.period}} {{filters.type}} {{filters.lboard}} Ranking
     </h6>
 
     <div id="leaderboardBox">
@@ -148,12 +148,12 @@
       <div class="leaderboardTable" id="table-scroll">
         <table>
           <!-- header row  -->
-          <tr class="col">
+          <!-- <tr class="col">
             <th>#</th>
             <th>User</th>
             <th id="boardTh">{{filters.lboard}}</th>
             <th>Points Prize</th>
-          </tr>
+          </tr> -->
 
           <!-- each row in leaderboard -->
           <!-- ng containers used to give correct metric depending on field. RESPONSIVE -->
@@ -162,6 +162,9 @@
             *ngFor="let user of leaderboardData | async; let i=index"
           >
             <td>{{i+1}}</td>
+            <td>
+              <img src="{{user.pic}}" />
+            </td>
             <td>{{user.name}}</td>
 
             <ng-container *ngIf="filters.lboard=='Time Spent'; else nextCheck">
@@ -170,8 +173,8 @@
 
             <ng-template #nextCheck>
               <ng-container *ngIf="filters.lboard=='Distance'; else next2Check">
-                <td>
-                  {{utils.recalcDist(user.value)}} {{utils.distance_unit_short}}
+                <td style="color: #992fed">
+                  {{utils.recalcDist(user.value)}} {{utils.distance_unit}}
                 </td>
               </ng-container>
             </ng-template>
@@ -188,8 +191,8 @@
               <td>{{user.value}}</td>
             </ng-template>
 
-            <!-- POINTS - SHORT TERM SOLUTION -->
-            <td>{{utils.roundNumber(500/(i+1))}}</td>
+            <!-- POINTS - Ready for implementation -->
+            <!-- <td>{{utils.roundNumber(500/(i+1))}}</td> -->
           </tr>
         </table>
       </div>
