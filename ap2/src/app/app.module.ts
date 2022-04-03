@@ -17,6 +17,7 @@ import { EditProfileModalPage } from './edit-profile-modal/edit-profile-modal.pa
 import { ProfilePage } from './profile/profile.page';
 import { SettingsPage } from './settings/settings.page';
 import { NgCircleProgressModule } from 'ng-circle-progress';
+import { OthersProfilePage } from './others-profile/others-profile.page';
 
 library.add(fas);
 
@@ -48,6 +49,7 @@ library.add(fas);
     DatePipe,
     ProfilePage,
     SettingsPage,
+    OthersProfilePage,
     { provide: HTTP_INTERCEPTORS, useClass: InterceptorService, multi: true },
   ],
   bootstrap: [AppComponent],

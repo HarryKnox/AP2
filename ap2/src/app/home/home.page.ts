@@ -8,7 +8,10 @@ import {
   CircleProgressOptions,
 } from 'ng-circle-progress';
 import { ShopPage } from '../shop/shop.page';
-import { Router } from '@angular/router';
+import { NavigationExtras, Router } from '@angular/router';
+import { OthersProfilePage } from '../others-profile/others-profile.page';
+import { JsonpClientBackend } from '@angular/common/http';
+
 @Component({
   selector: 'app-home',
   templateUrl: 'home.page.html',
@@ -20,7 +23,8 @@ export class homePage {
     private utils: UtilityService,
     private modalController: ModalController,
     private settingsPage: SettingsPage,
-    private router: Router
+    private router: Router,
+    private otherProfile: OthersProfilePage
   ) {}
 
   // array defined to hold all exercise posts
@@ -94,7 +98,15 @@ export class homePage {
     if (name == this.current_user.username) {
       this.router.navigateByUrl('members/profile');
     } else {
-      console.log('Go to', name, 'profile!');
+      // adding username parameter to router navigation
+      let navigationExtras: NavigationExtras = {
+        queryParams: {
+          username: JSON.stringify(name),
+        },
+      };
+
+      // username is passed to loadProfile function of otherProfile component
+      this.router.navigate(['members/others-profile'], navigationExtras);
     }
   }
 } // home page closed

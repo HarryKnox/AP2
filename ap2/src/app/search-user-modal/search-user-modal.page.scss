@@ -1,0 +1,71 @@
+ion-title {
+  font-size: larger;
+}
+
+ion-footer {
+  text-align: center;
+  margin-bottom: 1em;
+}
+
+ion-footer ion-button {
+  font-size: 1em;
+  height: 3em;
+  width: 6.5em;
+  border-radius: 3em;
+  --background-hover: #992fed;
+  --background: #92949c;
+}
+
+ion-content {
+  text-align: center;
+}
+
+ion-label {
+  text-align: center;
+  margin-top: 2em;
+  font-weight: 550;
+}
+
+ion-icon {
+  float: left;
+  color: whitesmoke;
+  margin-left: 1em;
+  font-size: larger;
+  margin-right: 1em;
+}
+
+ion-input {
+  border: 0.15em solid whitesmoke;
+  border-radius: 2em;
+  float: left;
+  text-align: left;
+  margin-top: 2.5em;
+  margin-bottom: 1em;
+}
+
+ion-card {
+  left: 0;
+  right: 0;
+  margin: auto;
+  width: 10em;
+  height: 11em;
+  margin-top: 1em;
+  padding: 0;
+  background: #92949c;
+}
+
+img {
+  width: 6em;
+  height: 6em;
+  border-radius: 10em;
+}
+
+ion-card h2 {
+  color: black;
+  font-size: large;
+  font-weight: 550;
+}
+
+ion-card:hover {
+  cursor: pointer;
+}

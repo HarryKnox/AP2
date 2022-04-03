@@ -178,4 +178,11 @@ export class WebService {
   getUserSettings(id: any) {
     return this.http.get('http://localhost:5000/api/v1.0/users/settings/' + id);
   }
+
+  // searches user DB using an input var
+  getSearch(searchInput: any) {
+    return this.http.get(
+      'http://localhost:5000/api/v1.0/search/' + searchInput
+    );
+  }
 } // webService class closed

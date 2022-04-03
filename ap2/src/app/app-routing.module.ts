@@ -52,9 +52,21 @@ const routes: Routes = [
       import('./help-modal/help-modal.module').then(
         (m) => m.HelpModalPageModule
       ),
-  },  {
+  },
+  {
     path: 'shop',
-    loadChildren: () => import('./shop/shop.module').then( m => m.ShopPageModule)
+    loadChildren: () =>
+      import('./shop/shop.module').then((m) => m.ShopPageModule),
+  },
+  {
+    path: 'others-profile/:username',
+    loadChildren: () =>
+      import('./others-profile/others-profile.module').then(
+        (m) => m.OthersProfilePageModule
+      ),
+  },  {
+    path: 'search-user-modal',
+    loadChildren: () => import('./search-user-modal/search-user-modal.module').then( m => m.SearchUserModalPageModule)
   },
 
 ];

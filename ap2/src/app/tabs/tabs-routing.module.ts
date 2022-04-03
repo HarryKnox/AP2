@@ -6,7 +6,7 @@ const routes: Routes = [
   {
     path: '',
     redirectTo: '/members/home',
-    pathMatch: 'full'
+    pathMatch: 'full',
   },
   {
     path: '',
@@ -14,26 +14,40 @@ const routes: Routes = [
     children: [
       {
         path: 'home',
-        loadChildren: () => import('../home/home.module').then(m => m.homePageModule)
+        loadChildren: () =>
+          import('../home/home.module').then((m) => m.homePageModule),
       },
       {
         path: 'profile',
-        loadChildren: () => import('../profile/profile.module').then(m => m.ProfilePageModule)
+        loadChildren: () =>
+          import('../profile/profile.module').then((m) => m.ProfilePageModule),
       },
       {
         path: 'upload',
-        loadChildren: () => import('../upload/upload.module').then(m => m.UploadPageModule)
+        loadChildren: () =>
+          import('../upload/upload.module').then((m) => m.UploadPageModule),
       },
       {
         path: 'settings',
-        loadChildren: () => import('../settings/settings.module').then(m => m.SettingsPageModule)
+        loadChildren: () =>
+          import('../settings/settings.module').then(
+            (m) => m.SettingsPageModule
+          ),
       },
       {
         path: 'data',
-        loadChildren: () => import('../data/data.module').then(m => m.DataPageModule)
-      }
-    ]
-  }
+        loadChildren: () =>
+          import('../data/data.module').then((m) => m.DataPageModule),
+      },
+      {
+        path: 'others-profile',
+        loadChildren: () =>
+          import('../others-profile/others-profile.module').then(
+            (m) => m.OthersProfilePageModule
+          ),
+      },
+    ],
+  },
 ];
 
 @NgModule({

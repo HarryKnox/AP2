@@ -4,6 +4,7 @@ import { AlertController, ModalController } from '@ionic/angular';
 import { EditProfileModalPage } from '../edit-profile-modal/edit-profile-modal.page';
 import { EditPostModalPage } from '../edit-post-modal/edit-post-modal.page';
 import { UtilityService } from '../services/utility_funcs.service';
+import { SearchUserModalPage } from '../search-user-modal/search-user-modal.page';
 
 @Component({
   selector: 'app-profile',
@@ -103,4 +104,12 @@ export class ProfilePage implements OnInit {
       });
     });
   } // func closed
+
+  // display search modal
+  async showSearchModal() {
+    const modal = await this.modalController.create({
+      component: SearchUserModalPage,
+    });
+    return await modal.present();
+  } // present modal closed
 } // class closed

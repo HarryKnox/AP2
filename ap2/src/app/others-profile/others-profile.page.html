@@ -11,7 +11,7 @@
     </svg>
   </div>
 
-  <div id="brand">My Profile</div>
+  <div id="brand">Profile</div>
 
   <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1440 200">
     <path
@@ -30,13 +30,9 @@
           src="http://localhost:5000/api/v1/images/{{profileData.picture}}"
         />
       </ng-container>
-
-      <ion-button id="theBtn" (click)="editProfileModal()" style="width: 6em"
-        >Edit Profile</ion-button
-      >
     </div>
 
-    <div class="column" style="margin-top: 1.5em">
+    <div class="column" style="margin-top: 0.5em">
       <h6>Points</h6>
       <p>{{ profileData.points }}</p>
 
@@ -48,15 +44,12 @@
     </div>
   </div>
 </ion-header>
-
 <ion-content>
-  <div id="searchDiv">
-    <ion-button (click)="showSearchModal()">Search for Users</ion-button>
-  </div>
-
   <ion-card *ngFor="let post of userPosts">
     <ion-card-header>
-      <ion-card-title>Your {{ post.type }}</ion-card-title>
+      <ion-card-title
+        >{{profileData.username}}'s {{ post.type }}</ion-card-title
+      >
       <ion-card-subtitle
         >{{ utils.recalcDist(post.dist) +"
         "+utils.distance_unit_short}}</ion-card-subtitle
@@ -71,11 +64,6 @@
       {{post.text}}
       <br />
       Posted {{utils.setDate(post.date)}}
-
-      <div id="cardBtns">
-        <ion-button (click)="editPostModal(post)">Edit</ion-button>
-        <ion-button (click)="presentDelete(post._id)">Delete</ion-button>
-      </div>
     </ion-card-content>
   </ion-card>
 </ion-content>

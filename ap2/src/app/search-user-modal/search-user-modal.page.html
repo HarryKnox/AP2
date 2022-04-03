@@ -1,0 +1,37 @@
+<ion-header>
+  <ion-toolbar style="margin-top: 0.25em">
+    <ion-title>Search Users</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <ion-input
+    placeholder="Search user..."
+    (input)="searchUser()"
+    id="searchInput"
+  >
+    <ion-icon name="search-sharp"><br /> </ion-icon
+  ></ion-input>
+
+  <ng-container *ngIf="searchResults!=''; else noMatch">
+    <ion-card
+      *ngFor="let user of searchResults | async;"
+      (click)="loadProfile(user['name'])"
+    >
+      <ion-card-content>
+        <img src="{{user['pic']}}" />
+        <h2>{{user['name']}}</h2>
+      </ion-card-content>
+    </ion-card>
+  </ng-container>
+
+  <ng-template #noMatch>
+    <p style="color: white">No matches found.</p>
+  </ng-template>
+</ion-content>
+
+<ion-footer>
+  <hr style="background-color: grey" />
+
+  <ion-button (click)="dismissModal()">Close</ion-button>
+</ion-footer>
