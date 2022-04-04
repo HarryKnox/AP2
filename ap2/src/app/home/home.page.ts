@@ -1,7 +1,7 @@
 import { Component } from '@angular/core';
 import { WebService } from '../services/web.service';
 import { UtilityService } from '../services/utility_funcs.service';
-import { ModalController } from '@ionic/angular';
+import { AlertButton, AlertController, ModalController } from '@ionic/angular';
 import { SettingsPage } from '../settings/settings.page';
 import {
   CircleProgressComponent,
@@ -24,7 +24,8 @@ export class homePage {
     private modalController: ModalController,
     private settingsPage: SettingsPage,
     private router: Router,
-    private otherProfile: OthersProfilePage
+    private otherProfile: OthersProfilePage,
+    private alertCtrl: AlertController
   ) {}
 
   // array defined to hold all exercise posts
@@ -35,6 +36,24 @@ export class homePage {
 
   // current user
   current_user: any;
+
+  // boolean value for hiding/displaying comment box
+  comment_box_boolean: boolean = false;
+
+  // contains which particular post's comment box to open
+  comment_box_to_show: null;
+
+  // boolean value for hiding/displaying comment input
+  comment_input_boolean: boolean = false;
+
+  // contains which particular post's comment input to open
+  comment_input_to_show: null;
+
+  // holds value of the comment input
+  comment_input_value: null;
+
+  // holds comments for a post
+  comments: any = [];
 
   // life cycle hook called when component created
   ngOnInit() {
@@ -108,5 +127,94 @@ export class homePage {
       // username is passed to loadProfile function of otherProfile component
       this.router.navigate(['members/others-profile'], navigationExtras);
     }
+  }
+
+  // opens comments section box
+  openCommentBox(boxIndex, postID) {
+    // load the comments for post
+    this.webService.getComments(postID).subscribe((res) => {
+      this.comments = res;
+
+      // if already open, then close
+      if (
+        this.comment_box_to_show == boxIndex &&
+        this.comment_box_boolean != false
+      ) {
+        this.comment_box_boolean = false;
+      }
+
+      // if not open, then open
+      else {
+        this.comment_box_boolean = true;
+      }
+
+      // update var for which comment box to open
+      this.comment_box_to_show = boxIndex;
+    });
+  }
+
+  // opens/closes comments section box
+  openCommentInput(boxIndex) {
+    if (
+      this.comment_input_to_show == boxIndex &&
+      this.comment_input_boolean != false
+    ) {
+      this.comment_input_boolean = false;
+      this.comment_input_value = null;
+    } else {
+      this.comment_input_boolean = true;
+      this.comment_input_value = null;
+    }
+    // update var for which comment input box to open
+    this.comment_input_to_show = boxIndex;
+  }
+
+  // posts a comment to the DB
+  async postComment(postID: any, posterName: any) {
+    // presence check on input
+    if (this.comment_input_value != ' ' && this.comment_input_value != null) {
+      // create obj with comment data
+      var commentData = {
+        text: this.comment_input_value,
+        postID: postID,
+      };
+
+      // call API route to post the comment
+      this.webService.postComment(commentData).subscribe((res) => {
+        // motivational pop up msg
+        this.alertCtrl
+          .create({
+            header: 'Comment Posted Successfully',
+            message: 'Thanks for supporting ' + posterName + '!',
+            buttons: ['OK'],
+          })
+          .then((alert) => alert.present());
+      });
+
+      // reset comment value
+      this.comment_input_value = null;
+
+      // close comment input
+      this.comment_input_boolean = false;
+    }
+
+    // if fail presence check
+    else {
+      await this.alertCtrl
+        .create({
+          header: 'Comment Failed',
+          message: 'Required field is empty, please try again.',
+          buttons: ['OK'],
+        })
+        .then((res) => res.present());
+    }
+  } // post comment func closed
+
+  // fetches functions for a post
+  getComments(postID: any) {
+    this.webService.getComments(postID).subscribe((res) => {
+      console.log(res);
+      return res;
+    });
   }
 } // home page closed

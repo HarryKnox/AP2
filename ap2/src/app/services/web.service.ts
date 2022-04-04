@@ -185,4 +185,22 @@ export class WebService {
       'http://localhost:5000/api/v1.0/search/' + searchInput
     );
   }
+
+  // add a comment to db
+  postComment(comment: any) {
+    let commentData = new FormData();
+    commentData.append('text', comment.text);
+    commentData.append('postID', comment.postID);
+
+    // http post call made, with form data
+    return this.http.post(
+      'http://localhost:5000/api/v1.0/comments',
+      commentData
+    );
+  }
+
+  // fetches comments for a post
+  getComments(postID: any) {
+    return this.http.get('http://localhost:5000/api/v1.0/comments/' + postID);
+  }
 } // webService class closed

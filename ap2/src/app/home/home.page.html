@@ -50,7 +50,7 @@
     <ion-button (click)="showShopModal()">Visit the Shop</ion-button>
   </div>
 
-  <ion-card *ngFor="let post of post_list | async;">
+  <ion-card *ngFor="let post of post_list | async; let i=index">
     <ion-card-content>
       <div class="row">
         <div class="column1" (click)="loadProfile(post.userName)">
@@ -74,6 +74,48 @@
         </div>
       </div>
       <p>Posted {{utils.setDate(post.date)}}</p>
+
+      <div id="socialBar" style="clear: both">
+        <h5 style="float: left">
+          2 <ion-icon name="thumbs-up-sharp"></ion-icon>
+        </h5>
+        <h6 style="float: right" (click)="openCommentBox(i,post._id)">
+          Comment(s)
+        </h6>
+      </div>
     </ion-card-content>
+    <br />
+
+    <div id="socialBtns">
+      <ion-button>Like</ion-button>
+      <ion-button (click)="openCommentInput(i)">Comment</ion-button>
+    </div>
+
+    <div
+      *ngIf="comment_box_boolean==true && comment_box_to_show==i"
+      style="margin-top: 3em"
+    >
+      <ng-container id="aComment" *ngFor="let comment of comments">
+        <img
+          src="http://localhost:5000/api/v1/images/{{comment['user_pic']}}"
+        />
+        <p>{{comment["username"]}}</p>
+        <p>{{comment["text"]}}</p>
+      </ng-container>
+    </div>
+
+    <div
+      *ngIf="comment_input_boolean==true && comment_input_to_show==i"
+      style="margin-top: 1em; margin-left: 1em"
+      id="commentInputBox"
+    >
+      <ion-input
+        placeholder="Write a comment ..."
+        [(ngModel)]="comment_input_value"
+      ></ion-input>
+      <ion-button (click)="postComment(post._id,post.userName)"
+        >Post</ion-button
+      >
+    </div>
   </ion-card>
 </ion-content>
