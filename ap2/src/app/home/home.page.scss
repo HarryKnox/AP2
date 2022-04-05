@@ -144,9 +144,36 @@ h6:hover {
 }
 
 #aComment {
-  float: left;
+  margin-bottom: 2em;
 }
 
-ng-container img {
+#aComment p {
+  float: left;
+  margin: 0;
+  padding: 0;
+  margin-left: 0.5em;
+  margin-top: 0.5em;
+}
+
+#aComment img {
+  float: left;
+  margin-left: 0.5em;
+  height: 2em;
+  width: 2em;
   border-radius: 5em;
+  padding: 0;
+}
+
+.commentBtns {
+  float: right;
+  width: 3em;
+  height: 1.25em;
+  --background: #1c1c1d;
+  --background-hover: whitesmoke;
+  border-radius: 0.25em;
+  font-size: 0.75em;
+}
+
+.commentBtns:hover {
+  color: #1c1c1d;
 }

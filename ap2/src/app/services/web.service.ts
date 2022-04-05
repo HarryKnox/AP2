@@ -203,4 +203,12 @@ export class WebService {
   getComments(postID: any) {
     return this.http.get('http://localhost:5000/api/v1.0/comments/' + postID);
   }
+
+  // deletes a comment
+  deleteComment(commentID: any) {
+    // http delete call made
+    return this.http.delete(
+      'http://localhost:5000/api/v1.0/comments/' + commentID
+    );
+  }
 } // webService class closed

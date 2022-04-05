@@ -213,8 +213,29 @@ export class homePage {
   // fetches functions for a post
   getComments(postID: any) {
     this.webService.getComments(postID).subscribe((res) => {
-      console.log(res);
       return res;
     });
   }
+
+  // confirm delete comment pop up
+  async presentDelete(commentID: any) {
+    const alert = await this.alertCtrl.create({
+      header: 'Confirm Delete',
+      message: 'Are you sure you want to delete your comment?',
+      buttons: [
+        {
+          text: 'Cancel',
+          role: 'cancel',
+        },
+        {
+          text: 'Yes',
+          handler: () => {
+            this.webService.deleteComment(commentID).subscribe();
+            this.comment_box_boolean = false;
+          },
+        },
+      ],
+    });
+    alert.present();
+  } // present delete modal closed
 } // home page closed

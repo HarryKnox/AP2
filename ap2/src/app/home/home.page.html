@@ -95,13 +95,25 @@
       *ngIf="comment_box_boolean==true && comment_box_to_show==i"
       style="margin-top: 3em"
     >
-      <ng-container id="aComment" *ngFor="let comment of comments">
+      <div id="aComment" *ngFor="let comment of comments">
         <img
           src="http://localhost:5000/api/v1/images/{{comment['user_pic']}}"
         />
         <p>{{comment["username"]}}</p>
-        <p>{{comment["text"]}}</p>
-      </ng-container>
+        <p style="margin-left: 0.5em">{{comment["text"]}}</p>
+
+        <!-- Edit/Del comment btns for commenter only -->
+        <ng-container *ngIf="comment['username'] == current_user.username">
+          <ion-button
+            class="commentBtns"
+            (click)="presentDelete(comment['_id'])"
+            >Delete</ion-button
+          >
+          <ion-button class="commentBtns">Edit</ion-button>
+        </ng-container>
+
+        <br />
+      </div>
     </div>
 
     <div
