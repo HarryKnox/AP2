@@ -77,17 +77,22 @@
 
       <div id="socialBar" style="clear: both">
         <h5 style="float: left">
-          2 <ion-icon name="thumbs-up-sharp"></ion-icon>
+          {{countLikes(post)}}
+          <ion-icon
+            style="color: checkIfLiked(post)"
+            name="thumbs-up-sharp"
+            (click)="toggleLike(post._id)"
+          ></ion-icon>
         </h5>
         <h6 style="float: right" (click)="openCommentBox(i,post._id)">
-          Comment(s)
+          {{post.numComments}} Comment(s)
         </h6>
       </div>
     </ion-card-content>
     <br />
 
     <div id="socialBtns">
-      <ion-button>Like</ion-button>
+      <ion-button (click)="toggleLike(post._id)">Like</ion-button>
       <ion-button (click)="openCommentInput(i)">Comment</ion-button>
     </div>
 
@@ -99,7 +104,7 @@
         <img
           src="http://localhost:5000/api/v1/images/{{comment['user_pic']}}"
         />
-        <p>{{comment["username"]}}</p>
+        <p style="font-weight: 550">{{comment["username"]}}</p>
         <p style="margin-left: 0.5em">{{comment["text"]}}</p>
 
         <!-- Edit/Del comment btns for commenter only -->
@@ -109,7 +114,11 @@
             (click)="presentDelete(comment['_id'])"
             >Delete</ion-button
           >
-          <ion-button class="commentBtns">Edit</ion-button>
+          <ion-button
+            class="commentBtns"
+            (click)="presentEditComment(comment._id, comment.text) "
+            >Edit</ion-button
+          >
         </ng-container>
 
         <br />

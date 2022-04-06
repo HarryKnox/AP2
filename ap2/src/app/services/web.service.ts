@@ -211,4 +211,25 @@ export class WebService {
       'http://localhost:5000/api/v1.0/comments/' + commentID
     );
   }
+
+  // edits a comment
+  editComment(commentID: any, comment: any) {
+    let commentData = new FormData();
+    commentData.append('text', comment);
+
+    return this.http.put(
+      'http://localhost:5000/api/v1.0/comments/' + commentID,
+      commentData
+    );
+  }
+
+  // puts a like
+  putLike(userID: any, postID: any) {
+    let likeData = new FormData();
+    likeData.append('userID', userID);
+
+    return this.http
+      .put('http://localhost:5000/api/v1.0/likes/' + postID, likeData)
+      .subscribe();
+  }
 } // webService class closed

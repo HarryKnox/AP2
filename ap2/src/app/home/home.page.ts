@@ -210,7 +210,7 @@ export class homePage {
     }
   } // post comment func closed
 
-  // fetches functions for a post
+  // fetches comments for a post
   getComments(postID: any) {
     this.webService.getComments(postID).subscribe((res) => {
       return res;
@@ -238,4 +238,77 @@ export class homePage {
     });
     alert.present();
   } // present delete modal closed
+
+  // edit comment pop up
+  async presentEditComment(commentID: any, commentText: any) {
+    const editAlert = await this.alertCtrl.create({
+      header: 'Edit Comment',
+      cssClass: 'editAlert',
+      inputs: [
+        {
+          name: 'comment',
+          value: commentText,
+          cssClass: 'editInput',
+        },
+      ],
+      buttons: [
+        {
+          text: 'Cancel',
+          role: 'cancel',
+        },
+        {
+          text: 'Save',
+          handler: (data) => {
+            // presence check on input
+            if (data.comment != ' ' && data.comment != '') {
+              this.webService.editComment(commentID, data.comment).subscribe();
+              this.comment_box_boolean = false;
+            }
+
+            // if presence check fails
+            else {
+              this.alertCtrl
+                .create({
+                  header: 'Edit Failed',
+                  message: 'Required field is empty, please try again.',
+                  buttons: ['OK'],
+                })
+                .then((res) => res.present());
+            }
+          },
+        },
+      ],
+    });
+    editAlert.present();
+  } // present delete modal closed
+
+  // toggles the like for a post
+  toggleLike(postID: any) {
+    this.webService.putLike(this.current_user['_id'], postID);
+    this.ngOnInit();
+  }
+
+  countLikes(post: any) {
+    // if post has likes
+    if (post.likes) {
+      return post.likes.length;
+    }
+
+    // if post doesn't have likes
+    else {
+      return 0;
+    }
+  }
+
+  checkIfLiked(post: any) {
+    // loop through that post's likes
+    for (var like in post.likes) {
+      // check if liker is current user
+      if (post.likes[like] == this.current_user['_id']) {
+        return '#992fed';
+      } else {
+        return 'blue';
+      }
+    }
+  }
 } // home page closed
