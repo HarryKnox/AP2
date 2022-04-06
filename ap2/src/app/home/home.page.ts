@@ -300,15 +300,14 @@ export class homePage {
     }
   }
 
+  // check if logged in user has liked post
   checkIfLiked(post: any) {
-    // loop through that post's likes
     for (var like in post.likes) {
       // check if liker is current user
       if (post.likes[like] == this.current_user['_id']) {
-        return '#992fed';
-      } else {
-        return 'blue';
+        return true;
       }
     }
+    return false;
   }
 } // home page closed

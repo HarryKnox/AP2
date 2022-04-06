@@ -78,11 +78,21 @@
       <div id="socialBar" style="clear: both">
         <h5 style="float: left">
           {{countLikes(post)}}
-          <ion-icon
-            style="color: checkIfLiked(post)"
-            name="thumbs-up-sharp"
-            (click)="toggleLike(post._id)"
-          ></ion-icon>
+
+          <ng-container *ngIf="checkIfLiked(post); else normalThumb">
+            <ion-icon
+              style="color: green"
+              name="thumbs-up-sharp"
+              (click)="toggleLike(post._id)"
+            ></ion-icon>
+          </ng-container>
+
+          <ng-template #normalThumb>
+            <ion-icon
+              name="thumbs-up-sharp"
+              (click)="toggleLike(post._id)"
+            ></ion-icon>
+          </ng-template>
         </h5>
         <h6 style="float: right" (click)="openCommentBox(i,post._id)">
           {{post.numComments}} Comment(s)
@@ -92,7 +102,14 @@
     <br />
 
     <div id="socialBtns">
-      <ion-button (click)="toggleLike(post._id)">Like</ion-button>
+      <ng-container *ngIf="checkIfLiked(post); else normalLike">
+        <ion-button (click)="toggleLike(post._id)">Unlike</ion-button>
+      </ng-container>
+
+      <ng-template #normalLike>
+        <ion-button (click)="toggleLike(post._id)">Like</ion-button>
+      </ng-template>
+
       <ion-button (click)="openCommentInput(i)">Comment</ion-button>
     </div>
 
@@ -102,9 +119,12 @@
     >
       <div id="aComment" *ngFor="let comment of comments">
         <img
+          (click)="loadProfile(comment['username'])"
           src="http://localhost:5000/api/v1/images/{{comment['user_pic']}}"
         />
-        <p style="font-weight: 550">{{comment["username"]}}</p>
+        <p id="commentName" (click)="loadProfile(comment['username'])">
+          {{comment["username"]}}
+        </p>
         <p style="margin-left: 0.5em">{{comment["text"]}}</p>
 
         <!-- Edit/Del comment btns for commenter only -->

@@ -5,6 +5,7 @@ import { UtilityService } from '../services/utility_funcs.service';
 import { Chart, registerables } from 'node_modules/chart.js';
 import { SettingsPage } from '../settings/settings.page';
 import { first } from 'rxjs/operators';
+import { AlertController } from '@ionic/angular';
 
 @Component({
   selector: 'app-data',
@@ -38,7 +39,8 @@ export class DataPage implements OnInit {
     public datepipe: DatePipe,
     private webService: WebService,
     private utils: UtilityService,
-    private settingsPage: SettingsPage
+    private settingsPage: SettingsPage,
+    private alertCtrl: AlertController
   ) {
     Chart.register(...registerables);
   }

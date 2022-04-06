@@ -164,6 +164,19 @@ h6:hover {
   padding: 0;
 }
 
+#aComment img:hover {
+  cursor: pointer;
+}
+
+#commentName {
+  font-weight: 550;
+  text-decoration: underline;
+}
+
+#commentName:hover {
+  cursor: pointer;
+}
+
 .commentBtns {
   float: right;
   width: 3em;

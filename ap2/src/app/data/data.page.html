@@ -109,6 +109,36 @@
       {{filters.period}} {{filters.type}} {{filters.lboard}} Ranking
     </h6>
 
+    <div class="lboardFilter">
+      <ion-select
+        interface="popover"
+        value="All Types"
+        [(ngModel)]="filters.type"
+        (ionChange)="getLeaderboard()"
+      >
+        <ion-select-option value="All Types">All Types</ion-select-option>
+        <ion-select-option value="Walking">Walking</ion-select-option>
+        <ion-select-option value="Cycling">Cycling</ion-select-option>
+        <ion-select-option value="Running">Running</ion-select-option>
+      </ion-select>
+    </div>
+
+    <div class="lboardFilter">
+      <ion-select
+        interface="popover"
+        value="Distance"
+        [(ngModel)]="filters.lboard"
+        (ionChange)="getLeaderboard()"
+      >
+        <ion-select-option value="Distance">Distance</ion-select-option>
+        <ion-select-option value="Time Spent">Time Spent</ion-select-option>
+        <ion-select-option value="Number of Activities"
+          >Number of Activities</ion-select-option
+        >
+        <ion-select-option value="Average Pace">Average Pace</ion-select-option>
+      </ion-select>
+    </div>
+
     <div id="leaderboardBox">
       <ion-toolbar id="filtersToolbar">
         <ion-segment
@@ -147,14 +177,6 @@
       <!-- leaderboard table div -->
       <div class="leaderboardTable" id="table-scroll">
         <table>
-          <!-- header row  -->
-          <!-- <tr class="col">
-            <th>#</th>
-            <th>User</th>
-            <th id="boardTh">{{filters.lboard}}</th>
-            <th>Points Prize</th>
-          </tr> -->
-
           <!-- each row in leaderboard -->
           <!-- ng containers used to give correct metric depending on field. RESPONSIVE -->
           <tr
@@ -197,36 +219,6 @@
         </table>
       </div>
       <!-- league table div closed -->
-    </div>
-
-    <div class="filter" style="margin-top: 1em">
-      <ion-select
-        interface="popover"
-        value="All Types"
-        [(ngModel)]="filters.type"
-        (ionChange)="getLeaderboard()"
-      >
-        <ion-select-option value="All Types">All Types</ion-select-option>
-        <ion-select-option value="Walking">Walking</ion-select-option>
-        <ion-select-option value="Cycling">Cycling</ion-select-option>
-        <ion-select-option value="Running">Running</ion-select-option>
-      </ion-select>
-    </div>
-
-    <div class="filter">
-      <ion-select
-        interface="popover"
-        value="Distance"
-        [(ngModel)]="filters.lboard"
-        (ionChange)="getLeaderboard()"
-      >
-        <ion-select-option value="Distance">Distance</ion-select-option>
-        <ion-select-option value="Time Spent">Time Spent</ion-select-option>
-        <ion-select-option value="Number of Activities"
-          >Number of Activities</ion-select-option
-        >
-        <ion-select-option value="Average Pace">Average Pace</ion-select-option>
-      </ion-select>
     </div>
   </ng-container>
 </ion-content>
