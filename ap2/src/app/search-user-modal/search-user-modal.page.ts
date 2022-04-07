@@ -58,7 +58,7 @@ export class SearchUserModalPage implements OnInit {
   loadProfile(name: any) {
     // check if it is current user's profile
     if (name == this.current_user.username) {
-      this.router.navigateByUrl('members/profile');
+      this.dismissModal();
     } else {
       // adding username parameter to router navigation
       let navigationExtras: NavigationExtras = {

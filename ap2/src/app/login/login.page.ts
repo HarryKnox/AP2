@@ -28,13 +28,13 @@ export class LoginPage implements OnInit {
     this.auth.login(this.credentials).subscribe(
       async (res) => {
         if (res) {
+          this.router.navigateByUrl('/members');
+
           // reset form
           this.credentials = {
             email: '',
             pw: '',
           };
-
-          this.router.navigateByUrl('/members');
         }
       },
       // error catch
@@ -50,6 +50,9 @@ export class LoginPage implements OnInit {
             })
             .then((res) => res.present());
         } // if closed
+
+        // clear login form
+        this.credentials.pw = '';
       } // error catch closed
     );
   } // login function closed

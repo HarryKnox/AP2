@@ -58,14 +58,50 @@ export class EditPostModalPage implements OnInit {
   }
 
   // func to post edit profile API call
-  editPost() {
-    // calls register webservice API call
-    this.webService
-      .putPost(this.edit_info.id, this.edit_info)
-      .subscribe((res) => {
-        this.dismissModal();
-        this.router.navigateByUrl('members');
-      });
+  async editPost() {
+    var overallValidator = true;
+
+    // presence check performed
+    if ((await this.utils.presenceCheck(this.edit_info)) == false) {
+      overallValidator = false;
+    }
+
+    // check for zero or less dist
+    else if (this.edit_info.dist <= 0) {
+      overallValidator = false;
+
+      const alert = this.alertCtrl
+        .create({
+          header: 'Edit Failed',
+          message: 'Distance must be greater than zero, please try again.',
+          buttons: ['OK'],
+        })
+        .then((res) => res.present());
+    }
+
+    // check for time being zero
+    else if ((await this.edit_info.time) == '00:00:00') {
+      overallValidator = false;
+
+      const alert = this.alertCtrl
+        .create({
+          header: 'Edit Failed',
+          message: 'Time must be longer than zero seconds, please try again.',
+          buttons: ['OK'],
+        })
+        .then((res) => res.present());
+    }
+
+    // if passes validation checks
+    if (overallValidator == true) {
+      // calls register webservice API call
+      this.webService
+        .putPost(this.edit_info.id, this.edit_info)
+        .subscribe((res) => {
+          this.dismissModal();
+          this.router.navigateByUrl('members');
+        });
+    }
   } // edit profile closed
 
   // func to update <ion-select> value fields

@@ -5,7 +5,7 @@
 
 .greyBit {
   background-color: #bbc4d0;
-  height: 36%;
+  height: 40%;
 }
 
 #brand {
@@ -65,4 +65,8 @@ ion-icon {
 
 hr {
   background: black;
+}
+
+ion-content ion-icon:hover {
+  cursor: pointer;
 }

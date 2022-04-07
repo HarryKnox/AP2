@@ -5,7 +5,7 @@
 
 .greyBit {
   background-color: #bbc4d0;
-  height: 36%;
+  height: 40%;
 }
 
 #brand {
@@ -179,4 +179,16 @@ img {
   height: 3em;
   width: 3em;
   border-radius: 0.4em;
+}
+
+// Reference : https://stackoverflow.com/a/58570936
+// hides scroll bar
+#leaderboardBox {
+  // overwrite inline styles
+  --offset-bottom: auto !important;
+  --overflow: hidden;
+  overflow: auto;
+  &::-webkit-scrollbar {
+    display: none;
+  }
 }

@@ -189,6 +189,8 @@ export class homePage {
             buttons: ['OK'],
           })
           .then((alert) => alert.present());
+
+        this.ngOnInit();
       });
 
       // reset comment value
@@ -232,6 +234,7 @@ export class homePage {
           handler: () => {
             this.webService.deleteComment(commentID).subscribe();
             this.comment_box_boolean = false;
+            this.ngOnInit();
           },
         },
       ],

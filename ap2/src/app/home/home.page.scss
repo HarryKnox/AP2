@@ -190,3 +190,15 @@ h6:hover {
 .commentBtns:hover {
   color: #1c1c1d;
 }
+
+// Reference : https://stackoverflow.com/a/58570936
+// hides scroll bar
+ion-content {
+  // overwrite inline styles
+  --offset-bottom: auto !important;
+  --overflow: hidden;
+  overflow: auto;
+  &::-webkit-scrollbar {
+    display: none;
+  }
+}

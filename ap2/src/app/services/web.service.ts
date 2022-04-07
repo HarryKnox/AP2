@@ -118,7 +118,7 @@ export class WebService {
     loginData.append('email', email);
     loginData.append('password', password);
 
-    return this.http.post('http://localhost:5000/api/v1/login', loginData);
+    return this.http.post('http://localhost:5000/api/v1.0/login', loginData);
   }
 
   // register a user
@@ -128,17 +128,12 @@ export class WebService {
     regData.append('email', info.email);
     regData.append('password', info.password);
 
-    return this.http.post('http://localhost:5000/api/v1/users', regData);
-  }
-
-  // get username from ID
-  get_username(id: any) {
-    return this.http.get('http://localhost:5000/api/v1/users/' + id);
+    return this.http.post('http://localhost:5000/api/v1.0/users', regData);
   }
 
   // get logged in user's profile info
   getUser(username: any) {
-    return this.http.get('http://localhost:5000/api/v1/users/' + username);
+    return this.http.get('http://localhost:5000/api/v1.0/users/' + username);
   }
 
   // edit a user's profile
@@ -152,7 +147,7 @@ export class WebService {
     userData.append('picture', edit_info.picture);
 
     // http put call made, with return statement
-    return this.http.put('http://localhost:5000/api/v1/users', userData);
+    return this.http.put('http://localhost:5000/api/v1.0/users', userData);
   }
 
   // deletes a user account

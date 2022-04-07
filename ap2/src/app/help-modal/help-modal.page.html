@@ -90,6 +90,19 @@
       </p>
     </div>
   </div>
+
+  <div class="help_section">
+    <button (click)="updateBoolean('unit')">
+      Distance Unit <ion-icon name="caret-forward-outline"></ion-icon>
+    </button>
+    <br />
+    <div *ngIf="this.unit_boolean==true">
+      <p>
+        This setting allows you to view distances in your preferred metric,
+        miles or kilometres.
+      </p>
+    </div>
+  </div>
 </ion-content>
 
 <ion-footer>

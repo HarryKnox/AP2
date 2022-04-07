@@ -51,9 +51,9 @@ export class EditProfileModalPage implements OnInit {
   }
 
   // func to post edit profile API call
-  editProfile() {
+  async editProfile() {
     // presence check on inputs
-    if (this.utils.presenceCheck(this.edit_info)) {
+    if ((await this.utils.presenceCheck(this.edit_info)) == true) {
       // calls register webservice API call
       this.webService.putUser(this.edit_info).subscribe(
         (res) => {

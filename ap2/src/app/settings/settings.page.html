@@ -23,7 +23,13 @@
 </ion-header>
 
 <ion-content>
-  <p>Distance Metric Unit</p>
+  <p>
+    Distance Metric Unit
+    <ion-icon
+      name="information-circle-outline"
+      (click)="openHelpModal('unit')"
+    ></ion-icon>
+  </p>
   <ion-select
     interface="popover"
     [(ngModel)]="settings.distance_unit"
@@ -35,7 +41,10 @@
 
   <p>
     Post / Leaderboard Privacy
-    <ion-icon name="information-circle-outline"></ion-icon>
+    <ion-icon
+      name="information-circle-outline"
+      (click)="openHelpModal('privacy')"
+    ></ion-icon>
   </p>
   <ion-select interface="popover" [(ngModel)]="settings.privacy">
     <ion-select-option value="public">Public</ion-select-option>
@@ -43,7 +52,11 @@
   </ion-select>
 
   <p>
-    Weekly Goal Tracker <ion-icon name="information-circle-outline"></ion-icon>
+    Weekly Goal Tracker
+    <ion-icon
+      name="information-circle-outline"
+      (click)="openHelpModal('goal')"
+    ></ion-icon>
   </p>
   <ion-select interface="popover" [(ngModel)]="settings.goal">
     <ion-select-option value="low">Easier (75 minutes)</ion-select-option>

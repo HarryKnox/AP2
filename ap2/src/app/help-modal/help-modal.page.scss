@@ -32,3 +32,15 @@ ion-footer ion-button {
 p {
   margin-left: 0.25em;
 }
+
+// Reference : https://stackoverflow.com/a/58570936
+// hides scroll bar
+ion-content {
+  // overwrite inline styles
+  --offset-bottom: auto !important;
+  --overflow: hidden;
+  overflow: auto;
+  &::-webkit-scrollbar {
+    display: none;
+  }
+}

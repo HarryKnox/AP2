@@ -161,7 +161,7 @@ export class UploadPage implements OnInit {
       Number(Math.floor(timeSplits[2] / 60));
 
     // calculate points for time
-    var time_points = (minutes / 10) * 5;
+    var time_points = Math.round(minutes / 10) * 5;
 
     // check if distance unit and calculate accordingly
     if (post.unit == 'miles') {
@@ -170,6 +170,8 @@ export class UploadPage implements OnInit {
     } else {
       var dist_points = Math.round(post.dist) * 5;
     }
+
+    // return rounded points
 
     return dist_points + time_points;
   }

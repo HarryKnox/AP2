@@ -81,7 +81,7 @@
 
           <ng-container *ngIf="checkIfLiked(post); else normalThumb">
             <ion-icon
-              style="color: green"
+              style="color: #992fed"
               name="thumbs-up-sharp"
               (click)="toggleLike(post._id)"
             ></ion-icon>
@@ -120,7 +120,7 @@
       <div id="aComment" *ngFor="let comment of comments">
         <img
           (click)="loadProfile(comment['username'])"
-          src="http://localhost:5000/api/v1/images/{{comment['user_pic']}}"
+          src="http://localhost:5000/api/v1.0/images/{{comment['user_pic']}}"
         />
         <p id="commentName" (click)="loadProfile(comment['username'])">
           {{comment["username"]}}

@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, Input, OnInit } from '@angular/core';
 import { ModalController } from '@ionic/angular';
 
 @Component({
@@ -9,14 +9,22 @@ import { ModalController } from '@ionic/angular';
 export class HelpModalPage implements OnInit {
   constructor(private modalController: ModalController) {}
 
+  @Input() section;
+
   // boolean values, displaying/hiding text blocks
   goal_tracker_boolean: boolean = false;
   points_boolean: boolean = false;
   privacy_boolean: boolean = false;
   shop_boolean: boolean = false;
   about_boolean: boolean = false;
+  unit_boolean: boolean = false;
 
-  ngOnInit() {}
+  ngOnInit() {
+    // if help section passed open it
+    if (this.section) {
+      this.updateBoolean(this.section);
+    }
+  }
 
   // dismiss the help modal
   dismissModal() {
@@ -67,6 +75,15 @@ export class HelpModalPage implements OnInit {
         this.about_boolean = true;
       } else {
         this.about_boolean = false;
+      }
+    }
+
+    // boolean var swaps for distance unit text block
+    if (event == 'unit') {
+      if (this.unit_boolean == false) {
+        this.unit_boolean = true;
+      } else {
+        this.unit_boolean = false;
       }
     }
   }

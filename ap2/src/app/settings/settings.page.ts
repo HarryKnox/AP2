@@ -103,4 +103,18 @@ export class SettingsPage implements OnInit {
     });
     return await modal.present();
   } // present modal closed
+
+  // displays help modal, passes which section to open
+  // used for the info. icons
+  async openHelpModal(helpSection: any) {
+    const modal = await this.modalController.create({
+      component: HelpModalPage,
+
+      // passing data to modal
+      componentProps: {
+        section: helpSection,
+      },
+    });
+    return await modal.present();
+  }
 } // class closed

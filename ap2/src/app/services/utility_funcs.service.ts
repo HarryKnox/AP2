@@ -103,7 +103,11 @@ export class UtilityService {
 
     // loop through credentials and check if not null
     for (var field in input_data) {
-      if (input_data[field] == null) {
+      if (
+        input_data[field] == null ||
+        input_data[field] == '' ||
+        input_data[field] == ' '
+      ) {
         check = false;
       }
     }

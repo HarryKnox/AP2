@@ -3,31 +3,44 @@
 
   <div class="greyBit">
     <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1440 500">
-      <path fill="#992FED" fill-opacity="1" d="M -4 500 C 627 378 817 86 1242 102 C 1336 107 1399 140 1438 180 L 1440 0 L 1360 0 C 1280 0 1120 0 960 0 C 800 0 640 0 480 0 C 320 0 160 0 80 0 L 0 0 Z"></path>
+      <path
+        fill="#992FED"
+        fill-opacity="1"
+        d="M -4 500 C 627 378 817 86 1242 102 C 1336 107 1399 140 1438 180 L 1440 0 L 1360 0 C 1280 0 1120 0 960 0 C 800 0 640 0 480 0 C 320 0 160 0 80 0 L 0 0 Z"
+      ></path>
     </svg>
   </div>
-  
-  <div id="brand">Post Upload</div>
+
+  <div id="brand">Upload</div>
 
   <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1440 200">
-    <path fill="#BBC4D0" fill-opacity="1" d="M 0 2 C 495 295 1252 63 1442 156 L 1440 0 L 1360 0 C 1280 0 1120 0 960 0 C 800 0 640 0 480 0 C 320 0 160 0 80 0 L 0 0 Z"></path>
+    <path
+      fill="#BBC4D0"
+      fill-opacity="1"
+      d="M 0 2 C 495 295 1252 63 1442 156 L 1440 0 L 1360 0 C 1280 0 1120 0 960 0 C 800 0 640 0 480 0 C 320 0 160 0 80 0 L 0 0 Z"
+    ></path>
   </svg>
-
 </ion-header>
 
 <ion-content>
-
   <ion-list>
     <p>Exercise Type</p>
     <ion-radio-group class="row">
-
       <ion-item lines="none" class="column">
-        <ion-icon name="walk" class="icons" [style.border]="iconBorderColour1"></ion-icon>
+        <ion-icon
+          name="walk"
+          class="icons"
+          [style.border]="iconBorderColour1"
+        ></ion-icon>
         <ion-radio value="walk" (click)="changeIconColour(1)"></ion-radio>
       </ion-item>
 
       <ion-item lines="none" class="column">
-        <ion-icon name="bicycle" class="icons" [style.border]="iconBorderColour2"></ion-icon>
+        <ion-icon
+          name="bicycle"
+          class="icons"
+          [style.border]="iconBorderColour2"
+        ></ion-icon>
         <ion-radio value="cycle" (click)="changeIconColour(2)"></ion-radio>
       </ion-item>
 
@@ -39,36 +52,43 @@
       </ion-item>
     </ion-radio-group>
 
-    <br>
+    <br />
 
     <p>How did it go?</p>
-    <ion-textarea placeholder="Enter a description of your workout..."
-    autocorrect="on" [(ngModel)]="post_data.text"></ion-textarea>
+    <ion-textarea
+      placeholder="Enter a description of your workout..."
+      autocorrect="on"
+      [(ngModel)]="post_data.text"
+    ></ion-textarea>
 
     <div class="row">
       <div class="column2">
         <p>Distance</p>
-        <ion-input type="number" placeholder="0"
-        [(ngModel)]="post_data.dist"></ion-input>
+        <ion-input
+          type="number"
+          placeholder="0"
+          [(ngModel)]="post_data.dist"
+        ></ion-input>
       </div>
 
       <div class="column2">
         <p>Unit</p>
-        <ion-select interface="popover" placeholder="Select One"
-        [(ngModel)]="post_data.unit">
+        <ion-select
+          interface="popover"
+          placeholder="Select One"
+          [(ngModel)]="post_data.unit"
+        >
           <ion-select-option value="km">Kilometres</ion-select-option>
           <ion-select-option value="miles">Miles</ion-select-option>
         </ion-select>
       </div>
     </div>
 
-    <p style="margin-top:1.5em;">Time (H:M:S)</p>
+    <p style="margin-top: 1.5em">Time (H:M:S)</p>
     <ion-input type="time" step="1" [(ngModel)]="post_data.time"></ion-input>
 
-    <br>
-    
+    <br />
+
     <ion-button (click)="submitUpload()">Submit</ion-button>
-
   </ion-list>
-
 </ion-content>
