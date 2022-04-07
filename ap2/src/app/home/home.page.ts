@@ -113,20 +113,36 @@ export class homePage {
 
   // loads a user profile when name/profile pic clicked
   loadProfile(name: any) {
-    // check if it is current user's profile
-    if (name == this.current_user.username) {
-      this.router.navigateByUrl('members/profile');
-    } else {
-      // adding username parameter to router navigation
-      let navigationExtras: NavigationExtras = {
-        queryParams: {
-          username: JSON.stringify(name),
-        },
-      };
+    // check if commenter is set to private
+    this.webService.getUser(name).subscribe((res) => {
+      this.webService.getUserSettings(res['_id']).subscribe((res) => {
+        // if public user
+        if (res['privacy'] == 'public') {
+          // check if it is current user's profile
+          if (name == this.current_user.username) {
+            this.router.navigateByUrl('members/profile');
+          } else {
+            // adding username parameter to router navigation
+            let navigationExtras: NavigationExtras = {
+              queryParams: {
+                username: JSON.stringify(name),
+              },
+            };
 
-      // username is passed to loadProfile function of otherProfile component
-      this.router.navigate(['members/others-profile'], navigationExtras);
-    }
+            // username is passed to loadProfile function of otherProfile component
+            this.router.navigate(['members/others-profile'], navigationExtras);
+          }
+        } else {
+          this.alertCtrl
+            .create({
+              header: 'Navigation Failed',
+              message: "This user's profile is private.",
+              buttons: ['OK'],
+            })
+            .then((res) => res.present());
+        }
+      });
+    });
   }
 
   // opens comments section box
