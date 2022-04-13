@@ -10,6 +10,8 @@ import { take, map, switchMap } from 'rxjs/operators';
 const helper = new JwtHelperService();
 const TOKEN_KEY = 'jwt-token';
 
+// CODE REFERENCE - https://devdactic.com/jwt-authentication-ionic/
+
 @Injectable({
   providedIn: 'root',
 })

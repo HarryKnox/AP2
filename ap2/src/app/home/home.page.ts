@@ -117,7 +117,7 @@ export class homePage {
     this.webService.getUser(name).subscribe((res) => {
       this.webService.getUserSettings(res['_id']).subscribe((res) => {
         // if public user
-        if (res['privacy'] == 'public') {
+        if (res['privacy'] == 'public' || name == this.current_user.username) {
           // check if it is current user's profile
           if (name == this.current_user.username) {
             this.router.navigateByUrl('members/profile');

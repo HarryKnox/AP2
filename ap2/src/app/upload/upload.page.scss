@@ -99,8 +99,6 @@ ion-select {
   color: black;
   border: solid 0.1em #992fed;
   width: 85%;
-  left: 1;
-  right: 1;
   margin: auto;
   border-radius: 0.65em;
 }
@@ -116,8 +114,4 @@ ion-content ion-button {
   --border-radius: 4em;
   --background: #992fed;
   --background-hover: #bbc4d0;
-}
-
-ion-item ion-radio {
-  opacity: 0;
 }

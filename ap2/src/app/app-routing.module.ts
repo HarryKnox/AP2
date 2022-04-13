@@ -23,11 +23,13 @@ const routes: Routes = [
     path: 'profile',
     loadChildren: () =>
       import('./profile/profile.module').then((m) => m.ProfilePageModule),
+    canActivate: [AuthGuard],
   },
   {
     path: 'settings',
     loadChildren: () =>
       import('./settings/settings.module').then((m) => m.SettingsPageModule),
+    canActivate: [AuthGuard],
   },
   {
     path: 'edit-profile-modal',
@@ -35,16 +37,19 @@ const routes: Routes = [
       import('./edit-profile-modal/edit-profile-modal.module').then(
         (m) => m.EditProfileModalPageModule
       ),
+    canActivate: [AuthGuard],
   },
   {
     path: 'upload',
     loadChildren: () =>
       import('./upload/upload.module').then((m) => m.UploadPageModule),
+    canActivate: [AuthGuard],
   },
   {
     path: 'data',
     loadChildren: () =>
       import('./data/data.module').then((m) => m.DataPageModule),
+    canActivate: [AuthGuard],
   },
   {
     path: 'help-modal',
@@ -52,11 +57,13 @@ const routes: Routes = [
       import('./help-modal/help-modal.module').then(
         (m) => m.HelpModalPageModule
       ),
+    canActivate: [AuthGuard],
   },
   {
     path: 'shop',
     loadChildren: () =>
       import('./shop/shop.module').then((m) => m.ShopPageModule),
+    canActivate: [AuthGuard],
   },
   {
     path: 'others-profile/:username',
@@ -64,11 +71,16 @@ const routes: Routes = [
       import('./others-profile/others-profile.module').then(
         (m) => m.OthersProfilePageModule
       ),
-  },  {
-    path: 'search-user-modal',
-    loadChildren: () => import('./search-user-modal/search-user-modal.module').then( m => m.SearchUserModalPageModule)
+    canActivate: [AuthGuard],
   },
-
+  {
+    path: 'search-user-modal',
+    loadChildren: () =>
+      import('./search-user-modal/search-user-modal.module').then(
+        (m) => m.SearchUserModalPageModule
+      ),
+    canActivate: [AuthGuard],
+  },
 ];
 @NgModule({
   imports: [
