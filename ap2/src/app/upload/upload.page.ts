@@ -81,7 +81,7 @@ export class UploadPage implements OnInit {
       overallValidator = false;
     }
 
-    // check for zero or less dist
+    // check for zero or less distance
     else if (this.post_data.dist <= 0) {
       overallValidator = false;
 

@@ -4,7 +4,6 @@ import { WebService } from '../services/web.service';
 import { UtilityService } from '../services/utility_funcs.service';
 import { Chart, registerables } from 'node_modules/chart.js';
 import { SettingsPage } from '../settings/settings.page';
-import { first } from 'rxjs/operators';
 import { AlertController } from '@ionic/angular';
 
 @Component({
