@@ -85,7 +85,6 @@ export class AuthService {
         // decodes token and sets value to userData var
         switchMap((token) => {
           let decoded = helper.decodeToken(token);
-          //console.log('decoded:',decoded);
           this.userData.next(decoded);
 
           // token set in storage and returned

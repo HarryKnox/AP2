@@ -24,15 +24,21 @@
 
 <ion-content>
   <div id="goalTracker">
-    <h5 *ngIf="settingsPage.settings.goal=='low'">
-      Goal : 75 minutes per week
-    </h5>
-    <h5 *ngIf="settingsPage.settings.goal=='medium'">
-      Goal : 150 minutes per week
-    </h5>
-    <h5 *ngIf="settingsPage.settings.goal=='hard'">
-      Goal : 300 minutes per week
-    </h5>
+    <div *ngIf="goal_tracker_value<100; else goalDone">
+      <h5 *ngIf="settingsPage.settings.goal=='low'">
+        Goal : 75 minutes per week
+      </h5>
+      <h5 *ngIf="settingsPage.settings.goal=='medium'">
+        Goal : 150 minutes per week
+      </h5>
+      <h5 *ngIf="settingsPage.settings.goal=='hard'">
+        Goal : 300 minutes per week
+      </h5>
+    </div>
+
+    <ng-template #goalDone>
+      <p>Congratulations! Weekly Goal Complete!</p>
+    </ng-template>
 
     <circle-progress
       [percent]="goal_tracker_value"
