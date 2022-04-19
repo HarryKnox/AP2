@@ -52,8 +52,31 @@ export class EditProfileModalPage implements OnInit {
 
   // func to post edit profile API call
   async editProfile() {
+    var overallValidator = true;
+
+    // presence check performed
+    if ((await this.utils.presenceCheck(this.edit_info)) == false) {
+      overallValidator = false;
+    }
+
+    // presence check performed
+    else if (this.utils.imageCheck(this.edit_info.picture) == false) {
+      overallValidator = false;
+
+      const alert = await this.alertCtrl
+        .create({
+          header: 'Edit Failed',
+          message: 'The file uploaded is not an image, please try again.',
+          buttons: ['OK'],
+        })
+        .then((res) => res.present());
+    }
+
     // presence check on inputs
-    if ((await this.utils.presenceCheck(this.edit_info)) == true) {
+    if (
+      (await this.utils.presenceCheck(this.edit_info)) == true &&
+      (await this.utils.imageCheck(this.edit_info.picture)) == true
+    ) {
       // calls register webservice API call
       this.webService.putUser(this.edit_info).subscribe(
         (res) => {

@@ -125,4 +125,27 @@ export class UtilityService {
 
     return check;
   } // presence check func closed
+
+  // checks for valid time
+  timeCheck(input_time: any) {
+    return moment(input_time, 'HH:mm:ss', true).isValid();
+  }
+
+  // checks for img in a file
+  // code reference : https://stackoverflow.com/a/29806920
+  imageCheck(file: any) {
+    // check for no img uploaded - ALLOWED TO PASS
+    if (file['type'] == undefined || file['type'] == null) {
+      return true;
+    }
+
+    var fileType = file['type'];
+    const imgTypes = ['image/gif', 'image/jpeg', 'image/png', 'image/jpg'];
+
+    if (imgTypes.includes(fileType)) {
+      return true;
+    } else {
+      return false;
+    }
+  }
 } // UtilityService class closed

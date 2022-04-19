@@ -81,6 +81,19 @@ export class UploadPage implements OnInit {
       overallValidator = false;
     }
 
+    // time format check
+    else if (this.utils.timeCheck(this.post_data.time) == false) {
+      overallValidator = false;
+
+      const alert = this.alertCtrl
+        .create({
+          header: 'Edit Failed',
+          message: 'Time field is not complete, please try again.',
+          buttons: ['OK'],
+        })
+        .then((res) => res.present());
+    }
+
     // check for zero or less distance
     else if (this.post_data.dist <= 0) {
       overallValidator = false;

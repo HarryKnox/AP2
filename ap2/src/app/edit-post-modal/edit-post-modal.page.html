@@ -1,61 +1,75 @@
+<!-- (input)= "edit_info.text=$event.target.value" -->
 
-  <!-- (input)= "edit_info.text=$event.target.value" -->
+<ion-header>
+  <ion-toolbar style="margin-top: 0.25em">
+    <ion-title>Edit Post</ion-title>
+  </ion-toolbar>
+</ion-header>
 
-  <ion-header>
-    <ion-toolbar style="margin-top: 0.25em;">
-      <ion-title>Edit Post</ion-title>
-    </ion-toolbar>
-  </ion-header>
-  
-  <ion-content>
-   
-    <ion-item lines="full">
-      <ion-label position="stacked">Exercise Type</ion-label>
-      <ion-select interface="popover" value="{{type}}"
-      (ionChange)="getSelectInput($event,'type')">
-        <ion-select-option value="walk">Walk</ion-select-option>
-        <ion-select-option value="cycle">Cycle</ion-select-option>
-        <ion-select-option value="run">Run</ion-select-option>
-      </ion-select>
-    </ion-item>
-  
-    <ion-item lines="full">
-      <ion-label position="stacked">Post Text</ion-label>
-      <ion-textarea autocorrect="on" value="{{text}}"
-      (input)="edit_info.text=$event.target.value"></ion-textarea>
-    </ion-item>
-  
+<ion-content>
+  <ion-item lines="full">
+    <ion-label position="stacked">Exercise Type</ion-label>
+    <ion-select
+      interface="popover"
+      value="{{type}}"
+      (ionChange)="getSelectInput($event,'type')"
+    >
+      <ion-select-option value="walk">Walk</ion-select-option>
+      <ion-select-option value="cycle">Cycle</ion-select-option>
+      <ion-select-option value="run">Run</ion-select-option>
+    </ion-select>
+  </ion-item>
+
+  <ion-item lines="full">
+    <ion-label position="stacked">Post Text</ion-label>
+    <ion-textarea
+      autocorrect="on"
+      value="{{text}}"
+      (input)="edit_info.text=$event.target.value"
+    ></ion-textarea>
+  </ion-item>
+
   <ion-item lines="full">
     <div class="row">
       <div class="column">
-          <ion-label position="stacked" style="margin-left: 1em;">Distance</ion-label>
-          <ion-input placeholder="0" value="{{dist}}" style="margin-left: 1em;"
-          (input)="edit_info.dist=$event.target.value"></ion-input>
+        <ion-label position="stacked" style="margin-left: 1em"
+          >Distance</ion-label
+        >
+        <ion-input
+          placeholder="0"
+          value="{{dist}}"
+          style="margin-left: 1em"
+          type="number"
+          (input)="edit_info.dist=$event.target.value"
+        ></ion-input>
       </div>
-    
+
       <div class="column">
-          <ion-label position="stacked">Unit</ion-label>
-          <ion-select interface="popover" value="{{utils.distance_unit_short}}"
-          (ionChange)="getSelectInput($event,'unit')">
-            <ion-select-option value="km">Kilometres</ion-select-option>
-            <ion-select-option value="miles">Miles</ion-select-option>
-          </ion-select>
+        <ion-label position="stacked">Unit</ion-label>
+        <ion-select
+          interface="popover"
+          value="{{utils.distance_unit_short}}"
+          (ionChange)="getSelectInput($event,'unit')"
+        >
+          <ion-select-option value="km">Kilometres</ion-select-option>
+          <ion-select-option value="miles">Miles</ion-select-option>
+        </ion-select>
       </div>
     </div>
   </ion-item>
-  
-    <ion-item>
-      <ion-label position="stacked">Time (H:M:S)</ion-label>
-      <ion-input type="time" step="1" value="{{time}}"
-      (input)="edit_info.time=$event.target.value"></ion-input>
-    </ion-item>
-  
-    <div id="btns">
-      <ion-button (click)=dismissModal()>Cancel</ion-button>
-      <ion-button (click)="editPost()">Save</ion-button>
-    </div>
-  
-  
-  </ion-content>
-  
-  
+
+  <ion-item>
+    <ion-label position="stacked">Time (H:M:S)</ion-label>
+    <ion-input
+      type="time"
+      step="1"
+      value="{{time}}"
+      (input)="edit_info.time=$event.target.value"
+    ></ion-input>
+  </ion-item>
+
+  <div id="btns">
+    <ion-button (click)="dismissModal()">Cancel</ion-button>
+    <ion-button (click)="editPost()">Save</ion-button>
+  </div>
+</ion-content>

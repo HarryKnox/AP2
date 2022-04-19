@@ -5,6 +5,7 @@ import { Router } from '@angular/router';
 import { AlertController } from '@ionic/angular';
 import { UtilityService } from '../services/utility_funcs.service';
 import { ProfilePage } from '../profile/profile.page';
+import { configFromSession } from '@ionic/core';
 
 @Component({
   selector: 'app-edit-post-modal',
@@ -64,6 +65,19 @@ export class EditPostModalPage implements OnInit {
     // presence check performed
     if ((await this.utils.presenceCheck(this.edit_info)) == false) {
       overallValidator = false;
+    }
+
+    // time format check
+    else if (this.utils.timeCheck(this.edit_info.time) == false) {
+      overallValidator = false;
+
+      const alert = this.alertCtrl
+        .create({
+          header: 'Edit Failed',
+          message: 'Time field is not complete, please try again.',
+          buttons: ['OK'],
+        })
+        .then((res) => res.present());
     }
 
     // check for zero or less dist
