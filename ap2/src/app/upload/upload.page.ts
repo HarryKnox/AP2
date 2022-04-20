@@ -153,7 +153,7 @@ export class UploadPage implements OnInit {
       dist: null,
       unit: null,
       time: null,
-      date: null,
+      date: new Date(),
     };
 
     // exercise types icons border colour

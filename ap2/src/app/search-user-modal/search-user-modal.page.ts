@@ -46,8 +46,6 @@ export class SearchUserModalPage implements OnInit {
     if (this.inputValue != '') {
       this.searchResults = this.webService.getSearch(this.inputValue);
 
-      console.log(this.searchResults);
-
       if (this.searchResults == []) {
         this.searchResults = [];
       }
