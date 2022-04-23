@@ -29,7 +29,7 @@
 
       <ng-container *ngIf="profileData.picture">
         <img
-          src="http://localhost:5000/api/v1.0/images/{{profileData.picture}}"
+          src="http://localhost:5000/api/v1.0/images/{{profileData.picture+'?'+timeStamp}}"
         />
       </ng-container>
 

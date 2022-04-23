@@ -27,6 +27,9 @@ export class EditProfileModalPage implements OnInit {
     picture: null,
   };
 
+  // used to force img refresh
+  timeStamp = new Date().getTime();
+
   constructor(
     private modalController: ModalController,
     private webService: WebService,
@@ -45,6 +48,13 @@ export class EditProfileModalPage implements OnInit {
     };
   } // ngOnInit closed
 
+  // gets latest user info
+  ionViewWillEnter() {
+    this.ngOnInit();
+
+    // reset time stamp - to refresh img
+    this.timeStamp = new Date().getTime();
+  }
   // func to dismiss the edit profile modal
   dismissModal() {
     this.modalController.dismiss();

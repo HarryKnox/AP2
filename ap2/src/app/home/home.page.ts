@@ -55,6 +55,9 @@ export class homePage {
   // holds comments for a post
   comments: any = [];
 
+  // used to force img refresh
+  timeStamp = new Date().getTime();
+
   // life cycle hook called when component created
   ngOnInit() {
     // fetches all exercise posts
@@ -94,6 +97,9 @@ export class homePage {
 
     // fetches goal tracker value
     this.getGoalTrackerData();
+
+    // reset time stamp - to refresh img
+    this.timeStamp = new Date().getTime();
   }
 
   // fetches user's time spent exercising this week

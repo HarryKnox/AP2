@@ -19,6 +19,9 @@ export class ProfilePage implements OnInit {
     private utils: UtilityService
   ) {}
 
+  // used to force img refresh
+  timeStamp = new Date().getTime();
+
   // var to hold logged-in user's data
   profileData: any = [];
 
@@ -32,7 +35,11 @@ export class ProfilePage implements OnInit {
 
   // gets latest user info
   ionViewWillEnter() {
+    this.ngOnInit();
     this.getUserData();
+
+    // reset time stamp - to refresh img
+    this.timeStamp = new Date().getTime();
   }
 
   // display edit profilemodal

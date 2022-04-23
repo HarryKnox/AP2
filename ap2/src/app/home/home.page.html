@@ -61,7 +61,7 @@
       <div class="row">
         <div class="column1" (click)="loadProfile(post.userName)">
           <h5>{{post.userName}}</h5>
-          <img src="{{post.pic}}" />
+          <img src="{{post.pic+'?'+timeStamp}}" />
         </div>
 
         <div class="column2">
