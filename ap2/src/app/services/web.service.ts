@@ -25,7 +25,6 @@ export class WebService {
 
   // add an exercise posts to db
   postExercise(post: any) {
-    console.log(post);
     let postData = new FormData();
     postData.append('text', post.text);
     postData.append('type', post.type);
@@ -139,8 +138,6 @@ export class WebService {
 
   // edit a user's profile
   putUser(edit_info: any) {
-    console.log(edit_info);
-
     // set all edit data into a FormData obj
     let userData = new FormData();
     userData.append('username', edit_info.username);
@@ -161,7 +158,6 @@ export class WebService {
 
   // save settings changes
   postUserSettings(settings: any) {
-    console.log(settings);
     let settingsData = new FormData();
     settingsData.append('dist_unit', settings.distance_unit);
     settingsData.append('privacy', settings.privacy);

@@ -52,6 +52,32 @@ export class RegisterPage implements OnInit {
         .then((res) => res.present());
     }
 
+    // email contains asperand check
+    else if (!(this.credentials.email.indexOf('@') >= 0)) {
+      overallValidator = false;
+
+      const alert = await this.alertCtrl
+        .create({
+          header: 'Registration Failed',
+          message: 'Email address entered is not valid.',
+          buttons: ['OK'],
+        })
+        .then((res) => res.present());
+    }
+
+    // password length check
+    else if (this.credentials.password.length < 8) {
+      overallValidator = false;
+
+      const alert = await this.alertCtrl
+        .create({
+          header: 'Registration Failed',
+          message: 'Password must be at least 8 characters.',
+          buttons: ['OK'],
+        })
+        .then((res) => res.present());
+    }
+
     // if checks above pass, register user
     if (overallValidator == true) {
       // calls register webservice API call
