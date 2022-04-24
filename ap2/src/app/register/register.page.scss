@@ -1,44 +1,42 @@
-ion-header svg{
-    z-index: 1;
-    position: absolute;
-
+ion-header svg {
+  position: absolute;
 }
 
-ion-back-button{
-    float: left;
-    position: absolute;
-    margin-left: 0.25em;
-    color: white;
+ion-back-button {
+  float: left;
+  position: absolute;
+  margin-left: 0.25em;
+  color: white;
 }
 
-ion-content{
-    position: relative;
-    top: 6em;
-    --ion-item-background : white;
-    --ion-item-color : black;
+ion-content {
+  position: relative;
+  top: 6em;
+  --ion-item-background: white;
+  --ion-item-color: black;
 }
 
-.topPurple{
-    background: #992FED;
-    height: 4em;
+.topPurple {
+  background: #992fed;
+  height: 4em;
 }
 
-ion-content h4{
-    color: #992FED;
-    font-size: 1.5em;
-    font-weight: bolder;
-    margin: 0;
-    padding-left: 0.75em;
+ion-content h4 {
+  color: #992fed;
+  font-size: 1.5em;
+  font-weight: bolder;
+  margin: 0;
+  padding-left: 0.75em;
 }
 
-ion-footer{
-    background-color: #992FED;
+ion-footer {
+  background-color: #992fed;
 }
 
-ion-content ion-button{
-    font-size: 0.96em;
-    --background : #BBC4D0;
-    --background-hover : #992FED;
-    margin: auto;
-    width: 75%;
+ion-content ion-button {
+  font-size: 0.96em;
+  --background: #bbc4d0;
+  --background-hover: #992fed;
+  margin: auto;
+  width: 75%;
 }
